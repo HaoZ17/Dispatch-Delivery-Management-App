@@ -9,6 +9,7 @@ class Test extends React.Component {
         super(props)
         this.emailRef=new createRef();
         this.passCodeRef= new createRef();
+        this.trackingNumber=new createRef();
     }
 
     submitLogin=()=>({
@@ -23,6 +24,9 @@ class Test extends React.Component {
                 <input type="password" ref={this.passCodeRef} placeholder="Password"/>
                 <button onClick={()=>{this.props.actionController.loginInfo(this.submitLogin())}}>submit</button>
                 <button onClick={this.props.actionController.signInRequest}>SendRequest</button>
+                <p>Tracking function</p>
+                <input type="text" ref={this.trackingNumber} placeholder="tracking number" onBlur={()=>this.props.actionController.inputTrackingNumber(this.trackingNumber.current.value)}/>
+                <button onClick={this.props.actionController.trackOrder}>Track</button>
             </div>
         );
     }
