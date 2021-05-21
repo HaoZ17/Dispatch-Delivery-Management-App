@@ -27,6 +27,9 @@ class Test extends React.Component {
                 <p>Tracking function</p>
                 <input type="text" ref={this.trackingNumber} placeholder="tracking number" onBlur={()=>this.props.actionController.inputTrackingNumber(this.trackingNumber.current.value)}/>
                 <button onClick={this.props.actionController.trackOrder}>Track</button>
+                <p>showlist</p>
+                <button onClick={this.props.actionController.isshowRegForm}>click</button>
+                {this.props.showRegForm? <p>on</p>:<p>off</p>}
             </div>
         );
     }

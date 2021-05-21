@@ -34,11 +34,25 @@ const initState={
 
     //checkout info *
     checkoutInfo:{},
-    checkoutStatus:false
+    checkoutStatus:false,
+    //button:
+    showRegForm:false,
+    showLoginForm:false
+
 }
 
 const reducer=(state=initState,action={})=>{
     switch(action.type){ 
+        case Actions.SHOWREGISTER:
+            return {
+                ...state,
+                showRegForm:!state.showRegForm
+            }
+        case Actions.SHOWLOGIN:
+            return{
+                ...state,
+                showLoginForm:!state.showLoginForm
+            }
         case Actions.LOADUSERINFO:
             console.log(action.payload)
             return {

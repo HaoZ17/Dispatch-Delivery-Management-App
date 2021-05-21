@@ -14,6 +14,8 @@ const LOADINGUSERORDER="loadingUserOrder";
 const LOADINGVISITERORDER="loadingVisiterOrder";
 const INPUTTRACKINGNUMBER="inputTrackingNumber";
 const LOGININFO="loginInfo";
+const SHOWREGISTER="showRegister"
+const SHOWLOGIN="showLogIn"
 
 
 export default{
@@ -32,5 +34,7 @@ export default{
     LOADINGUSERORDER,
     LOADINGVISITERORDER,
     INPUTTRACKINGNUMBER,
-    LOGININFO
+    LOGININFO,
+    SHOWREGISTER,
+    SHOWLOGIN
 }

@@ -16,7 +16,7 @@ const registUser=()=>{
         .then((res)=>{
             console.log("successful")
             console.log(res)
-            if(res.status===true){
+            if(res.status===true){//later
                 dispatch(signUpStatusCheck());
             }else{
                 alert("please check your info");
@@ -27,6 +27,13 @@ const registUser=()=>{
         })
     }
 }
+
+const isshowRegForm=()=>({
+    type:Actions.SHOWREGISTER
+})
+const isshowLoginForm=()=>({
+    type:Actions.SHOWLOGIN
+})
 
 // sign in
 const loaduserInfo=(payload)=>({
@@ -159,5 +166,7 @@ export const actions={
     confirmOption,
     trackMemberOrder,
     trackOrder,
-    inputTrackingNumber
+    inputTrackingNumber,
+    isshowRegForm,
+    isshowLoginForm
 }
