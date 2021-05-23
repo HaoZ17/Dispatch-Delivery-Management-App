@@ -5,27 +5,46 @@ const initState={
 
     //basic info
     name:"",
-    email:"",
+    email:"required@gmail.com",
     // email:"",
     // password:"",
 
     //profile*
     userInfo:{},
+    updateInfo:{},
 
     //signin/signup*
-    signUp:{},
-    signIn:{},
+    signUp:{
+        name: "team3",
+        email: "required@gmail.com",
+        password : "required",
+        address: "option",
+        zipcode: "98007",
+        mobile: "12345678",
+    },
+    signIn:{
+        email:"123@gmail.com",
+        password:"12345"
+        },
     registerStatus:false,
 
     //tracking visitor
-    trackingNumber:"",
+    trackingNumber:"1234567asdasdasd",
     trackingInfo:{},
 
     //member
     orderHistoryAndProcess:[],
 
     //place order*
-    orderInfo:{},
+    orderInfo:{
+        basicInfo:{
+            from:"local",
+            to:"future",
+            size:"50m^3",
+            weight:"10kg",
+            time:"2021-05-21-12:21"
+        }
+    },
     isLoading:false,
 
     //options*
@@ -33,7 +52,29 @@ const initState={
     optionsStatus:false,
 
     //checkout info *
-    checkoutInfo:{},
+    checkoutInfo:{
+        orderInfo:{
+            basicInfo:{
+                from:"local",
+                to:"future",
+                size:"50m^3",
+                weight:"10kg",
+                time:"2021-05-21-12:21"
+            }
+        },
+        selected:{
+            option:"1",
+            price:"10USD"
+        },
+        useInfo:{
+            name: "team3",
+            email: "required@gmail.com",
+            password : "required",
+            address: "option",
+            zipcode: "98007",
+            mobile: "12345678"
+        }
+    },
     checkoutStatus:false,
     //button:
     showRegForm:false,

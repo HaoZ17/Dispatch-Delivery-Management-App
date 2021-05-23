@@ -10,7 +10,7 @@ const signUpStatusCheck=()=>({
 const registUser=()=>{
     return (dispatch,getState)=>{
         const storeData={...getState()};
-        const data=storeData.signup;
+        const data=storeData.signUp;
         console.log(data);
         return axios.post(Actions.SIGNUPURL,data)
         .then((res)=>{
@@ -28,6 +28,7 @@ const registUser=()=>{
     }
 }
 
+//button
 const isshowRegForm=()=>({
     type:Actions.SHOWREGISTER
 })
@@ -88,6 +89,7 @@ const confirmOption=()=>{
     return (dispatch,getState)=>{
         const storeData={...getState()};
         const data=storeData.checkoutInfo;
+        console.log(data);
         return axios.post(Actions.CHECKOUTURL,data)
         .then((res)=>{
             if(res.status==="ok"){
