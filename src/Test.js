@@ -24,12 +24,23 @@ class Test extends React.Component {
                 <input type="password" ref={this.passCodeRef} placeholder="Password"/>
                 <button onClick={()=>{this.props.actionController.loginInfo(this.submitLogin())}}>submit</button>
                 <button onClick={this.props.actionController.signInRequest}>SendRequest</button>
+                <br/>
                 <p>Tracking function</p>
                 <input type="text" ref={this.trackingNumber} placeholder="tracking number" onBlur={()=>this.props.actionController.inputTrackingNumber(this.trackingNumber.current.value)}/>
                 <button onClick={this.props.actionController.trackOrder}>Track</button>
-                <p>showlist</p>
+                <button onClick={this.props.actionController.trackMemberOrder}>trackingUserPackageCheck</button>
+                <br/>
+                <br/>
                 <button onClick={this.props.actionController.isshowRegForm}>click</button>
                 {this.props.showRegForm? <p>on</p>:<p>off</p>}
+                <br/>
+                <button onClick={this.props.actionController.registUser}>SignUpCheck</button>
+                <br/>
+                <br/>
+                <button onClick={this.props.actionController.placeOrder}>placeOrderCheck</button>
+                <br/>
+                <br/>
+                <button onClick={this.props.actionController.confirmOption}>checkOutCheck</button>
             </div>
         );
     }
