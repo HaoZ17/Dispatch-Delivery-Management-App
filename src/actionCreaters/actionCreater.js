@@ -1,7 +1,9 @@
 import Actions from '../constants';
 import axios from "axios";
 
-
+const jumptest=()=>({
+    type: "jump"
+})
 
 // sign up
 const signUpStatusCheck=()=>({
@@ -170,5 +172,6 @@ export const actions={
     trackOrder,
     inputTrackingNumber,
     isshowRegForm,
-    isshowLoginForm
+    isshowLoginForm,
+    jumptest
 }

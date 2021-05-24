@@ -2,6 +2,8 @@ import { bindActionCreators } from "redux";
 import React, { createRef } from 'react'
 import {actions} from './actionCreaters/actionCreater'
 import { connect } from "react-redux";
+import Status1 from "./components/Status1";
+import Status2 from './components/Status2';
 
 class Test extends React.Component {
 
@@ -41,6 +43,11 @@ class Test extends React.Component {
                 <br/>
                 <br/>
                 <button onClick={this.props.actionController.confirmOption}>checkOutCheck</button>
+                <br/>
+                <br/>
+                <button onClick={this.props.actionController.jumptest}>JUMP</button>
+                {this.props.jumpTest? <Status1/>:<Status2/>
+                }
             </div>
         );
     }
