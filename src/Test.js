@@ -2,21 +2,17 @@ import { bindActionCreators } from "redux";
 import React, { createRef } from 'react'
 import {actions} from './actionCreaters/actionCreater'
 import { connect } from "react-redux";
-import LoginForm from "./components/Login"
-import RegisterForm from "./components/Register"
-import Tracking from "./components/Tracking"
-import home_img from "./style/image/home_img.png"
+import SignUpContainer from "./containers/SignUpContainer"
 import HomeContainer from "./containers/HomeContainer"
-import NavLine from "./components/NavLine"
+import LoginContainer from "./containers/LoginContainer"
+import NavBar from "./components/NavBar"
+
 
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
 } from "react-router-dom";
-
-import {Button} from "antd";
 
 class Test extends React.Component {
 
@@ -55,14 +51,14 @@ class Test extends React.Component {
 
                 {/*<img src={home_img} className="App-logo" alt="logo" />*/}
 
-                <NavLine />
+                <NavBar />
 
                 <Switch>
                     <Route path="/login">
-                        <LoginForm />
+                        <LoginContainer />
                     </Route>
                     <Route path="/signUp">
-                        <RegisterForm />
+                        <SignUpContainer />
                     </Route>
                     <Route exact path="/">
                         <HomeContainer />

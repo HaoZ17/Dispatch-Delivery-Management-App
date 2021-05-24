@@ -1,11 +1,7 @@
-
-.SignUp-button {
-    marginRight: 20px;
-    color: #5E5E5E;
-    border: 3px solid #215899;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
+.home-background {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1440px;
+    margin-top: 148px;
 }

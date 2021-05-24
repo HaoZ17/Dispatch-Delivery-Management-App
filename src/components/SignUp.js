@@ -1,37 +1,11 @@
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import { Form, Icon, Input, Button, Row, Col, Menu, Dropdown,message } from 'antd';
+import { Form, Icon, Input, Button, Row, Col} from 'antd';
 import React from 'react';
 
-const menu = (
-    <Menu onClick={handleMenuClick}>
-        <Menu.Item key="1">
-            <Icon type="user" />
-            1st menu item
-        </Menu.Item>
-        <Menu.Item key="2">
-            <Icon type="user" />
-            2nd menu item
-        </Menu.Item>
-        <Menu.Item key="3">
-            <Icon type="user" />
-            3rd item
-        </Menu.Item>
-    </Menu>
-);
 
-function handleButtonClick(e) {
-    message.info('Click on left button.');
-    console.log('click left button', e);
-}
-
-function handleMenuClick(e) {
-    message.info('Click on menu item.');
-    console.log('click', e);
-}
-
-class Register extends React.Component {
+class SignUp extends React.Component {
 
 
     submitRegisterInfo = e => {
@@ -67,9 +41,9 @@ class Register extends React.Component {
 
             <div>
                 {/*<Button shape="round" type="primary" onClick={this.props.actionController.isshowRegForm} style={{ marginRight: '20px' }}>*/}
-                {/*    Register</Button>*/}
+                {/*    SignUp</Button>*/}
                 {/*<Modal*/}
-                {/*    title="Register"*/}
+                {/*    title="SignUp"*/}
                 {/*    visible={this.props.showRegForm}*/}
                 {/*    onCancel={this.props.actionController.isshowRegForm}*/}
                 {/*    footer={null}*/}
@@ -218,7 +192,7 @@ class Register extends React.Component {
     };
 
 }
-const RegisterForm = Form.create({ name: 'normal_register' })(Register);
+const SignUpForm = Form.create({ name: 'normal_register' })(SignUp);
 //export default RegisterForm;
 
 const mapStateToProps = (state) => {
@@ -233,4 +207,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

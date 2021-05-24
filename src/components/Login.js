@@ -1,7 +1,7 @@
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import { Form, Icon, Input, Button, Row, Col } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
@@ -23,8 +23,8 @@ class Login extends React.Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <>
-                <div>
-                    <b>Log In</b>
+                <div className='login-block'>
+                    <b className='login-title'>Log In</b>
                     {/*<Button shape="round" onClick={this.props.actionController.isshowLoginForm} style={{ marginRight: '20px' }}>*/}
                     {/*    Login</Button>*/}
                     {/*<Modal*/}
@@ -35,7 +35,7 @@ class Login extends React.Component {
                     {/*    destroyOnClose={true}*/}
                     {/*>*/}
                         <Form onSubmit={this.submitLoginInfo} className="login-form">
-                            <Form.Item>
+                            <Form.Item label="Email">
                                 {getFieldDecorator('email', {
                                     rules: [{ required: true, message: 'Please input your email!' }],
                                 })(
@@ -45,7 +45,7 @@ class Login extends React.Component {
                                     />,
                                 )}
                             </Form.Item>
-                            <Form.Item>
+                            <Form.Item label="Password">
                                 {getFieldDecorator('password', {
                                     rules: [{ required: true, message: 'Please input your Password!' }],
                                 })(

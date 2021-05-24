@@ -1,7 +1,6 @@
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import { Input } from 'antd';
 import React, {createRef} from 'react';
 
 // const { Search } = Input;
