@@ -19,7 +19,7 @@ const routes = [
     },
 ];
 
-class tracking extends Component {
+class Tracking extends Component {
     render() {
         return (
             <div>
@@ -44,3 +44,10 @@ class tracking extends Component {
 
 export default Tracking;
 // profile page
+
+/* Abstract
+Author: Zhao Tang
+Verison: 01
+Date: May 24, 2021
+
+*/
