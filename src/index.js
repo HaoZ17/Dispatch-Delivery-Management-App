@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import thunk from "redux-thunk";
 import {createStore, applyMiddleware} from "redux";
@@ -9,12 +9,19 @@ import {Provider} from "react-redux";
 import reducer from "./reducers/reducer"
 import Text from "./Test"
 
+import { BrowserRouter } from "react-router-dom";
+
 const store= createStore(reducer,applyMiddleware(thunk));
 ReactDOM.render(
   <Provider store={store}>
-    {/* <App /> */}
-    <Text/>
-  </Provider>,
+      <BrowserRouter>
+        <App />
+        {/* <Text/> */}
+      </BrowserRouter>
+     
+  </Provider>
+
+  ,
   document.getElementById('root')
 );
 
