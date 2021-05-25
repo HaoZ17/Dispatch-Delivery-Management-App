@@ -8,6 +8,9 @@ import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import reducer from "./reducers/reducer"
 import Text from "./Test"
+import Form2 from "./components/receiverOrderForm";
+import OrderF from './components/receiverOrderForm';
+import Form1 from "./components/receiverOrderForm";
 
 import { BrowserRouter } from "react-router-dom";
 
@@ -20,7 +23,7 @@ ReactDOM.render(
       </BrowserRouter>
      
   </Provider>
-
+  
   ,
   document.getElementById('root')
 );
