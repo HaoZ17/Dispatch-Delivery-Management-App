@@ -3,6 +3,7 @@ import { actions } from "../actionCreaters/actionCreater";
 
 const initState={
 
+    jumpTest:false,
     //basic info
     name:"",
     email:"required@gmail.com",
@@ -143,6 +144,12 @@ const reducer=(state=initState,action={})=>{
             return{
                 ...state,
                 signIn:action.payload
+            }
+        case "jump":
+            console.log(state.jumpTest)
+            return{
+                ...state,
+                jumpTest:!state.jumpTest
             }
         default:
             return { ...state };
