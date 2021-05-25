@@ -1,9 +1,10 @@
-import { bindActionCreators } from "redux";
 import React, { createRef } from 'react'
+import { bindActionCreators } from "redux";
 import {actions} from './actionCreaters/actionCreater'
 import { connect } from "react-redux";
 import Status1 from "./components/Status1";
 import Status2 from './components/Status2';
+import OrderF from "./containers/InputOrderForm";
 
 class Test extends React.Component {
 
@@ -22,7 +23,7 @@ class Test extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" ref={this.emailRef} placeholder="email" />
+                {/* <input type="text" ref={this.emailRef} placeholder="email" />
                 <input type="password" ref={this.passCodeRef} placeholder="Password"/>
                 <button onClick={()=>{this.props.actionController.loginInfo(this.submitLogin())}}>submit</button>
                 <button onClick={this.props.actionController.signInRequest}>SendRequest</button>
@@ -47,7 +48,8 @@ class Test extends React.Component {
                 <br/>
                 <button onClick={this.props.actionController.jumptest}>JUMP</button>
                 {this.props.jumpTest? <Status1/>:<Status2/>
-                }
+                } */}
+                <OrderF/>
             </div>
         );
     }

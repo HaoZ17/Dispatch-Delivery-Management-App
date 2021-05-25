@@ -29,6 +29,12 @@ const registUser=()=>{
         })
     }
 }
+ const increaseMDButton=()=>({
+     type:"modelIncrease"
+ })
+ const decreaseMDButton=()=>({
+     type:"modelDecrease"
+ })
 
 //button
 const isshowRegForm=()=>({
@@ -157,8 +163,14 @@ const loginInfo=(payload)=>({
     type:Actions.LOGININFO,
     payload
 })
+const resetDisplayModal=()=>({
+    type:"resetDisplayModal"
+})
 
-
+const checkDataform=(payload)=>({
+    type:"checkDataform",
+    payload
+})
 
 
 export const actions={
@@ -173,5 +185,9 @@ export const actions={
     inputTrackingNumber,
     isshowRegForm,
     isshowLoginForm,
-    jumptest
+    jumptest,
+    increaseMDButton,
+    decreaseMDButton,
+    resetDisplayModal,
+    checkDataform
 }

@@ -9,12 +9,14 @@ const initState={
     email:"required@gmail.com",
     // email:"",
     // password:"",
+    displayModal:1,
 
     //profile*
     userInfo:{},
     updateInfo:{},
 
     //signin/signup*
+
     signUp:{
         name: "team3",
         email: "required@gmail.com",
@@ -27,6 +29,7 @@ const initState={
         email:"123@gmail.com",
         password:"12345"
         },
+
     registerStatus:false,
 
     //tracking visitor
@@ -38,14 +41,20 @@ const initState={
 
     //place order*
     orderInfo:{
-        basicInfo:{
             from:"local",
             to:"future",
             size:"50m^3",
             weight:"10kg",
             time:"2021-05-21-12:21"
-        }
     },
+
+    fromInfo:{
+
+    },
+    toInfo:{
+
+    },
+
     isLoading:false,
 
     //options*
@@ -54,14 +63,12 @@ const initState={
 
     //checkout info *
     checkoutInfo:{
-        orderInfo:{
-            basicInfo:{
-                from:"local",
-                to:"future",
-                size:"50m^3",
-                weight:"10kg",
-                time:"2021-05-21-12:21"
-            }
+        basicInfo:{
+            from:"local",
+            to:"future",
+            size:"50m^3",
+            weight:"10kg",
+            time:"2021-05-21-12:21"
         },
         selected:{
             option:"1",
@@ -150,6 +157,29 @@ const reducer=(state=initState,action={})=>{
             return{
                 ...state,
                 jumpTest:!state.jumpTest
+            }
+        case "modelIncrease":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:state.displayModal+1
+            }
+        case "modelDecrease":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:state.displayModal-1
+            }
+        case "resetDisplayModal":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:0
+            }
+        case "checkDataform":
+            console.log(action.payload)
+            return{
+                ...state
             }
         default:
             return { ...state };
