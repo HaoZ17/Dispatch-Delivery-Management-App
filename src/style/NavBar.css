@@ -1,0 +1,26 @@
+.nav-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0px;
+    top: 80px;
+    background: #215899;
+}
+
+.SignUp-button {
+    marginRight: 20px;
+    color: #5E5E5E;
+    border: 3px solid #215899;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.user-profile-img {
+    position: absolute;
+    right: 26%;
+    top: 45px;
+
+}

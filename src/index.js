@@ -9,6 +9,7 @@ import {Provider} from "react-redux";
 import reducer from "./reducers/reducer"
 import Text from "./Test"
 
+
 const store= createStore(reducer,applyMiddleware(thunk));
 ReactDOM.render(
   <Provider store={store}>

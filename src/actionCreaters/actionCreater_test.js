@@ -40,14 +40,6 @@ const loaduserInfo=(payload)=>({
     type:Actions.LOADUSERINFO,
     payload
 })
-
-// added by Xiao & Yun
-// register info
-const loadRegisterInfo=(payload)=>({
-    type:Actions.LOADREGISTERINFO,
-    payload
-})
-
 const signInRequest=()=>{
     return (dispatch,getState)=>{
         const storeData={...getState()};
@@ -176,7 +168,5 @@ export const actions={
     trackOrder,
     inputTrackingNumber,
     isshowRegForm,
-    isshowLoginForm,
-    loaduserInfo,
-    loadRegisterInfo // added by Xiao & Yun
+    isshowLoginForm
 }
