@@ -4,17 +4,18 @@ import { Layout } from 'antd';
 
 
 import homeimage from '../style/image/homepage.jpg';
-import '../style/Home.css';
+import '../style/User.css';
 
 import {
     AimOutlined,
     CarOutlined
-  } from '@ant-design/icons';
+} from '@ant-design/icons';
+import { withRouter } from "react-router-dom";
 
 
 const { Header, Footer, Sider, Content } = Layout;
 
-class Home extends Component {
+class User extends Component {
     render() {
         return (
             <div>
@@ -25,12 +26,20 @@ class Home extends Component {
                     <Content>
                         <Row justify="end">
                             <Col span={4}></Col>
-                            <Col span={4}>
-                            </Col>
-                            <Col span={4}><Button class="center"><AimOutlined /> Tracking</Button></Col>
                             <Col span={4}></Col>
                             <Col span={4}>
-                                <Button class="center"><CarOutlined /> Shipping</Button>
+                                <Button class="center" onClick={
+                                                () => {
+                                                    this.props.history.push('/packagetracking')
+                                                }
+                                            }><AimOutlined /> Tracking</Button></Col>
+                            <Col span={4}></Col>
+                            <Col span={4}>
+                                <Button class="center" onClick={
+                                                () => {
+                                                    this.props.history.push('/packagetracking')
+                                                }
+                                            }><CarOutlined /> Shipping</Button>
                             </Col>
                             <Col span={4}></Col>
                         </Row>
@@ -44,4 +53,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default withRouter(User);

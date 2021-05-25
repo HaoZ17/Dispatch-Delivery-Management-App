@@ -14,6 +14,14 @@ const initState={
     userInfo:{},
     updateInfo:{},
 
+    user: {name:"Rick", email:"rick@gmail.com", password:"123456", address:"USA", zipcode:"666666", mobile:"88888888", },
+    processing:[{deliverDate:"April 5th", name:"Mike", orderWeight:"10 pounds"}, 
+    {deliverDate:"April 10th", name:"Sarah", orderWeight:"1 pounds"},
+    {deliverDate:"April 15th", name:"Sunnie", orderWeight:"15 pounds"}],
+    delivered:[{deliverDate:"March 5th", name:"Li", orderWeight:"100 pounds"}, 
+    {deliverDate:"March 10th", name:"Wang", orderWeight:"200 pounds"},
+    {deliverDate:"March 15th", name:"Zhang", orderWeight:"300 pounds"}],
+
     //signin/signup*
     signUp:{
         name: "team3",

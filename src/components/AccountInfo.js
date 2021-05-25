@@ -1,39 +1,31 @@
 import React, { Component } from 'react';
 import { Row, Col, Button } from "antd";
 import { Layout } from 'antd';
-import { List, Card, PageHeader } from 'antd';
+import { List, Card, PageHeader, Breadcrumb } from 'antd';
 import {
     HomeOutlined,
     SmileOutlined,
 } from '@ant-design/icons';
 import '../style/AccountInfo.css';
+import { withRouter } from "react-router-dom";
 
 const { Header, Footer, Sider, Content } = Layout;
 
-const routes = [
-    {
-        path: 'index',
-        breadcrumbName: 'Home',
-    },
-    {
-        path: 'first',
-        breadcrumbName: 'Profile Overview',
-    },
-];
+// const routes = [
+//     {
+//         path: '/user',
+//         breadcrumbName: 'Home',
+//     },
+//     {
+//         path: 'first',
+//         breadcrumbName: 'Profile Overview',
+//     },
+// ];
 
 class AccountInfo extends Component {
     state = {
         accountInfo: {
-            name: 'John Doe',
-            email: 'abc@xx.com',
-            password : '1234',
-            firstName: 'John',
-            lastName: 'Doe',
-            billingAddress: '708 S. Cedar Street, Pensacola, FL 32503',
-            shippingAddress: '708 S. Cedar Street, Pensacola, FL 32503',
-            mobile: '1234567890',
-            zipcode: '32503',
-            credit: '100'
+            name: "Rick", email: "rick@gmail.com", password: "123456", address: "USA", zipcode: "666666", mobile: "88888888",
         },
 
         orderData: null
@@ -47,22 +39,26 @@ class AccountInfo extends Component {
                 <Layout>
                     <Header><h1>Account Information</h1></Header>
                     <Content>
-                        <PageHeader
+                        {/* <PageHeader
                             className="site-page-header"
                             title=""
                             breadcrumb={{ routes }}
                             subTitle=""
-                        />
+                        /> */}
+                        <Breadcrumb separator=">">
+                            <Breadcrumb.Item onClick={() => { this.props.history.push('/user') }}>Home</Breadcrumb.Item>
+                            <Breadcrumb.Item>Profile Overview</Breadcrumb.Item>
+                        </Breadcrumb>
                         <Row className='index' gutter={24}>
                             <Col span={11} className="left-side">
                                 <Card className="infocard" title={<span><SmileOutlined /> Personal Info </span>} bordered={true}>
                                     <List class='personalinfo' bordered='false'>
-                                        <List.Item>{'First Name    : ' + this.state.accountInfo.firstName}</List.Item>
-                                        <List.Item>{'Last  Name    : ' + this.state.accountInfo.lastName}</List.Item>
+                                        <List.Item>{'Name    : ' + this.state.accountInfo.name}</List.Item>
                                         <List.Item>{'Email address : ' + this.state.accountInfo.email}</List.Item>
-                                        <List.Item>{'Password : ' + this.state.accountInfo.password}</List.Item>
-                                        <List.Item>{'Billing address : ' +this.state.accountInfo.billingAddress}</List.Item>
-                                        <List.Item>{'Credit : ' + this.state.accountInfo.credit}</List.Item>
+                                        <List.Item>{'Password   : ' + this.state.accountInfo.password}</List.Item>
+                                        <List.Item>{'Address : ' + this.state.accountInfo.address}</List.Item>
+                                        <List.Item>{'Zipcode : ' + this.state.accountInfo.zipcode}</List.Item>
+                                        <List.Item>{'Mobile : ' + this.state.accountInfo.mobile}</List.Item>
                                     </List>
                                 </Card>
                             </Col>
@@ -81,7 +77,7 @@ class AccountInfo extends Component {
                             <Col span={8}>col-4</Col>
                             <Col span={5}>col-4</Col>
                             <Col span={1}>
-                                <Button type="primary">Edit</Button>
+                                <Button type="primary" onClick={() => (this.props.history.push('/user/accountInfo/edit'))}>Edit</Button>
                             </Col>
                         </Row>
 
@@ -93,7 +89,4 @@ class AccountInfo extends Component {
     }
 }
 
-export default AccountInfo;
-// profile page
-
-// Sample Data
+export default withRouter(AccountInfo);
