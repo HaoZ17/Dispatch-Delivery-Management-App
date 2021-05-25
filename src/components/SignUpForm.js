@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 
 const { Text } = Typography;
 
-class SignUp extends React.Component {
+class SignUpForm extends React.Component {
 
     state = {
         confirmDirty: false,
@@ -18,13 +18,21 @@ class SignUp extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                const{address1, address2} = values
-                //console.log(address1, address2);
-                const address = `${address1}, ${address2}`
-                //console.log(address);
-                values.address = address
-                //console.log(values)
-                this.props.actionController.loadRegisterInfo(values);
+                const{name, email, password, zipcode, mobile, address1, address2, City, State} = values
+
+                // address: street, apt number, city, state
+                const address = `${address1}, ${address2}, ${City}, ${State}`
+
+                const data = {
+                    name: name,
+                    email: email,
+                    password: password,
+                    address: address,
+                    zipcode: zipcode,
+                    mobile: mobile,
+                }
+                //console.log(data)
+                this.props.actionController.loadRegisterInfo(data);
 
             }
         });
@@ -222,7 +230,7 @@ class SignUp extends React.Component {
     };
 
 }
-const SignUpForm = Form.create({ name: 'normal_register' })(SignUp);
+const SignUp = Form.create({ name: 'normal_register' })(SignUpForm);
 //export default RegisterForm;
 
 const mapStateToProps = (state) => {
@@ -237,4 +245,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUpForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp));
