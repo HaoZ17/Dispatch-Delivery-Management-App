@@ -2,44 +2,38 @@ import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
 import React, {createRef} from 'react';
+import {Link} from "react-router-dom";
 
 // const { Search } = Input;
 
-class Tracking extends React.Component {
+class TrackingInput extends React.Component {
     constructor(props){
         super(props)
         this.trackingRef=new createRef();
     }
 
     submitLogin=()=>({
-        trackingNumber: this.trackingRef.current.value
+        tracking_number: this.trackingRef.current.value
     })
 
     render() {
         return (
             <>
                 <div>
-                    {/*<Search*/}
-                    {/*    placeholder="Please enter your tracking number"*/}
-                    {/*    enterButton="Track"*/}
-                    {/*    size="large"*/}
-                    {/*    onSearch={value => console.log(value)}*/}
-                    {/*/>*/}
-                    {/*<Search placeholder="input search loading with enterButton" loading enterButton />*/}
                     <input
                         type={"text"}
                         ref = {this.trackingRef}
                         placeholder={"Please enter your tracking number"}
                     />
 
+                    <Link to="/tracking">
+                        <button
+                            onClick={()=>{this.props.actionController.inputTrackingNumber(this.submitLogin())}}>
+                            Track
+                        </button>
+                    </Link>
                 </div>
 
-                <div>
-                    <button
-                        onClick={()=>{this.props.actionController.inputTrackingNumber(this.submitLogin())}}>
-                        Track
-                    </button>
-                </div>
             </>
         );
     }
@@ -58,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tracking);
+export default connect(mapStateToProps, mapDispatchToProps)(TrackingInput);

@@ -18,64 +18,57 @@ class Login extends React.Component {
         });
     }
 
+    handleOnCancel = () => {
+        this.props.history.push('/')
+    }
+
 
     render = () => {
         const { getFieldDecorator } = this.props.form;
         return (
             <>
                 <div className='login-block'>
-                    <b className='login-title'>Log In</b>
-                    {/*<Button shape="round" onClick={this.props.actionController.isshowLoginForm} style={{ marginRight: '20px' }}>*/}
-                    {/*    Login</Button>*/}
-                    {/*<Modal*/}
-                    {/*    title="Log in"*/}
-                    {/*    visible={this.props.showLoginForm}*/}
-                    {/*    onCancel={this.props.actionController.isshowLoginForm}*/}
-                    {/*    footer={null}*/}
-                    {/*    destroyOnClose={true}*/}
-                    {/*>*/}
-                        <Form onSubmit={this.submitLoginInfo} className="login-form">
-                            <Form.Item label="Email">
-                                {getFieldDecorator('email', {
-                                    rules: [{ required: true, message: 'Please input your email!' }],
-                                })(
-                                    <Input
-                                        prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                        placeholder="email"
-                                    />,
-                                )}
-                            </Form.Item>
-                            <Form.Item label="Password">
-                                {getFieldDecorator('password', {
-                                    rules: [{ required: true, message: 'Please input your Password!' }],
-                                })(
-                                    <Input
-                                        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                        type="password"
-                                        placeholder="Password"
-                                    />,
-                                )}
-                            </Form.Item>
-                            <Form.Item>
-                                {/*{getFieldDecorator('remember', {*/}
-                                {/*    valuePropName: 'checked',*/}
-                                {/*    initialValue: true,*/}
-                                {/*})(<Checkbox>Remember me</Checkbox>)}*/}
-                                {/*<a className="login-form-forgot" href="">*/}
-                                {/*    Forgot password*/}
-                                {/*</a>*/}
+                    <Form onSubmit={this.submitLoginInfo} className="login-form">
+                        <Form.Item label="Email">
+                            {getFieldDecorator('email', {
+                                rules: [{ required: true, message: 'Please input your email!' }],
+                            })(
+                                <Input
+                                    prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    placeholder="email"
+                                />,
+                            )}
+                        </Form.Item>
+                        <Form.Item label="Password">
+                            {getFieldDecorator('password', {
+                                rules: [{ required: true, message: 'Please input your Password!' }],
+                            })(
+                                <Input
+                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    type="password"
+                                    placeholder="Password"
+                                />,
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {/*{getFieldDecorator('remember', {*/}
+                            {/*    valuePropName: 'checked',*/}
+                            {/*    initialValue: true,*/}
+                            {/*})(<Checkbox>Remember me</Checkbox>)}*/}
+                            {/*<a className="login-form-forgot" href="">*/}
+                            {/*    Forgot password*/}
+                            {/*</a>*/}
 
-                                <Button type="primary" onClick={this.props.actionController.isshowLoginForm} className="login-form-button">
-                                    Cancel
-                                </Button>
+                            <Button type="primary" onClick={this.handleOnCancel} className="login-form-button">
+                                Cancel
+                            </Button>
 
-                                <Button style={{ marginLeft: 8 }} type="primary" htmlType="submit" className="login-form-button">
-                                    Log In
-                                </Button>
+                            <Button style={{ marginLeft: 8 }} type="primary" htmlType="submit" className="login-form-button">
+                                Log In
+                            </Button>
 
-                            </Form.Item>
-                        </Form>
-                {/*</Modal>*/}
+                        </Form.Item>
+                    </Form>
                 </div>
             </>
 

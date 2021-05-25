@@ -16,40 +16,21 @@ import {
 
 class Test extends React.Component {
 
-    constructor(props){
-        super(props)
-        this.emailRef=new createRef();
-        this.passCodeRef= new createRef();
-    }
-
-    submitLogin=()=>({
-        email: this.emailRef.current.value,
-        password: this.passCodeRef.current.value
-    })
+    // constructor(props){
+    //     super(props)
+    //     this.emailRef=new createRef();
+    //     this.passCodeRef= new createRef();
+    // }
+    //
+    // submitLogin=()=>({
+    //     email: this.emailRef.current.value,
+    //     password: this.passCodeRef.current.value
+    // })
 
     render() {
         return (
             <Router>
             <div>
-                {/*<input type="text" ref={this.emailRef} placeholder="email" />*/}
-                {/*<input type="password" ref={this.passCodeRef} placeholder="Password"/>*/}
-                {/*<button onClick={()=>{this.props.actionController.loginInfo(this.submitLogin())}}>submit</button>*/}
-                {/*<button onClick={this.props.actionController.signInRequest}>SendRequest</button>*/}
-                {/*<Link to="/login">*/}
-                {/*    <Button shape="round" style={{ marginRight: '20px' }}>*/}
-                {/*        Log In*/}
-                {/*    </Button>*/}
-                {/*</Link>*/}
-
-                {/*<Link to="/register">*/}
-                {/*    <Button shape="round" style={{ marginRight: '20px' }}>*/}
-                {/*        Sign Up*/}
-                {/*    </Button>*/}
-                {/*</Link>*/}
-
-                {/*<hr />*/}
-
-                {/*<img src={home_img} className="App-logo" alt="logo" />*/}
 
                 <NavBar />
 
@@ -64,10 +45,7 @@ class Test extends React.Component {
                         <HomeContainer />
                     </Route>
                 </Switch>
-                {/*<HomeContainer />*/}
 
-                {/*<RegisterForm />*/}
-                {/*<Tracking />*/}
             </div>
             </Router>
         );

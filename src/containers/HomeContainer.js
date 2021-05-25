@@ -6,48 +6,48 @@ import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
 import { withRouter } from 'react-router-dom';
-import Tracking from "../components/Tracking";
+import Tracking from "../components/TrackingInput";
+import LoginButton from "../components/LoginButton";
+import SignUpButton from "../components/SignUpButton";
+import shipping_icon from "../style/image/shipping_icon.svg";
+import tracking_icon from "../style/image/tracking_icon.svg";
 
 class HomeContainer extends React.Component {
 
 
     render() {
         return (
-            <Router>
-                <div>
+            <div>
 
-                    { Object.keys(this.props.signIn).length === 0 ?
-                        <div>
-                            <Link to="/login">
-                                <Button shape="round" style={{ marginRight: '20px' }}>
-                                    Log In
-                                </Button>
-                            </Link>
+                { Object.keys(this.props.signIn).length === 0 ?
+                    <div>
+                        <Link to="/login">
+                            <LoginButton />
+                        </Link>
 
-                            <Link to="/signUp">
-                                <Button className={"signUp-button"}>
-                                    Sign Up
-                                </Button>
-                            </Link>
-                        </div>
-                    :
-                        // User icon
-                        null
-                    }
+                        <Link to="/signUp">
+                            <SignUpButton />
+                        </Link>
+                    </div>
+                :
+                    // User icon
+                    null
+                }
 
-                    <Link to="/shipping">
-                        Shipping
-                    </Link>
 
-                    Tracking
-                    <Link to="/tracking">
-                        <Tracking />
-                    </Link>
 
-                    <img src={home_img} className="home-background" alt="logo" />
+                <img src={tracking_icon} className="tracking-icon" alt="tracking" />
+                Tracking
+                <Tracking />
 
-                </div>
-            </Router>
+                <Link to="/shipping">
+                    <img src={shipping_icon} className="shipping-icon" alt="shipping" />
+                    Shipping
+                </Link>
+
+                <img src={home_img} className="home-background" alt="logo" />
+
+            </div>
         );
     }
 }
@@ -64,4 +64,6 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeContainer));
+//export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeContainer));
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
