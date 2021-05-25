@@ -1,3 +1,7 @@
+/*
+Author: Zhao Tang & Dan Li
+Verison: May 25, 2021
+*/
 import { bindActionCreators } from "redux";
 import React, { createRef } from 'react'
 import { actions } from '../actionCreaters/actionCreater'
