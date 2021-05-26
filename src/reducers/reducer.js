@@ -2,7 +2,6 @@ import Actions from "../constants";
 import { actions } from "../actionCreaters/actionCreater";
 
 const initState={
-
     jumpTest:false,
     //basic info
     name:"",
@@ -40,6 +39,7 @@ const initState={
     orderHistoryAndProcess:[],
 
     //place order*
+
     orderInfo:{
             from:"local",
             to:"future",
@@ -54,7 +54,6 @@ const initState={
     toInfo:{
 
     },
-
     isLoading:false,
 
     //options*
@@ -62,6 +61,7 @@ const initState={
     optionsStatus:false,
 
     //checkout info *
+
     checkoutInfo:{
         basicInfo:{
             from:"local",
@@ -91,7 +91,8 @@ const initState={
 }
 
 const reducer=(state=initState,action={})=>{
-    switch(action.type){ 
+    switch(action.type){
+
         case Actions.SHOWREGISTER:
             return {
                 ...state,
@@ -108,7 +109,17 @@ const reducer=(state=initState,action={})=>{
                 ...state,
                 userInfo:action.payload,
                 name:action.payload.name,
-                email:action.payload.email
+                email:action.payload.email,
+            }
+        // added by Xiao & Yun
+        case Actions.LOADREGISTERINFO:
+            console.log(action.payload)
+            return {
+                ...state,
+                signUp:action.payload,
+                name:action.payload.name,
+                email:action.payload.email,
+                showRegForm:!state.showRegForm
             }
         case Actions.SIGNUPSTATUS:
             return{
@@ -184,7 +195,7 @@ const reducer=(state=initState,action={})=>{
         default:
             return { ...state };
     }
-    
+
 }
 
 export default reducer;

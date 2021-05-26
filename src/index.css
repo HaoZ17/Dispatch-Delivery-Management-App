@@ -1,4 +1,9 @@
 @import '~antd/dist/antd.css';
+@import './style/HomeContainer.css';
+@import './style/LoginContainer.css';
+@import './style/SignUpContainer.css';
+@import './style/NavBar.css';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
