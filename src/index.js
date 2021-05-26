@@ -7,19 +7,17 @@ import thunk from "redux-thunk";
 import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import reducer from "./reducers/reducer"
-// import Text from "./Test"
-// import Form2 from "./components/receiverOrderForm";
-// import OrderF from './components/receiverOrderForm';
-// import Form1 from "./components/receiverOrderForm";
+import Test from "./Test";
 
 import { BrowserRouter } from "react-router-dom";
+
 
 const store= createStore(reducer,applyMiddleware(thunk));
 ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
-        <App />
-        {/* <Text/> */}
+        {/* <App /> */}
+        <Test/>
       </BrowserRouter>
      
   </Provider>

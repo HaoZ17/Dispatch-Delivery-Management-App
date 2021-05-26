@@ -7,6 +7,7 @@ const ORDERREQUESTURL="http://localhost:8080/order/placeorder";
 //const ORDERCONFIRMURL="http://localhost:8080/order/confirm";
 const CHECKOUTURL="http://localhost:8080/order/checkout";
 const LOADUSERINFO="userInfo";
+const LOADREGISTERINFO="registerInfo"; // added by Xiao & Yun
 const SIGNUPSTATUS="loginstatus";
 const LOADOPTIONS="loadOptions";
 const CHECKOUT="checkout";
@@ -36,5 +37,7 @@ export default{
     INPUTTRACKINGNUMBER,
     LOGININFO,
     SHOWREGISTER,
-    SHOWLOGIN
+    SHOWLOGIN,
+    LOADREGISTERINFO // added by Xiao & Yun
+
 }

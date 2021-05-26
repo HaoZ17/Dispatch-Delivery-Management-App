@@ -2,9 +2,6 @@ import Actions from '../constants';
 import axios from "axios";
 
 
-const jumptest=()=>({
-    type: "jump"
-})
 
 // sign up
 const signUpStatusCheck=()=>({
@@ -13,46 +10,29 @@ const signUpStatusCheck=()=>({
 const registUser=()=>{
     return (dispatch,getState)=>{
         const storeData={...getState()};
-        const data=storeData.signUp;
+        const data=storeData.signup;
         console.log(data);
         return axios.post(Actions.SIGNUPURL,data)
-
-        .then((res)=>{
-            console.log("successful")
-            console.log(res)
-            if(res.status===true){//later
-                dispatch(signUpStatusCheck());
-            }else{
-                alert("please check your info");
-            }
-        }).catch((err)=>{
-            console.log("fail")
-            console.log(err)
-        })
+            .then((res)=>{
+                console.log("successful")
+                console.log(res)
+                if(res.status===true){//later
+                    dispatch(signUpStatusCheck());
+                }else{
+                    alert("please check your info");
+                }
+            }).catch((err)=>{
+                console.log("fail")
+                console.log(err)
+            })
     }
 }
- const increaseMDButton=()=>({
-     type:"modelIncrease"
- })
- const decreaseMDButton=()=>({
-     type:"modelDecrease"
- })
 
-//button
 const isshowRegForm=()=>({
     type:Actions.SHOWREGISTER
 })
 const isshowLoginForm=()=>({
     type:Actions.SHOWLOGIN
-})
-
-
-// added by Xiao & Yun
-// register info
-const loadRegisterInfo=(payload)=>({
-    type:Actions.LOADREGISTERINFO,
-    payload
-
 })
 
 // sign in
@@ -67,13 +47,13 @@ const signInRequest=()=>{
         console.log("Request....")
         console.log(data);
         return axios.post(Actions.LOGINURL,data)
-        .then((res)=>{
-            console.log("successful SignIn");
-            dispatch(loaduserInfo(res))
-        }).catch((err)=>{
-            console.log(err);
-            console.log("SignIn Error");
-        })
+            .then((res)=>{
+                console.log("successful SignIn");
+                dispatch(loaduserInfo(res))
+            }).catch((err)=>{
+                console.log(err);
+                console.log("SignIn Error");
+            })
     }
 }
 
@@ -89,13 +69,13 @@ const placeOrder=()=>{
         console.log("Request....")
         console.log(data);
         return axios.post(Actions.ORDERREQUESTURL,data)
-        .then((res)=>{
-            console.log("successful placeOrder");
-            dispatch(loadOptions(res.data)) //具体传入内容待改
-        }).catch((err)=>{
-            console.log(err);
-            console.log("PlaceOrder Error");
-        })
+            .then((res)=>{
+                console.log("successful placeOrder");
+                dispatch(loadOptions(res.data)) //具体传入内容待改
+            }).catch((err)=>{
+                console.log(err);
+                console.log("PlaceOrder Error");
+            })
     }
 }
 
@@ -108,20 +88,20 @@ const confirmOption=()=>{
     return (dispatch,getState)=>{
         const storeData={...getState()};
         const data=storeData.checkoutInfo;
-        console.log(data);
         return axios.post(Actions.CHECKOUTURL,data)
-        .then((res)=>{
-            if(res.status==="ok"){
-                dispatch(checkout(res.data))//具体内容待定
-            }else{
-                console.log("please check your order option??")
-            }
-        }).catch((err)=>{
-            console.log(err);
-            console.log("checkout error")
-        })
+            .then((res)=>{
+                if(res.status==="ok"){
+                    dispatch(checkout(res.data))//具体内容待定
+                }else{
+                    console.log("please check your order option??")
+                }
+            }).catch((err)=>{
+                console.log(err);
+                console.log("checkout error")
+            })
     }
 }
+
 //tracking:
 const loadingUserOrder=(payload)=>({
     type:Actions.LOADINGUSERORDER,
@@ -134,13 +114,13 @@ const trackMemberOrder=()=>{
         console.log("Request....")
         console.log(data);
         return axios.post(Actions.USERTRACKINGURL,data)
-        .then((res)=>{
-            console.log("successfully get user's orders");
-            dispatch(loadingUserOrder(res.data)) //具体传入内容待改
-        }).catch((err)=>{
-            console.log(err);
-            console.log("loading error");
-        })
+            .then((res)=>{
+                console.log("successfully get user's orders");
+                dispatch(loadingUserOrder(res.data)) //具体传入内容待改
+            }).catch((err)=>{
+                console.log(err);
+                console.log("loading error");
+            })
     }
 }
 const loadingOrder=(payload)=>({
@@ -154,13 +134,13 @@ const trackOrder=()=>{
         console.log("Request....")
         console.log(data);
         return axios.post(Actions.TRACKINGURL,data)
-        .then((res)=>{
-            console.log("successfully get visiter's orders");
-            dispatch(loadingOrder(res.data)) //具体传入内容待改
-        }).catch((err)=>{
-            console.log(err);
-            console.log("loading error");
-        })
+            .then((res)=>{
+                console.log("successfully get visiter's orders");
+                dispatch(loadingOrder(res.data)) //具体传入内容待改
+            }).catch((err)=>{
+                console.log(err);
+                console.log("loading error");
+            })
     }
 }
 
@@ -174,14 +154,7 @@ const loginInfo=(payload)=>({
     payload
 })
 
-const resetDisplayModal=()=>({
-    type:"resetDisplayModal"
-})
 
-const checkDataform=(payload)=>({
-    type:"checkDataform",
-    payload
-})
 
 
 export const actions={
@@ -195,12 +168,5 @@ export const actions={
     trackOrder,
     inputTrackingNumber,
     isshowRegForm,
-    isshowLoginForm,
-    loaduserInfo,
-    loadRegisterInfo,
-    jumptest,
-    increaseMDButton,
-    decreaseMDButton,
-    resetDisplayModal,
-    checkDataform
+    isshowLoginForm
 }
