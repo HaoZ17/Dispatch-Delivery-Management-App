@@ -1,0 +1,16 @@
+.signUp-title {
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 72px;
+    line-height: 84px;
+    color: #5E5E5E;
+}
+
+.ant-form.ant-form-horizontal.signUp-form {
+    top: 150px;
+    padding: 100px;
+}
