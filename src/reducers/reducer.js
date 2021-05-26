@@ -2,19 +2,20 @@ import Actions from "../constants";
 import { actions } from "../actionCreaters/actionCreater";
 
 const initState={
-
     jumpTest:false,
     //basic info
     name:"",
     email:"required@gmail.com",
     // email:"",
     // password:"",
+    displayModal:1,
 
     //profile*
     userInfo:{},
     updateInfo:{},
 
     //signin/signup*
+
     signUp:{
         name: "team3",
         email: "required@gmail.com",
@@ -27,6 +28,7 @@ const initState={
         email:"123@gmail.com",
         password:"12345"
         },
+
     registerStatus:false,
 
     //tracking visitor
@@ -37,14 +39,20 @@ const initState={
     orderHistoryAndProcess:[],
 
     //place order*
+
     orderInfo:{
-        basicInfo:{
             from:"local",
             to:"future",
             size:"50m^3",
             weight:"10kg",
             time:"2021-05-21-12:21"
-        }
+    },
+
+    fromInfo:{
+
+    },
+    toInfo:{
+
     },
     isLoading:false,
 
@@ -53,15 +61,14 @@ const initState={
     optionsStatus:false,
 
     //checkout info *
+
     checkoutInfo:{
-        orderInfo:{
-            basicInfo:{
-                from:"local",
-                to:"future",
-                size:"50m^3",
-                weight:"10kg",
-                time:"2021-05-21-12:21"
-            }
+        basicInfo:{
+            from:"local",
+            to:"future",
+            size:"50m^3",
+            weight:"10kg",
+            time:"2021-05-21-12:21"
         },
         selected:{
             option:"1",
@@ -84,7 +91,8 @@ const initState={
 }
 
 const reducer=(state=initState,action={})=>{
-    switch(action.type){ 
+    switch(action.type){
+
         case Actions.SHOWREGISTER:
             return {
                 ...state,
@@ -101,7 +109,17 @@ const reducer=(state=initState,action={})=>{
                 ...state,
                 userInfo:action.payload,
                 name:action.payload.name,
-                email:action.payload.email
+                email:action.payload.email,
+            }
+        // added by Xiao & Yun
+        case Actions.LOADREGISTERINFO:
+            console.log(action.payload)
+            return {
+                ...state,
+                signUp:action.payload,
+                name:action.payload.name,
+                email:action.payload.email,
+                showRegForm:!state.showRegForm
             }
         case Actions.SIGNUPSTATUS:
             return{
@@ -151,10 +169,33 @@ const reducer=(state=initState,action={})=>{
                 ...state,
                 jumpTest:!state.jumpTest
             }
+        case "modelIncrease":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:state.displayModal+1
+            }
+        case "modelDecrease":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:state.displayModal-1
+            }
+        case "resetDisplayModal":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:0
+            }
+        case "checkDataform":
+            console.log(action.payload)
+            return{
+                ...state
+            }
         default:
             return { ...state };
     }
-    
+
 }
 
 export default reducer;

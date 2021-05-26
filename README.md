@@ -1,11 +1,5 @@
 # Getting Started with Create React App
-<<<<<<< HEAD
-test1
-=======
-test
-test wang.boch
-test zhao.tang
->>>>>>> 612b756f1e9d4139618e1c09fffcc8e2331a5db4
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
