@@ -4,7 +4,7 @@ import {actions} from './actionCreaters/actionCreater'
 import { connect } from "react-redux";
 import Status1 from "./components/Status1";
 import Status2 from './components/Status2';
-import OrderF from "./containers/InputOrderForm";
+import OrderForm from "./containers/InputOrderForm";
 
 class Test extends React.Component {
 
@@ -49,7 +49,7 @@ class Test extends React.Component {
                 <button onClick={this.props.actionController.jumptest}>JUMP</button>
                 {this.props.jumpTest? <Status1/>:<Status2/>
                 } */}
-                <OrderF/>
+                <OrderForm/>
             </div>
         );
     }
