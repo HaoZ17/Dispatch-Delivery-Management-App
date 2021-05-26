@@ -1,3 +1,5 @@
+
+// Author: Zhao Tang & Dan Li
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
