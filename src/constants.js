@@ -39,4 +39,5 @@ export default{
     SHOWREGISTER,
     SHOWLOGIN,
     LOADREGISTERINFO // added by Xiao & Yun
+
 }

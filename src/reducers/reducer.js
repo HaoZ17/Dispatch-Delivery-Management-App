@@ -2,30 +2,58 @@ import Actions from "../constants";
 import { actions } from "../actionCreaters/actionCreater";
 
 const initState={
-
+    jumpTest:false,
     //basic info
     name:"",
-    email:"",
+    email:"required@gmail.com",
     // email:"",
     // password:"",
+    displayModal:1,
 
     //profile*
     userInfo:{},
+    updateInfo:{},
 
     //signin/signup*
-    signUp:{},
-    signIn:{},
+
+    signUp:{
+        name: "team3",
+        email: "required@gmail.com",
+        password : "required",
+        address: "option",
+        zipcode: "98007",
+        mobile: "12345678",
+    },
+    signIn:{
+        email:"123@gmail.com",
+        password:"12345"
+        },
+
     registerStatus:false,
 
     //tracking visitor
-    trackingNumber:"",
+    trackingNumber:"1234567asdasdasd",
     trackingInfo:{},
 
     //member
     orderHistoryAndProcess:[],
 
     //place order*
-    orderInfo:{},
+
+    orderInfo:{
+            from:"local",
+            to:"future",
+            size:"50m^3",
+            weight:"10kg",
+            time:"2021-05-21-12:21"
+    },
+
+    fromInfo:{
+
+    },
+    toInfo:{
+
+    },
     isLoading:false,
 
     //options*
@@ -33,7 +61,28 @@ const initState={
     optionsStatus:false,
 
     //checkout info *
-    checkoutInfo:{},
+
+    checkoutInfo:{
+        basicInfo:{
+            from:"local",
+            to:"future",
+            size:"50m^3",
+            weight:"10kg",
+            time:"2021-05-21-12:21"
+        },
+        selected:{
+            option:"1",
+            price:"10USD"
+        },
+        useInfo:{
+            name: "team3",
+            email: "required@gmail.com",
+            password : "required",
+            address: "option",
+            zipcode: "98007",
+            mobile: "12345678"
+        }
+    },
     checkoutStatus:false,
     //button:
     showRegForm:false,
@@ -43,6 +92,7 @@ const initState={
 
 const reducer=(state=initState,action={})=>{
     switch(action.type){
+
         case Actions.SHOWREGISTER:
             return {
                 ...state,
@@ -112,6 +162,35 @@ const reducer=(state=initState,action={})=>{
             return{
                 ...state,
                 signIn:action.payload
+            }
+        case "jump":
+            console.log(state.jumpTest)
+            return{
+                ...state,
+                jumpTest:!state.jumpTest
+            }
+        case "modelIncrease":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:state.displayModal+1
+            }
+        case "modelDecrease":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:state.displayModal-1
+            }
+        case "resetDisplayModal":
+            console.log(state.displayModal)
+            return{
+                ...state,
+                displayModal:0
+            }
+        case "checkDataform":
+            console.log(action.payload)
+            return{
+                ...state
             }
         default:
             return { ...state };
