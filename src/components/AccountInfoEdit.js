@@ -106,14 +106,14 @@ class EditProfileForm extends React.Component {
                             type="primary"
                             htmlType="submit"
                             style={{ textAlign: "center" }}
+                            onClick={()=>{this.props.history.push('/user/accountInfo')}}
                         >
                             Save
                     </Button>
                         <Button
                             onClick={() => {
                                 this.props.history.push('/user/accountInfo');
-                            }}
-                        >
+                            }}>
                             Cancel
                     </Button>
                     </Form.Item>

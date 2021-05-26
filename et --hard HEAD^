@@ -1,0 +1,83 @@
+[33mcommit f7aaddec454e785da52013270749056c71e26ea6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Hao Zuo <45017262+HaoZ17@users.noreply.github.com>
+Date:   Thu May 20 14:20:20 2021 -0700
+
+    proxy
+
+[33mcommit ad4b75801aa8b9e27dcf994bc70b36604184ee71[m
+Author: Hao Zuo <45017262+HaoZ17@users.noreply.github.com>
+Date:   Thu May 20 14:16:26 2021 -0700
+
+    update all requests
+
+[33mcommit 2562d3aa7992569560caae9f8a31fa5525b3b12e[m
+Merge: 8d5823a df73f4c
+Author: BOCHAO WANG <36303891+wbc277072080@users.noreply.github.com>
+Date:   Thu May 20 00:09:21 2021 -0400
+
+    Merge pull request #6 from HaoZ17/wang.boch
+    
+    update init state in reducer.js
+
+[33mcommit df73f4cb6a63d168ac7c174d1d4914289cfab643[m[33m ([m[1;31morigin/wang.boch[m[33m)[m
+Author: wbc277072080 <bochaowang1997@gmail.com>
+Date:   Thu May 20 00:08:44 2021 -0400
+
+    update init state in reducer.js
+
+[33mcommit 8d5823a8961100b30e9aa1a3e56dc3c36e8599a3[m
+Author: Zhao Tang <zhao.tang@rice.edu>
+Date:   Mon May 17 20:40:47 2021 -0500
+
+    zhaotang
+
+[33mcommit 5bf26b8e6681a62ee368e7594704f42c504557ee[m
+Author: Zhao Tang <zhao.tang@rice.edu>
+Date:   Mon May 17 20:39:47 2021 -0500
+
+    zhaotang
+
+[33mcommit d1256dbb59af8d46eaebca6bf206e83b9ba31d1e[m
+Merge: dd97c27 935086e
+Author: Hao Zuo <45017262+HaoZ17@users.noreply.github.com>
+Date:   Mon May 17 18:37:49 2021 -0700
+
+    Merge pull request #4 from HaoZ17/wang.boch
+    
+    git init wang.boch
+
+[33mcommit 935086e4818c93377449c040aad2aa5374bf9bef[m
+Author: wbc277072080 <bochaowang1997@gmail.com>
+Date:   Mon May 17 21:30:17 2021 -0400
+
+    git init wang.boch
+
+[33mcommit dd97c276e0249afed492bfd4a66682d1beb19881[m
+Author: Hao Zuo <45017262+HaoZ17@users.noreply.github.com>
+Date:   Mon May 17 18:16:47 2021 -0700
+
+    git init
+
+[33mcommit ecc1cd709160a99d51ed0324403077111969cdd5[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/Yihan[m[33m)[m
+Author: Hao Zuo <45017262+HaoZ17@users.noreply.github.com>
+Date:   Mon May 17 02:21:11 2021 -0700
+
+    reducer update
+
+[33mcommit b0e025044550409e8266aba072d48f709655a637[m
+Author: Hao Zuo <45017262+HaoZ17@users.noreply.github.com>
+Date:   Sat May 15 00:40:40 2021 -0700
+
+    init-react
+
+[33mcommit 34fbe0568f6598892a0ee357ca731d3b99bf8523[m
+Author: Hao Zuo <45017262+HaoZ17@users.noreply.github.com>
+Date:   Sat May 15 00:19:02 2021 -0700
+
+    init
+
+[33mcommit 286eb99158f33c7c59f14f48b96fa77636307c5e[m
+Author: Hao Zuo <45017262+HaoZ17@users.noreply.github.com>
+Date:   Sat May 15 00:14:38 2021 -0700
+
+    init
