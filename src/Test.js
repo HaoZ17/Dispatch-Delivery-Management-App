@@ -9,7 +9,7 @@ import LoginContainer from "./containers/LoginContainer"
 import NavBar from "./components/NavBar"
 import Status1 from "./components/Status1";
 import Status2 from './components/Status2';
-import OrderF from "./containers/InputOrderForm";
+import OrderForm from "./containers/InputOrderForm";
 
 import {
     BrowserRouter as Router,
@@ -81,7 +81,7 @@ class Test extends React.Component {
                 <button onClick={this.props.actionController.jumptest}>JUMP</button>
                 {this.props.jumpTest? <Status1/>:<Status2/>
                 } */}
-                <OrderF/>
+                <OrderForm/>
             </div>
             </Router>
         );
