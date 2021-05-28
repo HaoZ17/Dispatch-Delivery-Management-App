@@ -8,6 +8,7 @@ import PackageTracking from './PackageTracking';
 import LoginContainer from '../containers/LoginContainer';
 import SignUpContainer from '../containers/SignUpContainer';
 import HomeContainer from "../containers/HomeContainer";
+import InputOrderForm from "../containers/InputOrderForm";
 
 
 function Main(props) {
@@ -52,6 +53,12 @@ function Main(props) {
             );
         };
 
+        const showPlaceOrder=()=>{
+            return(
+                <InputOrderForm/>
+            )
+        }
+
     return (
         <div className="main">
             <Switch>
@@ -63,6 +70,7 @@ function Main(props) {
                 <Route exact path="/user/accountInfo" render={showAccountInfo}/>
                 <Route exact path="/user/order" render={showOrder}/>
                 <Route exact path="/packagetracking" render={showPackageTracking}/>
+                <Route exact path="/placeOrder" render={showPlaceOrder}/>
              </Switch>
 
         </div>

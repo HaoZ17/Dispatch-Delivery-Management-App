@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import SignUpContainer from "./containers/SignUpContainer"
 import HomeContainer from "./containers/HomeContainer"
 import LoginContainer from "./containers/LoginContainer"
-import NavBar from "./components/NavBar"
 import Status1 from "./components/Status1";
 import Status2 from './components/Status2';
 import OrderForm from "./containers/InputOrderForm";
