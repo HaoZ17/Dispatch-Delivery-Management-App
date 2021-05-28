@@ -19,23 +19,6 @@ class HomeContainer extends React.Component {
         return (
             <div>
 
-                { Object.keys(this.props.signIn).length === 0 ?
-                    <div>
-                        <Link to="/login">
-                            <LoginButton />
-                        </Link>
-
-                        <Link to="/signUp">
-                            <SignUpButton />
-                        </Link>
-                    </div>
-                :
-                    // User icon
-                    null
-                }
-
-
-
                 <img src={tracking_icon} className="tracking-icon" alt="tracking" />
                 Tracking
                 <Tracking />
