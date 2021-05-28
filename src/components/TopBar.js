@@ -7,11 +7,12 @@ import {actions} from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
 
 import {withRouter} from "react-router-dom";
+import TrackingInput from "./TrackingInput";
 
 class TopBar extends React.Component {
     //const isLoggedIn = props.userInfo ? true:false;
     isLoggedIn = false;
-    
+
     handleLogout=()=>{
         console.log("log out successfully");
     }
@@ -49,6 +50,8 @@ class TopBar extends React.Component {
     render(){
         return (
             <header className="Topbar">
+                <TrackingInput/>
+
             {   this.isLoggedIn ?
                        <div>
                        <UserOutlined style={{color:"#215899"}}/>
