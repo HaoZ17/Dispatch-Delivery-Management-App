@@ -2,7 +2,10 @@
 Author: Zhao Tang & Dan Li
 Version: 05/25/2021
 */
-import React, { Component } from 'react';
+import { bindActionCreators } from "redux";
+import React from 'react'
+import { actions } from '../actionCreaters/actionCreater'
+import { connect } from "react-redux";
 import { Row, Col, Button } from "antd";
 import { Layout } from 'antd';
 import { List, Card, PageHeader, Breadcrumb } from 'antd';
@@ -26,11 +29,9 @@ const { Header, Footer, Sider, Content } = Layout;
 //     },
 // ];
 
-class AccountInfo extends Component {
+class AccountInfo extends React.Component {
     state = {
-        accountInfo: {
-            name: "Rick", email: "rick@gmail.com", password: "123456", address: "USA", zipcode: "666666", mobile: "88888888",
-        },
+        accountInfo: this.props.userInfo,
 
         orderData: null
     };
@@ -92,5 +93,15 @@ class AccountInfo extends Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        ...state
+    };
+};
 
-export default withRouter(AccountInfo);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actionController: bindActionCreators({ ...actions }, dispatch)
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AccountInfo));

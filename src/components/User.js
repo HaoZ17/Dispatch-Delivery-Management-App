@@ -1,5 +1,8 @@
 // Author: Zhao Tang & Dan Li
 import React, { Component } from 'react';
+import { bindActionCreators } from "redux";
+import { actions } from '../actionCreaters/actionCreater'
+import { connect } from "react-redux";
 import { Row, Col, Button } from "antd";
 import { Layout } from 'antd';
 
@@ -42,10 +45,20 @@ class User extends Component {
                             <Col span={4}></Col>
                             <Col span={4}></Col>
                             <Col span={4}>
-                                <Button class="center"><AimOutlined /> Tracking</Button></Col>
+                                <Button class="center"
+                                    onClick={()=>{
+                                        this.props.history.push("/packagetracking");
+                                    }}
+                                ><AimOutlined /> Tracking</Button></Col>
                             <Col span={4}></Col>
                             <Col span={4}>
-                                <Button class="center"><CarOutlined /> Shipping</Button>
+                                <Button class="center"
+                                onClick={()=>{
+                                    
+                                    this.props.actionController.resetDisplayModal();
+                                    this.props.history.push("/placeOrder");
+                                }}
+                                ><CarOutlined /> Shipping</Button>
                             </Col>
                             <Col span={4}></Col>
                         </Row>
@@ -71,4 +84,16 @@ class User extends Component {
     }
 }
 
-export default withRouter(User);
+const mapStateToProps = (state) => {
+    return {
+        ...state
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actionController: bindActionCreators({ ...actions }, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(User));

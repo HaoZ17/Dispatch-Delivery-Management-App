@@ -10,12 +10,11 @@ import {withRouter} from "react-router-dom";
 import TrackingInput from "./TrackingInput";
 
 class TopBar extends React.Component {
-    //const isLoggedIn = props.userInfo ? true:false;
-    isLoggedIn = false;
+    //isLoggedIn = false;
 
-    handleLogout=()=>{
-        console.log("log out successfully");
-    }
+    // handleLogout=()=>{
+    //     console.log("log out successfully");
+    // }
 
     handleClickLogin=()=>{
         this.props.history.push("/login");
@@ -23,39 +22,50 @@ class TopBar extends React.Component {
      handleClickSignup=()=>{
         this.props.history.push("/register");
     }
-    menu = (
-        <Menu>
-          <Menu.Item>
-            <a rel="noopener noreferrer" href="/user/accountInfo">
-              Profile Overview
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a  rel="noopener noreferrer" href="/user/order">
-              Order History
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            
-              Credit
-            
-          </Menu.Item>
-          <Menu.Item>
-            <a  rel="noopener noreferrer" onClick={this.handleLogout}>
-              Log out
-            </a>
-          </Menu.Item>
-        </Menu>
-      );
+    
     render(){
+        const isLoggedIn = this.props.userInfo===null ? false:true;
+        const isTrackingDisplay = this.props.location.pathname === "/" || this.props.location.pathname === "/user" ? false : true;
+        const menu = (
+            <Menu>
+              <Menu.Item>
+                <a rel="noopener noreferrer" href="/user/accountInfo">
+                  Profile Overview
+                </a>
+              </Menu.Item>
+              <Menu.Item>
+                <a  rel="noopener noreferrer" href="/user/order">
+                  Order History
+                </a>
+              </Menu.Item>
+              <Menu.Item>
+                
+                  Credit
+                
+              </Menu.Item>
+              <Menu.Item>
+                <a  rel="noopener noreferrer" 
+                onClick={()=>{
+                    this.props.actionController.signOut();
+                    this.props.history.push("/");  
+                }
+                   
+                }>
+                  Log out
+                </a>
+              </Menu.Item>
+            </Menu>
+          );
         return (
             <header className="Topbar">
-                <TrackingInput/>
+                {
+                    isTrackingDisplay ? <TrackingInput/> : null
+                }
 
-            {   this.isLoggedIn ?
+            {   isLoggedIn ?
                        <div>
                        <UserOutlined style={{color:"#215899"}}/>
-                       <Dropdown overlay={this.menu}>
+                       <Dropdown overlay={menu}>
                            <a className="topbar-dropdown-link" onClick={e => e.preventDefault()}>
                            User <CaretDownOutlined style={{color:"#215899"}}/>
                            </a>

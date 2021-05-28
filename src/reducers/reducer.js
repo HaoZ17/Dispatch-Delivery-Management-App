@@ -11,16 +11,15 @@ const initState={
     displayModal:1,
 
     //profile*
-    userInfo:{},
+    userInfo:{
+        name: "team3",
+        email: "required@gmail.com",
+        password : "required",
+        address: "option",
+        zipcode: "98007",
+        mobile: "12345678"
+    },
     updateInfo:{},
-
-    user: {name:"Rick", email:"rick@gmail.com", password:"123456", address:"USA", zipcode:"666666", mobile:"88888888", },
-    processing:[{deliverDate:"April 5th", name:"Mike", orderWeight:"10 pounds"}, 
-    {deliverDate:"April 10th", name:"Sarah", orderWeight:"1 pounds"},
-    {deliverDate:"April 15th", name:"Sunnie", orderWeight:"15 pounds"}],
-    delivered:[{deliverDate:"March 5th", name:"Li", orderWeight:"100 pounds"}, 
-    {deliverDate:"March 10th", name:"Wang", orderWeight:"200 pounds"},
-    {deliverDate:"March 15th", name:"Zhang", orderWeight:"300 pounds"}],
 
     //signin/signup*
 
@@ -30,7 +29,7 @@ const initState={
         password : "required",
         address: "option",
         zipcode: "98007",
-        mobile: "12345678",
+        mobile: "12345678"
     },
     signIn:{
         email:"123@gmail.com",
@@ -41,11 +40,15 @@ const initState={
 
     //tracking visitor
     trackingNumber:"1234567asdasdasd",
-    trackingInfo:{},
+    trackingInfo:{from: "local", to:"future",size: "50m^3m", orderWeight: "10 pounds", shipTime:"2021-05-21-12:21", deliverTime:"2021-05-27-12:21"},
 
     //member
-    orderHistoryAndProcess:[],
-
+    processing: [{from: "local", to:"future",size: "50m^3m", orderWeight: "10 pounds", shipTime:"2021-05-21-12:21", deliverTime:"2021-05-27-12:21"},
+    {from: "company", to:"home",size: "100m^2m", orderWeight: "40 pounds", shipTime:"1999-05-21-12:21", deliverTime:"1999-05-23-12:21"},
+    {from: "china", to:"USA",size: "2000m^400m", orderWeight: "8 pounds", shipTime:"200-05-21-12:21", deliverTime:"1999-05-24-12:21"}],
+    delivered: [{from: "santa clara", to:"san cruz",size: "50inch^3inch", orderWeight: "10 kg", shipTime:"2000-05-21-12:21", deliverTime:"1999-05-22-12:21"},
+    {from: "east", to:"west",size: "110inch^8inch", orderWeight: "1600kg", shipTime:"2015-05-21-12:21", deliverTime:"1999-05-25-12:21"},
+    {from: "japan", to:"korea",size: "90inch^7inch", orderWeight: "9 kg", shipTime:"2019-05-21-12:21", deliverTime:"1999-05-27-12:21"}],
     //place order*
 
     orderInfo:{
@@ -159,7 +162,7 @@ const reducer=(state=initState,action={})=>{
             }
         case Actions.INPUTTRACKINGNUMBER:
             console.log("tracking Info is");
-            console.log(action.payload);
+            console.log(action.payload);//PRINT NUMBER
             return{
                 ...state,
                 trackingNumber: action.payload
@@ -199,6 +202,19 @@ const reducer=(state=initState,action={})=>{
             console.log(action.payload)
             return{
                 ...state
+            }
+        case "signOut":
+            console.log("logouy")
+            console.log(state.userInfo)
+            return{
+                ...state,
+                userInfo:null
+            }
+        case "reSubmitProfile":
+            console.log(state.userInfo);
+            return{
+                ...state,
+                userInfo:action.payload
             }
         default:
             return { ...state };
