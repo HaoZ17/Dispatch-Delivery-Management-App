@@ -1,11 +1,13 @@
 const LOGINURL="http://localhost:8080/user/login";
 const SIGNUPURL="http://localhost:8080/user/register";
+const UPDATEURL="http://localhost:8080/user/update";
 const LOGOUTURL="http://localhost:8080/user/logout";
-const USERTRACKINGURL="http://localhost:8080/user/tracking";
-const TRACKINGURL="http://localhost:8080/tracking";
-const ORDERREQUESTURL="http://localhost:8080/order/placeorder";
-//const ORDERCONFIRMURL="http://localhost:8080/order/confirm";
-const CHECKOUTURL="http://localhost:8080/order/checkout";
+const USERTRACKINGURL="http://localhost:8080/order/user/tracking";
+const TRACKINGURL="http://localhost:8080/order/tracking";
+const ORDERREQUESTURL="http://localhost:8080/order/placeOrderQuote";
+const ORDERCONFIRMURL="http://localhost:8080/order/placeOrderConfirm";
+const HISTORYORDER="http://localhost:8080/order/historyOrder";
+const REDEEMURL="http://localhost:8080/user/redeem"
 const LOADUSERINFO="userInfo";
 const LOADREGISTERINFO="registerInfo"; // added by Xiao & Yun
 const SIGNUPSTATUS="loginstatus";
@@ -22,12 +24,14 @@ const SHOWLOGIN="showLogIn"
 export default{
     LOGINURL,
     SIGNUPURL,
+    UPDATEURL,
     LOGOUTURL,
     USERTRACKINGURL,
     TRACKINGURL,
     ORDERREQUESTURL,
-    // ORDERCONFIRMURL,
-    CHECKOUTURL,
+    ORDERCONFIRMURL,
+    HISTORYORDER,
+    REDEEMURL,
     LOADUSERINFO,
     SIGNUPSTATUS,
     LOADOPTIONS,
