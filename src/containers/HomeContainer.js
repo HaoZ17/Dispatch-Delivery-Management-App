@@ -1,10 +1,9 @@
 import React from 'react';
-import {BrowserRouter as Router, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import home_img from "../style/image/home_img.svg";
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import { withRouter } from 'react-router-dom';
 import Tracking from "../components/TrackingInput";
 import shipping_icon from "../style/image/shipping_icon.svg";
 import tracking_icon from "../style/image/tracking_icon.svg";
@@ -26,7 +25,7 @@ class HomeContainer extends React.Component {
                 </Link>
 
                 <img src={home_img} className="home-background" alt="logo" />
-                {/*<b> SMART EXPRESS</b>*/}
+                <b> SMART EXPRESS</b>
 
             </div>
         );

@@ -60,12 +60,13 @@ class LoginForm extends React.Component {
                             {/*    Forgot password*/}
                             {/*</a>*/}
 
-                            <Button type="primary" onClick={this.handleOnCancel} className="login-form-button">
-                                Cancel
+
+                            <Button  type="primary" htmlType="submit" className="login-form-button">
+                                Log In
                             </Button>
 
-                            <Button style={{ marginLeft: 8 }} type="primary" htmlType="submit" className="login-form-button">
-                                Log In
+                            <Button style={{ marginLeft: 8 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
+                                Cancel
                             </Button>
 
                         </Form.Item>

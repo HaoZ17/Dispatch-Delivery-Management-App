@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
-import SignUpForm from "../components/SignUpForm";
+import {Breadcrumb} from "antd";
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import LoginButton from "../components/LoginButton";
-import {Link, withRouter} from "react-router-dom";
-import {Breadcrumb} from "antd";
+import {withRouter} from "react-router-dom";
 
-class SignUpContainer extends Component {
+class ShippingBreadcrumb extends Component {
+
 
     handleBackHome = ()=>{
-        this.props.history.push("/")
+        const isLoggedIn = this.props.userInfo===null ? false:true;
+        if (isLoggedIn) {
+            this.props.history.push("/user")
+        } else {
+            this.props.history.push("/")
+        }
     }
 
     render() {
@@ -18,16 +22,13 @@ class SignUpContainer extends Component {
             <div>
                 <Breadcrumb separator=">">
                     <Breadcrumb.Item onClick={this.handleBackHome} >Home</Breadcrumb.Item>
-                    <Breadcrumb.Item>Sign Up</Breadcrumb.Item>
+                    <Breadcrumb.Item>Shipping</Breadcrumb.Item>
                 </Breadcrumb>
-
-                <b className='signUp-title'>Sign Up</b>
-                <SignUpForm />
-
             </div>
         );
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         ...state
@@ -40,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUpContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ShippingBreadcrumb));

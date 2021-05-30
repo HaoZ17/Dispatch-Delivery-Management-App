@@ -214,11 +214,12 @@ class SignUpForm extends React.Component {
                          {/*<a className="login-form-forgot" href="">*/}
                          {/*    Forgot password*/}
                          {/*</a>*/}
-                         <Button type="primary" onClick={this.handleOnCancel} className="login-form-button">
-                             Cancel
-                         </Button>
-                         <Button style={{ marginLeft: 8 }} type="primary" htmlType="submit" className="login-form-button">
+
+                         <Button type="primary" htmlType="submit" className="login-form-button">
                              Sign Up
+                         </Button>
+                         <Button style={{ marginLeft: 8 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
+                             Cancel
                          </Button>
 
                      </Form.Item>
