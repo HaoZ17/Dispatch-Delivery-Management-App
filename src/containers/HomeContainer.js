@@ -46,6 +46,7 @@ class HomeContainer extends React.Component {
                 </Link>
 
                 <img src={home_img} className="home-background" alt="logo" />
+                {/*<b> SMART EXPRESS</b>*/}
 
             </div>
         );
