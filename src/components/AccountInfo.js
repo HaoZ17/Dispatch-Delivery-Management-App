@@ -1,6 +1,7 @@
 /*
 Author: Zhao Tang & Dan Li
-Version: 05/25/2021
+Version: 1 - basic function 05/25/2021
+         2 - css adjustment
 */
 import { bindActionCreators } from "redux";
 import React from 'react'
@@ -50,7 +51,7 @@ class AccountInfo extends React.Component {
                             breadcrumb={{ routes }}
                             subTitle=""
                         /> */}
-                        <Breadcrumb separator=">">
+                        <Breadcrumb separator=">" className ='breadcrum'>
                             <Breadcrumb.Item onClick={() => { this.props.history.push('/user') }}>Home</Breadcrumb.Item>
                             <Breadcrumb.Item>Profile Overview</Breadcrumb.Item>
                         </Breadcrumb>
