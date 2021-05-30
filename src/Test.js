@@ -6,10 +6,12 @@ import { connect } from "react-redux";
 import SignUpContainer from "./containers/SignUpContainer"
 import HomeContainer from "./containers/HomeContainer"
 import LoginContainer from "./containers/LoginContainer"
-import NavBar from "./components/NavBar"
 import Status1 from "./components/Status1";
 import Status2 from './components/Status2';
 import OrderForm from "./containers/InputOrderForm";
+
+import TopBar from './components/TopBar';
+import Main from './components/Main';
 
 import {
     BrowserRouter as Router,
@@ -39,22 +41,12 @@ class Test extends React.Component {
 
     render() {
         return (
-            <Router>
             <div>
+              <div className="App">
+                <TopBar></TopBar>
+                <Main></Main>
+              </div>
 
-                <NavBar />
-
-                <Switch>
-                    <Route path="/login">
-                        <LoginContainer />
-                    </Route>
-                    <Route path="/signUp">
-                        <SignUpContainer />
-                    </Route>
-                    <Route exact path="/">
-                        <HomeContainer />
-                    </Route>
-                </Switch>
                 {/* <input type="text" ref={this.emailRef} placeholder="email" />
                 <input type="password" ref={this.passCodeRef} placeholder="Password"/>
                 <button onClick={()=>{this.props.actionController.loginInfo(this.submitLogin())}}>submit</button>
@@ -81,9 +73,7 @@ class Test extends React.Component {
                 <button onClick={this.props.actionController.jumptest}>JUMP</button>
                 {this.props.jumpTest? <Status1/>:<Status2/>
                 } */}
-                <OrderForm/>
             </div>
-            </Router>
         );
     }
 }

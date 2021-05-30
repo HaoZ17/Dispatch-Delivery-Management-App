@@ -77,6 +77,10 @@ const signInRequest=()=>{
     }
 }
 
+const signOut=()=>({
+    type:"signOut"
+})
+
 //place order
 const loadOptions=payload=>({
     type:Actions.LOADOPTIONS,
@@ -164,7 +168,7 @@ const trackOrder=()=>{
     }
 }
 
-//input tracking number:
+//input tracking number://ASYNC PENDING UNFINISHED
 const inputTrackingNumber=(payload)=>({
     type:Actions.INPUTTRACKINGNUMBER,
     payload
@@ -180,6 +184,11 @@ const resetDisplayModal=()=>({
 
 const checkDataform=(payload)=>({
     type:"checkDataform",
+    payload
+})
+
+const reSubmitProfile=(payload)=>({
+    type:"reSubmitProfile",
     payload
 })
 
@@ -202,5 +211,7 @@ export const actions={
     increaseMDButton,
     decreaseMDButton,
     resetDisplayModal,
-    checkDataform
+    checkDataform,
+    signOut,
+    reSubmitProfile
 }

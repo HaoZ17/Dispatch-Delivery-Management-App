@@ -14,6 +14,7 @@ class LoginForm extends React.Component {
             if (!err) {
                 //console.log(values);
                 this.props.actionController.loaduserInfo(values);
+                this.props.history.push("/user");
             }
         });
     }
