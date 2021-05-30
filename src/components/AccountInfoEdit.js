@@ -11,9 +11,7 @@ class EditProfileForm extends React.Component {
 
     // test data, should get data from store latter
     state = {
-        accountInfo: {
-            name: "Rick", email: "rick@gmail.com", password: "123456", address: "USA", zipcode: "666666", mobile: "88888888",
-        },
+        accountInfo: this.props.userInfo,
 
         orderData: null
     };
@@ -106,14 +104,14 @@ class EditProfileForm extends React.Component {
                             type="primary"
                             htmlType="submit"
                             style={{ textAlign: "center" }}
+                            
                         >
                             Save
                     </Button>
                         <Button
                             onClick={() => {
                                 this.props.history.push('/user/accountInfo');
-                            }}
-                        >
+                            }}>
                             Cancel
                     </Button>
                     </Form.Item>
@@ -128,9 +126,11 @@ class EditProfileForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             console.log(values); 
+            this.props.actionController.reSubmitProfile(values);
             if (!err) {
                 console.log(1);
             }
+            
         });
         this.props.history.push('/user/accountInfo'); //when click save button, jump to /user/accountInfo page
     };

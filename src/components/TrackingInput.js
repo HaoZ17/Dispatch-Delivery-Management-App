@@ -26,7 +26,7 @@ class TrackingInput extends React.Component {
                         placeholder={"Please enter your tracking number"}
                     />
 
-                    <Link to="/tracking">
+                    <Link to="/packagetracking">
                         <button
                             onClick={()=>{this.props.actionController.inputTrackingNumber(this.submitLogin())}}>
                             Track

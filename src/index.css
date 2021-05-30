@@ -3,6 +3,7 @@
 @import './style/LoginContainer.css';
 @import './style/SignUpContainer.css';
 @import './style/NavBar.css';
+@import './style/TopBar.css';
 
 body {
   margin: 0;

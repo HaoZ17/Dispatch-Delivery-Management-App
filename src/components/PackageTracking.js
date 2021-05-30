@@ -1,4 +1,8 @@
+// Author: Zhao Tang & Dan Li
 import React, { Component } from 'react';
+import { bindActionCreators } from "redux";
+import { actions } from '../actionCreaters/actionCreater'
+import { connect } from "react-redux";
 import ReactDOM from 'react-dom';
 
 import { Steps, PageHeader, Breadcrumb } from "antd";
@@ -21,14 +25,24 @@ const { Step } = Steps;
 //         breadcrumbName: 'Track Package',
 //     },
 // ];
-
+const isLoggedIn=false;
 class PackageTracking extends Component {
+    handleBackHome = ()=>{
+        this.isLoggedIn? 
+        this.props.history.push("/user") :
+        this.props.history.push("/")
+      }
     render() {
+        this.isLoggedIn = this.props.userInfo===null ? false:true;
         return (
             <div>
                 <Breadcrumb separator=">">
-                    <Breadcrumb.Item onClick={() => { this.props.history.push('/user') }}>Home</Breadcrumb.Item>
-                    <Breadcrumb.Item onClick={() => { this.props.history.push('/user/order') }}>Order History</Breadcrumb.Item>
+                    <Breadcrumb.Item onClick={this.handleBackHome}>Home</Breadcrumb.Item>
+                    {this.isLoggedIn?
+                      <Breadcrumb.Item onClick={() => { this.props.history.push('/user/order') }}>Order History</Breadcrumb.Item>
+                        :null
+                    }
+                  
                     <Breadcrumb.Item>Track Package</Breadcrumb.Item>
                 </Breadcrumb>
 
@@ -44,4 +58,16 @@ class PackageTracking extends Component {
         );
     }
 }
-export default withRouter(PackageTracking);
+const mapStateToProps = (state) => {
+    return {
+        ...state
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actionController: bindActionCreators({ ...actions }, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PackageTracking));

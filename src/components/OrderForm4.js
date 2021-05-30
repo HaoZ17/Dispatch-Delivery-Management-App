@@ -4,6 +4,8 @@ import { bindActionCreators } from "redux";
 import {actions} from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
 
+import {withRouter} from "react-router";
+
 const layout = {
     labelCol: {
       span: 18,
@@ -12,8 +14,16 @@ const layout = {
       span: 100,
     },
   };
+const isLoggedIn=false;
+
     class OrderForm4 extends React.Component {
+        handleBackHome = ()=>{
+          this.isLoggedIn? 
+          this.props.history.push("/user") :
+          this.props.history.push("/")
+        }
         render() { 
+          this.isLoggedIn = this.props.userInfo===null ? false:true;
           return ( 
             <React.Fragment>
             <h2> Thank you! Your order has been palced. </h2>
@@ -34,11 +44,13 @@ const layout = {
                   Shpping again
             </Button>
             &nbsp; &nbsp; &nbsp;
-            <Button type="text" htmlType="submit" shape="round">
+            <Button type="text" htmlType="submit" shape="round" onClick={()=>{this.props.history.push("/packagetracking")}}
+            >
                   Tracking
             </Button>
             &nbsp; &nbsp; &nbsp;
-            <Button type="primary" htmlType="submit" shape="round" style={{ background: "#215899", borderColor: "black" }}>
+            <Button type="primary" htmlType="submit" shape="round" style={{ background: "#215899", borderColor: "black" }}
+            onClick={this.handleBackHome}>
                   Back to home
             </Button>
             </Col>
@@ -58,4 +70,4 @@ const mapStateToProps = (state) => {
     };
   };
   
-export default connect(mapStateToProps, mapDispatchToProps)(OrderForm4);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(OrderForm4));
