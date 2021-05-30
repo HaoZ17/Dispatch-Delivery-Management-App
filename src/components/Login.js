@@ -26,7 +26,7 @@ class Login extends React.Component {
     render = () => {
         const { getFieldDecorator } = this.props.form;
         return (
-            <>
+
                 <div className='login-block'>
                     <Form onSubmit={this.submitLoginInfo} className="login-form">
                         <Form.Item label="Email">
@@ -70,7 +70,7 @@ class Login extends React.Component {
                         </Form.Item>
                     </Form>
                 </div>
-            </>
+
 
 
         );

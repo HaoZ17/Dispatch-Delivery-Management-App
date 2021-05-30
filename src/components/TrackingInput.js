@@ -18,7 +18,7 @@ class TrackingInput extends React.Component {
 
     render() {
         return (
-            <>
+
                 <div>
                     <input
                         type={"text"}
@@ -34,7 +34,7 @@ class TrackingInput extends React.Component {
                     </Link>
                 </div>
 
-            </>
+
         );
     }
 }
