@@ -1,7 +1,7 @@
 /*
 Author: Zhao Tang & Dan Li
 Version: 1 - basic function 05/25/2021
-         2 - css adjustment
+         2 - css adjustment 05/29/2021
 */
 import { bindActionCreators } from "redux";
 import React from 'react'
