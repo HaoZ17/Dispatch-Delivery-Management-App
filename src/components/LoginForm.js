@@ -5,7 +5,7 @@ import { Form, Icon, Input, Button } from 'antd';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class Login extends React.Component {
+class LoginForm extends React.Component {
 
 
     submitLoginInfo = e => {
@@ -77,7 +77,7 @@ class Login extends React.Component {
     };
 
 }
-const LoginForm = Form.create({ name: 'normal_login' })(Login);
+const Login = Form.create({ name: 'normal_login' })(LoginForm);
 //export default LoginForm;
 
 const mapStateToProps = (state) => {
@@ -92,4 +92,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
