@@ -1,8 +1,11 @@
-// Author: Zhao Tang & Dan Li
+/* Author: Zhao Tang & Dan Li
+v2 - update css 05/29/2021
+*/
 import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { actions } from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
+import '../style/PackageTracking.css';
 import ReactDOM from 'react-dom';
 
 import { Steps, PageHeader, Breadcrumb } from "antd";
@@ -36,8 +39,8 @@ class PackageTracking extends Component {
         this.isLoggedIn = this.props.userInfo===null ? false:true;
         return (
             <div>
-                <Breadcrumb separator=">">
-                    <Breadcrumb.Item onClick={this.handleBackHome}>Home</Breadcrumb.Item>
+                <Breadcrumb separator=">" className ='breadcrum'>
+                    <Breadcrumb.Item onClick={this.handleBackHome} className="breadcrumb">Home</Breadcrumb.Item>
                     {this.isLoggedIn?
                       <Breadcrumb.Item onClick={() => { this.props.history.push('/user/order') }}>Order History</Breadcrumb.Item>
                         :null
@@ -46,7 +49,7 @@ class PackageTracking extends Component {
                     <Breadcrumb.Item>Track Package</Breadcrumb.Item>
                 </Breadcrumb>
 
-                <h1>Arriving tommorow by 10 pm</h1>
+                <h1 className ='estimate'>Arriving tommorow by 10 pm</h1>
 
                 <Steps direction="vertical" current={1}>
                     <Step title="Ordered" description="Monday, 05/13/2021 10:00 A.M." />
