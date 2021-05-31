@@ -3,54 +3,49 @@ import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
 import React, {createRef} from 'react';
 import {withRouter} from "react-router-dom";
-import { Input } from 'antd';
+import { Input, Icon } from 'antd';
 
-const { Search } = Input;
+// const { Search } = Input;
 
 
-class TrackingInput extends React.Component {
+class TrackingInputOnHome extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            error: ""
-        }
+        this.trackingInputRef=new createRef();
     }
-
 
     render() {
 
-        const onClickSearch = (value) => {
-            if (value === "") {
-                this.setState({
-                    error: "Please input your tracking number!"
-                })
+        const onClickSearch = () => {
+            let trackingNum = this.trackingInputRef.current.state.value;
+
+            if (trackingNum === undefined) {
+                this.props.onEmptyInput();
                 return;
             }
-            this.setState({
-                error: ""
-            })
-            let trackingNumString = value.toString()
+
+            let trackingNumString = trackingNum.toString();
+            // console.log(trackingNumString)
             this.props.actionController.inputTrackingNumber(trackingNumString)
             this.props.history.push("/packagetracking")
         }
 
+        const suffix =
+            <Icon
+                type="search"
+                style={{ fontSize: '30px' }}
+                onClick={onClickSearch}
+             />
+
         return (
             <>
                 <div>
-                    <Search
+                    <Input
+                        id = "tracking-input-home"
                         placeholder="Please enter your tracking number"
-                        onSearch={onClickSearch}
-                        // style={{
-                        //     fontSize: '30px',
-                        //     width: '522px',
-                        //     height: '60px',
-                        //     border: '2px solid #5E5E5E',
-                        //     borderRadius: '12px',
-                        //     boxSizing: 'border-box',
-                        //     marginLeft: '14px',
-                        //     fontSizeAdjust:'24px',
-                        // }}
+                        suffix={suffix}
+                        ref={this.trackingInputRef}
                     />
 
 
@@ -67,7 +62,6 @@ class TrackingInput extends React.Component {
                     {/*    </button>*/}
                     {/*</Link>*/}
                 </div>
-                <div className="error-msg-top-bar">{this.state.error}</div>
             </>
         );
     }
@@ -86,4 +80,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TrackingInput));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TrackingInputOnHome));
