@@ -5,7 +5,7 @@ import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
 import SignUpButton from "../components/SignUpButton";
 import {Link, withRouter} from "react-router-dom";
-import {Breadcrumb} from "antd";
+import {Breadcrumb, Icon} from "antd";
 
 class LoginContainer extends Component {
 
@@ -15,11 +15,26 @@ class LoginContainer extends Component {
     }
 
     render() {
+
+        const separator =
+            <Icon
+                type="caret-right"
+                style={{
+                    fontSize: '20px',
+                    color: '#215899'
+                }}
+            />
+
         return (
-            <div>
-                <Breadcrumb separator=">">
-                    <Breadcrumb.Item onClick={this.handleBackHome}>Home</Breadcrumb.Item>
-                    <Breadcrumb.Item>Log In</Breadcrumb.Item>
+            <div className="login-navigation">
+                <Breadcrumb separator={separator} >
+                    <Breadcrumb.Item
+                        onClick={this.handleBackHome}
+                        className="login-breadcrumb-item"
+                    >
+                        Home
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item className="login-breadcrumb-item">Log In</Breadcrumb.Item>
                 </Breadcrumb>
                 {/*<Link to="/signUp">*/}
                 {/*    <SignUpButton />*/}

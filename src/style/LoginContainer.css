@@ -5,8 +5,8 @@
 
 .login-title {
     position: absolute;
-    left: 10px;
-    top: 100px;
+    left: 50px;
+    top: 45px;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
@@ -16,6 +16,81 @@
 }
 
 .ant-form.ant-form-horizontal.login-form {
-    top: 150px;
-    padding: 100px;
+    margin-top: 223px;
+    padding: 0px;
+    margin-left: 50px;
+    width: 550px;
 }
+
+
+.login-navigation {
+    position: relative;
+    margin-left: 50px;
+    margin-top: 23px;
+}
+
+
+.login-breadcrumb-item {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #215899;
+
+}
+
+.login-form-item-label {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #5E5E5E;
+}
+
+/*.login-form-input {*/
+/*    height: 50px;*/
+/*    border: 2px solid #5E5E5E;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 12px;*/
+
+/*}*/
+
+button.ant-btn.login-form-button.ant-btn-primary.login-form-button{
+    width: 120px;
+    height: 50px;
+    background: #215899;
+    border-radius: 25px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    margin-left: -305px;
+    margin-top: 70px;
+}
+
+input#normal_login_email{
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+
+input#normal_login_password{
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+
+
+

@@ -1,7 +1,7 @@
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
@@ -30,24 +30,36 @@ class LoginForm extends React.Component {
             <>
                 <div className='login-block'>
                     <Form onSubmit={this.submitLoginInfo} className="login-form">
-                        <Form.Item label="Email">
+                        <t style={{color:'red', marginLeft: '-485px'}}>*</t>
+                        <b className='login-form-item-label'>Email</b>
+                        <Form.Item label="">
                             {getFieldDecorator('email', {
-                                rules: [{ required: true, message: 'Please input your email!' }],
+                                rules: [{ required: true, message: 'Please input your Email!' }],
                             })(
                                 <Input
                                     prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="email"
+                                    // placeholder="email"
+                                    style={{
+                                        fontSize: '20px',
+                                    }}
                                 />,
                             )}
                         </Form.Item>
-                        <Form.Item label="Password">
+                        <t style={{color:'red', marginLeft: '-441px'}}>*</t>
+                        <b className='login-form-item-label'>Password</b>
+                        <Form.Item label="" style={{
+                            fontSize: '24px',
+                        }}>
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: 'Please input your Password!' }],
                             })(
                                 <Input
                                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
-                                    placeholder="Password"
+                                    // placeholder="Password"
+                                    style={{
+                                        fontSize: '20px',
+                                    }}
                                 />,
                             )}
                         </Form.Item>
