@@ -17,7 +17,8 @@ const initState={
         password : "required",
         address: "option",
         zipcode: "98007",
-        mobile: "12345678"
+        mobile: "12345678",
+        credit: 300
     },
     updateInfo:{},
 
@@ -38,9 +39,35 @@ const initState={
 
     registerStatus:false,
 
-    //tracking visitor
+    //tracking visitor*
     trackingNumber:"1234567asdasdasd",
-    trackingInfo:{from: "local", to:"future",size: "50m^3m", orderWeight: "10 pounds", shipTime:"2021-05-21-12:21", deliverTime:"2021-05-27-12:21"},
+    trackingInfo:{
+        "trackingNumber": "e880a0e8-33a2-4",
+        "orderStatus": "PENDING", /*{Delievered, Created}*/
+        "createTime": "2021-05-25T03:00:48.019+00:00",
+        "updateTime": "2021-05-25T03:00:48.019+00:00",
+        "arriveTime": "2021-05-25T03:00:48.019+00:00",
+        "tracking": [
+            {
+                      "station id": 2,
+                      "station_status": "passed",   /*{keeping, coming}*/
+                      "receivedAt": "2021-05-25T02:55:57.057+00:00",
+                      "leaveAt": "2021-05-25T02:55:57.057+00:00",
+                  },
+            {
+                      "station id": 3,
+                      "station_status": "passed",   /*{keeping, coming}*/
+                      "receivedAt": "2021-05-25T02:55:57.057+00:00",
+                      "leaveAt": "2021-05-25T02:55:57.057+00:00",
+                  },
+            {
+                      "station id": 4,
+                      "station_status": "keeping",   /*{keeping, coming}*/
+                      "receivedAt": "2021-05-25T02:55:57.057+00:00",
+                      "leaveAt": "2021-05-25T02:55:57.057+00:00",
+                  }
+        ]
+   },
 
     //member
     processing: [{from: "local", to:"future",size: "50m^3m", orderWeight: "10 pounds", shipTime:"2021-05-21-12:21", deliverTime:"2021-05-27-12:21"},
@@ -52,19 +79,25 @@ const initState={
     //place order*
 
     orderInfo:{
-            from:"local",
-            to:"future",
-            size:"50m^3",
-            weight:"10kg",
-            time:"2021-05-21-12:21"
+        "fromAddress": "local", // address
+        "toAddress": "future", // address
+        "from": "local", // zipcode
+        "to": "future", // zipcode
+        "size": "50m^3", // added for advanced feature
+        "weight":"10kg",
+        "Time":"2021-05-21-12:21",
+        "senderMobile": null,
+        "senderName": null,
+        "receiverMobile": null,
+        "receiverName": null,
+        "receiverEmail": null,
     },
 
-    fromInfo:{
-
+    optionChoice:{
+        option:1,
+        price:200
     },
-    toInfo:{
 
-    },
     isLoading:false,
 
     //options*
@@ -74,14 +107,16 @@ const initState={
     //checkout info *
 
     checkoutInfo:{
-        basicInfo:{
+        orderInfo:{
             from:"local",
+            fromZipcode:"98006",
             to:"future",
+            toZipcode:"02155",
             size:"50m^3",
             weight:"10kg",
             time:"2021-05-21-12:21"
         },
-        selected:{
+        options:{
             option:"1",
             price:"10USD"
         },
@@ -91,7 +126,8 @@ const initState={
             password : "required",
             address: "option",
             zipcode: "98007",
-            mobile: "12345678"
+            mobile: "12345678",
+            credit: 300
         }
     },
     checkoutStatus:false,

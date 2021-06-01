@@ -26,18 +26,14 @@ class Test extends React.Component {
         this.emailRef=new createRef();
         this.passCodeRef= new createRef();
         this.trackingNumber=new createRef();
+        this.state={
+          input:""
+        }
+    }
+    onChangeEvent=(value)=>{
+      this.setState({input:value})
     }
 
-    // constructor(props){
-    //     super(props)
-    //     this.emailRef=new createRef();
-    //     this.passCodeRef= new createRef();
-    // }
-    //
-    // submitLogin=()=>({
-    //     email: this.emailRef.current.value,
-    //     password: this.passCodeRef.current.value
-    // })
 
     render() {
         return (
@@ -46,7 +42,14 @@ class Test extends React.Component {
                 <TopBar></TopBar>
                 <Main></Main>
               </div>
-
+                <div>
+                  <button onClick={()=>{this.props.actionController.placeOrder()}}>place order</button>
+                  <button onClick={()=>{this.props.actionController.confirmOption()}}>CheckOut</button>
+                </div>
+                <div>
+                  <input type="text" onChange={(e)=>{this.onChangeEvent(e.target.value)}}/>
+                  <button onClick={()=>{this.props.actionController.trackOrder(this.state.input)}}>search</button>
+                </div>
                 {/* <input type="text" ref={this.emailRef} placeholder="email" />
                 <input type="password" ref={this.passCodeRef} placeholder="Password"/>
                 <button onClick={()=>{this.props.actionController.loginInfo(this.submitLogin())}}>submit</button>
