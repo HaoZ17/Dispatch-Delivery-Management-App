@@ -26,25 +26,27 @@ class LoginContainer extends Component {
             />
 
         return (
-            <div className="login-navigation">
-                <Breadcrumb separator={separator} >
-                    <Breadcrumb.Item
-                        onClick={this.handleBackHome}
-                        className="login-breadcrumb-item"
-                    >
-                        Home
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item className="login-breadcrumb-item">Log In</Breadcrumb.Item>
-                </Breadcrumb>
-                {/*<Link to="/signUp">*/}
-                {/*    <SignUpButton />*/}
-                {/*</Link>*/}
+            <div className="login-outer-box">
+                <div className="login-navigation">
+                    <Breadcrumb separator={separator} >
+                        <Breadcrumb.Item
+                            onClick={this.handleBackHome}
+                            className="login-breadcrumb-item"
+                        >
+                            Home
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Item className="login-breadcrumb-item">Log In</Breadcrumb.Item>
+                    </Breadcrumb>
+                    {/*<Link to="/signUp">*/}
+                    {/*    <SignUpButton />*/}
+                    {/*</Link>*/}
 
-                <b className='login-title'>Log In</b>
-                <LoginForm />
+                    <b className='login-title'>Log In</b>
+                    <LoginForm />
 
 
 
+                </div>
             </div>
         );
     }

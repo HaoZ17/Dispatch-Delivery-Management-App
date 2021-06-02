@@ -1,3 +1,7 @@
+.login-outer-box {
+    width: 1440px;
+    margin: auto;
+}
 
 .login-block {
     width: 500px;
@@ -54,9 +58,19 @@
 /*    border: 2px solid #5E5E5E;*/
 /*    box-sizing: border-box;*/
 /*    border-radius: 12px;*/
-
+/*    font-size: 20px;*/
+/*    text-indent: 10px;*/
+/*    background-color: transparent;*/
 /*}*/
 
+.login-form-indicates-required-field{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #5E5E5E;
+}
 button.ant-btn.login-form-button.ant-btn-primary.login-form-button{
     width: 120px;
     height: 50px;
@@ -68,8 +82,9 @@ button.ant-btn.login-form-button.ant-btn-primary.login-form-button{
     font-size: 24px;
     line-height: 28px;
     color: #FFFFFF;
-    margin-left: -305px;
-    margin-top: 70px;
+    margin-left: -296px;
+    margin-top: 10px;
+    border-color: transparent;
 }
 
 input#normal_login_email{
