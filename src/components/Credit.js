@@ -3,8 +3,9 @@ import { bindActionCreators } from "redux";
 import React from 'react'
 import { actions } from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
-import {List, Card } from 'antd';
+import { List, Card, Breadcrumb } from 'antd';
 import { withRouter } from "react-router-dom";
+import polygon from '../style/image/polygon.svg';
 
 const isLoggedIn = false;
 class Credit extends React.Component {
@@ -13,14 +14,27 @@ class Credit extends React.Component {
         user: { credit: 10 },
     }
 
-    render() {
+    handleBackHome = ()=>{
+        this.isLoggedIn? 
+        this.props.history.push("/user") :
+        this.props.history.push("/")
+      }
 
+    render() {
+        this.isLoggedIn = this.props.userInfo===null ? false:true;
+        
         return (
-            <Card className="creditcard" title={<span className="creditcard-title"> Credit Information </span>} bordered={true}>
-                <List class='personalinfo' bordered='false'>
-                    <List.Item className="creditcard-content">{'My Current Credit: ' + this.state.user.credit}</List.Item>
-                </List>
-            </Card>
+            <div>
+                <Breadcrumb separator={<img className="credit-polygon" src={polygon} ></img>} className="credit-breadcrumb">
+                    <Breadcrumb.Item onClick={this.handleBackHome}>Home</Breadcrumb.Item>
+                    <Breadcrumb.Item>Credit</Breadcrumb.Item>
+                </Breadcrumb>
+                <Card className="credit-card" title={<span className="credit-card-title"> Credit Information </span>} bordered={true}>
+                    <List class='personalinfo' bordered='false'>
+                        <List.Item className="credit-card-content">{'My Current Credit: ' + this.state.user.credit}</List.Item>
+                    </List>
+                </Card>
+            </div>
         )
     }
 }

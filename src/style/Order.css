@@ -1,3 +1,8 @@
+.order-polygon {
+    height: 15px;
+    width: 15px;
+}
+
 .order-breadcrumb {
     position: relative;
     left: 20px;
@@ -12,25 +17,12 @@
 }
 
 .order-tab {
-    /* left: 20px;
-    right:20px; */
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     width: 700px;
-    /* text-align: left; */
 }
 
-/* .order-title {
-    position: relative;
-    text-align: left;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 28px;
-    line-height: 84px;
-    color: #5E5E5E;
-} */
 
 .order-text {
     text-align: left;

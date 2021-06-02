@@ -54,7 +54,7 @@ class Order extends React.Component {
         return (
             <div>
                 {/* Home > MyProfile*/}
-                <Breadcrumb separator={<img className="polygon" src={polygon} ></img>} className="order-breadcrumb">
+                <Breadcrumb separator={<img className="order-polygon" src={polygon} ></img>} className="order-breadcrumb">
                     <Breadcrumb.Item onClick={this.handleBackHome}>Home</Breadcrumb.Item>
                     <Breadcrumb.Item>Order History</Breadcrumb.Item>
                 </Breadcrumb>

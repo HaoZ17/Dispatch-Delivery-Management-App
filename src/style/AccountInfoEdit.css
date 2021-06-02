@@ -9,7 +9,7 @@
 
 .edit-breadcrumb {
     position: relative;
-    left: 20px;
+    left: 10px;
     top: 10px;
     text-align: start;
     font-family: Roboto;
@@ -23,7 +23,7 @@
 .edit-title {
     position: relative;
     text-align: left;
-    left: 20px;
+    left: 60px;
     top: 10px;
     font-family: Roboto;
     font-style: normal;
@@ -34,7 +34,7 @@
 }
 
 .edit-profile {
-    margin-left: 25px;
+    margin-left: 60px;
     text-align: left;
 }
 
