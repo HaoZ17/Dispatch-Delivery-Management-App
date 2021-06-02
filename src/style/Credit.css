@@ -1,0 +1,18 @@
+.creditcard {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-color: #215899;
+    border-radius: 20px;
+}
+
+.creditcard-title {
+    color: rgb(63, 61, 61);
+    font-size: 25px;
+}
+
+.creditcard-content {
+    font-size: 20px;
+    color: #215899
+}

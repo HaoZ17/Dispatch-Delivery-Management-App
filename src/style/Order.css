@@ -1,0 +1,79 @@
+.order-breadcrumb {
+    position: relative;
+    left: 20px;
+    top: 10px;
+    text-align: start;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    color: #215899;
+}
+
+.order-tab {
+    /* left: 20px;
+    right:20px; */
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    /* text-align: left; */
+}
+
+/* .order-title {
+    position: relative;
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 84px;
+    color: #5E5E5E;
+} */
+
+.order-text {
+    text-align: left;
+    display: inline;
+    font-size: 20px;
+
+}
+
+.order-dropdown {
+    text-align: left;
+    display: inline;
+    font-size: 20px;
+    color: #215899;
+}
+
+.order-list {
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: left;
+    border-color: white;
+}
+
+.order-list-item {
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.order-list-item-title {
+    font-size: 18px;
+}
+
+.order-list-item-description {
+    line-height: 10px;
+}
+
+.order-list-item-button {
+    border: 1px solid #215899;
+    background-color: #215899;
+    color: white;
+    font-size: 17px;
+    height: 30px;
+    width: 65px;
+    border-radius: 10px;
+    right: 20px;
+}
