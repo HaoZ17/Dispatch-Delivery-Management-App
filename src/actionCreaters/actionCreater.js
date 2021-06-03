@@ -13,7 +13,8 @@ const signUpStatusCheck=()=>({
 const registUser=(payload)=>{
     return (dispatch,getState)=>{
         console.log(payload);
-        return axios.post(Actions.SIGNUPURL,payload)
+        return axios.post(Actions.SIGNUPURL,payload,{headers: {"Access-Control-Allow-Origin": "*"}
+    })
         .then((res)=>{
             console.log("successful")
             console.log(res)
@@ -42,11 +43,15 @@ const loaduserInfo=(payload)=>({
 })
 const signInRequest=(payload)=>{
     return (dispatch,getState)=>{
-        console.log("SignIn....:",payload)
-        return axios.post(Actions.LOGINURL,payload)
+        console.log("SignIn....:",payload);
+        return axios.post(
+            Actions.LOGINURL,
+            {'email':"test6@gmail.com",'password':"123456"}
+        )
         .then((res)=>{
             console.log("successful SignIn");
-            dispatch(loaduserInfo(res))
+            console.log(res);
+            // dispatch(loaduserInfo(res))
         }).catch((err)=>{
             console.log(err);
             console.log("SignIn Error");
@@ -63,7 +68,8 @@ const signOut=()=>({
 const profileUpdate=(payload)=>{
     return (dispatch,getState)=>{
         console.log("update:",payload)
-        return axios.post(Actions.UPDATEURL,payload)
+        return axios.post(Actions.UPDATEURL,payload,{headers: {"Access-Control-Allow-Origin": "*"}}
+        )
         .then((res)=>{
             console.log("successful update");
             dispatch(loaduserInfo(res))
@@ -151,7 +157,9 @@ const loadingOrder=(payload)=>({
 const trackOrder=(payload)=>{
     return (dispatch,getState)=>{
         console.log("TrackingNum:",payload)
-        return axios.post(Actions.TRACKINGURL,payload)
+        return axios.post(Actions.TRACKINGURL,{
+            "trackingNumber" : "a9b51c96-cb93-4"
+        })
         .then((res)=>{
             console.log("successfully get visiter's orders");
             console.log(res);

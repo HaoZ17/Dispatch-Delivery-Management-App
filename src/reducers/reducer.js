@@ -12,13 +12,13 @@ const initState={
 
     //profile*
     userInfo:{
-        name: "team3",
-        email: "required@gmail.com",
-        password : "required",
-        address: "option",
-        zipcode: "98007",
-        mobile: "12345678",
-        credit: 300
+        "name": "team3",
+        "email": "test6@gmail.com",
+        "password" : "123456",
+        "address": "option",
+        "zipcode": "98007",
+        "mobile": "12345678",
+        "credit": 300
     },
     updateInfo:{},
 
@@ -33,64 +33,138 @@ const initState={
         mobile: "12345678"
     },
     signIn:{
-        email:"123@gmail.com",
-        password:"12345"
+        'email':"123@gmail.com",
+        'password':"12345"
         },
 
     registerStatus:false,
 
     //tracking visitor*
-    trackingNumber:"1234567asdasdasd",
+    trackingNumber:"a9b51c96-cb93-4",
     trackingInfo:{
-        "trackingNumber": "e880a0e8-33a2-4",
-        "orderStatus": "PENDING", /*{Delievered, Created}*/
-        "createTime": "2021-05-25T03:00:48.019+00:00",
-        "updateTime": "2021-05-25T03:00:48.019+00:00",
-        "arriveTime": "2021-05-25T03:00:48.019+00:00",
-        "tracking": [
-            {
-                      "station id": 2,
-                      "station_status": "passed",   /*{keeping, coming}*/
-                      "receivedAt": "2021-05-25T02:55:57.057+00:00",
-                      "leaveAt": "2021-05-25T02:55:57.057+00:00",
-                  },
-            {
-                      "station id": 3,
-                      "station_status": "passed",   /*{keeping, coming}*/
-                      "receivedAt": "2021-05-25T02:55:57.057+00:00",
-                      "leaveAt": "2021-05-25T02:55:57.057+00:00",
-                  },
-            {
-                      "station id": 4,
-                      "station_status": "keeping",   /*{keeping, coming}*/
-                      "receivedAt": "2021-05-25T02:55:57.057+00:00",
-                      "leaveAt": "2021-05-25T02:55:57.057+00:00",
-                  }
-        ]
-   },
+        "trackingNumber": "a9b51c96-cb93-4",
+        "orderStatus": "Delivered",
+        "createTime": "2020-05-30-15:21",
+        "updateTime": "2020-05-31-11:00",
+        "arriveTime": "2020-05-31-13:00",
+        "delivererPath": {
+            "Stage1": {
+                "address": "local",
+                "time": "2020-05-30-20:00"
+            },
+            "Stage4": {
+                "address": "future",
+                "time": "2020-05-31-11:00"
+            },
+            "Stage2": {
+                "address": "stationC",
+                "time": "2020-05-31-1:00"
+            },
+            "Stage3": {
+                "address": "stationC",
+                "time": "2020-05-31-6:00"
+            }
+        }
+    },
 
     //member
-    processing: [{from: "local", to:"future",size: "50m^3m", orderWeight: "10 pounds", shipTime:"2021-05-21-12:21", deliverTime:"2021-05-27-12:21"},
-    {from: "company", to:"home",size: "100m^2m", orderWeight: "40 pounds", shipTime:"1999-05-21-12:21", deliverTime:"1999-05-23-12:21"},
-    {from: "china", to:"USA",size: "2000m^400m", orderWeight: "8 pounds", shipTime:"200-05-21-12:21", deliverTime:"1999-05-24-12:21"}],
-    delivered: [{from: "santa clara", to:"san cruz",size: "50inch^3inch", orderWeight: "10 kg", shipTime:"2000-05-21-12:21", deliverTime:"1999-05-22-12:21"},
-    {from: "east", to:"west",size: "110inch^8inch", orderWeight: "1600kg", shipTime:"2015-05-21-12:21", deliverTime:"1999-05-25-12:21"},
-    {from: "japan", to:"korea",size: "90inch^7inch", orderWeight: "9 kg", shipTime:"2019-05-21-12:21", deliverTime:"1999-05-27-12:21"}],
+    orderHistory:{
+        "pending": {
+            "pending": [
+                {
+                    "id": 13,
+                    "trackingNumber": "6bb545ce-ad6f-4",
+                    "senderAddress": "local",
+                    "senderMobile": null,
+                    "senderName": null,
+                    "senderZipCode": "95111",
+                    "receiverAddress": "future",
+                    "receiverMobile": null,
+                    "receiverName": null,
+                    "receiverZipCode": "95188",
+                    "status": "pending",
+                    "createTime": "2020-05-30-15:21",
+                    "updateTime": "2021-05-31T23:41:49.360+00:00",
+                    "arriveTime": "2021-05-31T23:41:49.360+00:00",
+                    "paymentAmount": 0.0,
+                    "paymentCard": null,
+                    "weight": "10kg",
+                    "size": "50m^3"
+                },
+                {
+                    "id": 17,
+                    "trackingNumber": "eacc8711-6f90-4",
+                    "senderAddress": "local",
+                    "senderMobile": null,
+                    "senderName": null,
+                    "senderZipCode": "95111",
+                    "receiverAddress": "future",
+                    "receiverMobile": null,
+                    "receiverName": null,
+                    "receiverZipCode": "95188",
+                    "status": "pending",
+                    "createTime": "2020-05-30-15:21",
+                    "updateTime": "2021-06-01T00:44:55.859+00:00",
+                    "arriveTime": "2021-06-01T00:44:55.859+00:00",
+                    "paymentAmount": 0.0,
+                    "paymentCard": null,
+                    "weight": "10kg",
+                    "size": "50m^3"
+                },
+                {
+                    "id": 21,
+                    "trackingNumber": "a9b51c96-cb93-4",
+                    "senderAddress": "local",
+                    "senderMobile": null,
+                    "senderName": null,
+                    "senderZipCode": "95111",
+                    "receiverAddress": "future",
+                    "receiverMobile": null,
+                    "receiverName": null,
+                    "receiverZipCode": "95188",
+                    "status": "pending",
+                    "createTime": "2020-05-30-15:21",
+                    "updateTime": "2021-06-01T01:34:41.402+00:00",
+                    "arriveTime": "2021-06-01T01:34:41.402+00:00",
+                    "paymentAmount": 0.0,
+                    "paymentCard": null,
+                    "weight": "10kg",
+                    "size": "50m^3"
+                },
+                {
+                    "id": 31,
+                    "trackingNumber": "0982dd92-2020-4",
+                    "senderAddress": "local",
+                    "senderMobile": null,
+                    "senderName": null,
+                    "senderZipCode": "95111",
+                    "receiverAddress": "future",
+                    "receiverMobile": null,
+                    "receiverName": null,
+                    "receiverZipCode": "95188",
+                    "status": "pending",
+                    "createTime": "2020-05-30-15:21",
+                    "updateTime": "2021-06-01T18:25:41.448+00:00",
+                    "arriveTime": "2021-06-01T18:25:41.448+00:00",
+                    "paymentAmount": 0.0,
+                    "paymentCard": null,
+                    "weight": "10kg",
+                    "size": "50m^3"
+                }
+            ]
+        },
+        "completed": {
+            "completed": []
+        }
+    },
     //place order*
 
     orderInfo:{
-        "fromAddress": "local", // address
-        "toAddress": "future", // address
-        "from": "local", // zipcode
-        "to": "future", // zipcode
-        "size": "50m^3", // added for advanced feature
-        "weight":"10kg",
-        "Time":"2021-05-21-12:21",
-        "senderMobile": null,
-        "senderName": null,
-        "receiverMobile": null,
-        "receiverName": null,
-        "receiverEmail": null,
+        "senderAddress": "local",
+        "receiverAddress": "future",
+        "size": "50m^3",
+        "weight":"20kg",
+        "time":"2021-05-21-12:21"
     },
 
     optionChoice:{
@@ -101,34 +175,45 @@ const initState={
     isLoading:false,
 
     //options*
-    options:[],
+    options:{
+        "robot": {
+            "type": "robot",
+            "price": 10000.0,
+            "is_available": null
+        },
+        "drone": {
+            "type": "drone",
+            "price": 20000.0,
+            "is_available": null
+        }
+    },
     optionsStatus:false,
 
     //checkout info *
 
     checkoutInfo:{
-        orderInfo:{
-            from:"local",
-            fromZipcode:"98006",
-            to:"future",
-            toZipcode:"02155",
-            size:"50m^3",
-            weight:"10kg",
-            time:"2021-05-21-12:21"
+        "orderInfo" :{
+            "senderAddress": "local",
+            "receiverAddress": "future",
+            "size": "50m^3",
+            "weight":"10kg",
+            "senderZipCode": "95111",
+            "receiverZipCode": "95188",
+            "createTime": "2020-05-30-15:21"
         },
-        options:{
-            option:"1",
-            price:"10USD"
+    
+        "selected" :{
+            "type": "robot",
+            "price": 10
         },
-        useInfo:{
-            name: "team3",
-            email: "required@gmail.com",
-            password : "required",
-            address: "option",
-            zipcode: "98007",
-            mobile: "12345678",
-            credit: 300
+    
+        "user": {
+            "username": "username",
+            "email": "1234@gmail.com",
+            "credit": 100.0,
+            "address": "testAddress"
         }
+    
     },
     checkoutStatus:false,
     //button:

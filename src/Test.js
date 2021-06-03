@@ -43,6 +43,7 @@ class Test extends React.Component {
                 <Main></Main>
               </div>
                 <div>
+                  <button onClick={()=>{this.props.actionController.signInRequest("haha")}}>SignIn</button>
                   <button onClick={()=>{this.props.actionController.placeOrder()}}>place order</button>
                   <button onClick={()=>{this.props.actionController.confirmOption()}}>CheckOut</button>
                 </div>
