@@ -54,21 +54,7 @@ class TrackingInput extends React.Component {
                     />
 
 
-                    {/*<input*/}
-                    {/*    type={"text"}*/}
-                    {/*    ref = {this.trackingRef}*/}
-                    {/*    placeholder={"Please enter your tracking number"}*/}
-                    {/*/>*/}
-
-                    {/*<Link to="/packagetracking">*/}
-                    {/*    <button*/}
-                    {/*        onClick={()=>{this.props.actionController.inputTrackingNumber(this.submitLogin())}}>*/}
-                    {/*        Track*/}
-                    {/*    </button>*/}
-                    {/*</Link>*/}
-                </div>
-                <div className="error-msg-top-bar">{this.state.error}</div>
-            </>
+            </div>
         );
     }
 }
