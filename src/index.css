@@ -4,6 +4,9 @@
 @import './style/NavBar.css';
 @import './style/TopBar.css';
 @import '~antd/dist/antd.css';
+@import './style/AccountInfoEdit.css';
+@import './style/Order.css';
+@import './style/Credit.css';
 
 body {
   margin: 0;

@@ -15,7 +15,7 @@ const initState={
         name: "team3",
         email: "required@gmail.com",
         password : "required",
-        address: "option",
+        address: "Main Road,APT 10,San Francisco,CA,66666",
         zipcode: "98007",
         mobile: "12345678"
     },
@@ -89,7 +89,7 @@ const initState={
             name: "team3",
             email: "required@gmail.com",
             password : "required",
-            address: "option",
+            address: "Main Road,APT 10,San Francisco,CA,66666",
             zipcode: "98007",
             mobile: "12345678"
         }
