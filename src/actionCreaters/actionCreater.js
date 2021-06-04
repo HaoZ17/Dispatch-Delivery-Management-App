@@ -1,57 +1,58 @@
 import Actions from '../constants';
 import axios from "axios";
 
+axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-const jumptest=()=>({
-    type: "jump"
-})
-
-// sign up *
+// sign up */
 const signUpStatusCheck=()=>({
     type:Actions.SIGNUPSTATUS
 })
 const registUser=(payload)=>{
     return (dispatch,getState)=>{
         console.log(payload);
-        return axios.post(Actions.SIGNUPURL,payload,{headers: {"Access-Control-Allow-Origin": "*"}
-    })
+        return axios.post(Actions.SIGNUPURL,payload)
         .then((res)=>{
             console.log("successful")
             console.log(res)
-            if(res.status===true){//later
+            if(res.statusText==="OK"){//later
                 dispatch(signUpStatusCheck());
             }else{
                 alert("please check your info");
             }
         }).catch((err)=>{
             console.log("fail:",err)
+            alert("please check your info");
         })
     }
 }
 
 // register info
-const loadRegisterInfo=(payload)=>({
-    type:Actions.LOADREGISTERINFO,
-    payload
+// const loadRegisterInfo=(payload)=>({
+//     type:Actions.LOADREGISTERINFO,
+//     payload
+// })
 
-})
-
-// sign in *
+// sign in */
 const loaduserInfo=(payload)=>({
     type:Actions.LOADUSERINFO,
     payload
 })
 const signInRequest=(payload)=>{
     return (dispatch,getState)=>{
-        console.log("SignIn....:",payload);
+        console.log("SignIn....:")
         return axios.post(
             Actions.LOGINURL,
-            {'email':"test6@gmail.com",'password':"123456"}
+            payload
         )
         .then((res)=>{
-            console.log("successful SignIn");
-            console.log(res);
-            // dispatch(loaduserInfo(res))
+            if(res.statusText==="OK"){
+                console.log("successful SignIn");
+                console.log(res);
+                dispatch(loaduserInfo(res.data))
+            }else{
+                alert("please check your Email or Password");
+            }
         }).catch((err)=>{
             console.log(err);
             console.log("SignIn Error");
@@ -59,28 +60,90 @@ const signInRequest=(payload)=>{
     }
 }
 
-// signOut*
+// signOut*/
 const signOut=()=>({
     type:"signOut"
 })
 
-//update info & redeem*
-const profileUpdate=(payload)=>{
+//update info & redeem*/ 取userInfo发送
+const profileUpdate=()=>{
     return (dispatch,getState)=>{
-        console.log("update:",payload)
-        return axios.post(Actions.UPDATEURL,payload,{headers: {"Access-Control-Allow-Origin": "*"}}
+        const storeData={...getState()};
+        const data=storeData.userInfo;
+        console.log("update:",data)
+        return axios.post(Actions.UPDATEURL,data
         )
         .then((res)=>{
-            console.log("successful update");
-            dispatch(loaduserInfo(res))
+            if(res.statusText==="OK"){
+                console.log("successful update");
+                console.log(res);
+                dispatch(loaduserInfo(res.data))
+            }else{
+                alert("Cannot process your request,Please try later");
+            }
         }).catch((err)=>{
             console.log(err);
             console.log("update Error");
+            alert("Cannot process your request");
         })
     }
 }
 
-//place order *
+//order history:*/
+const loadingUserOrder=(payload)=>({
+    type:Actions.LOADINGUSERORDER,
+    payload
+})
+const trackMemberOrder=()=>{
+    return (dispatch,getState)=>{
+        const storeData={...getState()};
+        const data=storeData.email;
+        console.log("MemberEmail:",data);
+        return axios.post(Actions.HISTORYORDER,{"email":data})
+        .then((res)=>{
+            if(res.statusText==="OK"){
+                console.log(res);
+                dispatch(loadingUserOrder(res.data)) //具体传入内容待改
+            }else{
+                alert("Loading Error, please try again")
+            }
+        }).catch((err)=>{
+            console.log(err);
+            console.log("loading error");
+        })
+    }
+}
+
+//Tracking Order:*/
+const loadingOrder=(payload)=>({
+    type:Actions.LOADINGVISITERORDER,
+    payload
+})
+const trackOrder=(payload)=>{
+    return (dispatch,getState)=>{
+        console.log("TrackingNum:",payload)
+        return axios.post(
+            Actions.TRACKINGURL,
+            {"trackingNumber" : payload}
+            )
+        .then((res)=>{
+            if(res.statusText==="OK"){
+                console.log("successfully get visiter's orders");
+                console.log(res);
+                dispatch(loadingOrder(res.data)) //具体传入内容待改
+            }else{
+                alert("Cannot find your information");
+            }
+        }).catch((err)=>{
+            console.log(err);
+            console.log("loading error");
+            alert("Cannot find your information")
+        })
+    }
+}
+
+
+//place order */
 const loadOptions=payload=>({
     type:Actions.LOADOPTIONS,
     payload
@@ -91,11 +154,11 @@ const placeOrder=()=>{
         const data=storeData.orderInfo;
         console.log("Request....")
         console.log(data);
-        return axios.post(Actions.ORDERREQUESTURL,data)
+        return axios.post(Actions.ORDERREQUESTURL,{"orderInfo":data})
         .then((res)=>{
             console.log("successful placeOrder");
             console.log(res);
-            //  dispatch(loadOptions(res.data)) //具体传入内容待改
+            dispatch(loadOptions(res.data)) //具体传入内容待改
         }).catch((err)=>{
             console.log(err);
             console.log("PlaceOrder Error");
@@ -103,7 +166,7 @@ const placeOrder=()=>{
     }
 }
 
-//Checkout select:*
+//Checkout select:*/
 const checkout=(payload)=>({
     type:Actions.CHECKOUT,
     payload
@@ -113,60 +176,19 @@ const confirmOption=()=>{
         const storeData={...getState()};
         const data=storeData.checkoutInfo;
         console.log(data);
-        return axios.post(Actions.CHECKOUTURL,data)
+        return axios.post(Actions.ORDERCONFIRMURL,data)
         .then((res)=>{
-            // if(res.status==="ok"){
-            //     dispatch(checkout(res.data))//具体内容待定
-            // }else{
-            //     console.log("please check your order option??")
-            // }
             console.log("CheckOut Info:");
             console.log(res);
+            if(res.statusText==="OK"){
+                dispatch(checkout(res.data));
+            }else{
+                alert('network Error')
+            }
         }).catch((err)=>{
             console.log(err);
-            console.log("checkout error")
-        })
-    }
-}
-//order history:*
-const loadingUserOrder=(payload)=>({
-    type:Actions.LOADINGUSERORDER,
-    payload
-})
-const trackMemberOrder=()=>{
-    return (dispatch,getState)=>{
-        const storeData={...getState()};
-        const data=storeData.email;
-        console.log("MemberEmail:",data);
-        return axios.post(Actions.HISTORYORDER,data)
-        .then((res)=>{
-            console.log("Order historys:");
-            dispatch(loadingUserOrder(res.data)) //具体传入内容待改
-        }).catch((err)=>{
-            console.log(err);
-            console.log("loading error");
-        })
-    }
-}
-
-//Tracking Order:*
-const loadingOrder=(payload)=>({
-    type:Actions.LOADINGVISITERORDER,
-    payload
-})
-const trackOrder=(payload)=>{
-    return (dispatch,getState)=>{
-        console.log("TrackingNum:",payload)
-        return axios.post(Actions.TRACKINGURL,{
-            "trackingNumber" : "a9b51c96-cb93-4"
-        })
-        .then((res)=>{
-            console.log("successfully get visiter's orders");
-            console.log(res);
-            // dispatch(loadingOrder(res.data)) //具体传入内容待改
-        }).catch((err)=>{
-            console.log(err);
-            console.log("loading error");
+            console.log("checkout error");
+            alert('network Error');
         })
     }
 }
@@ -174,6 +196,11 @@ const trackOrder=(payload)=>{
 /**
  * 辅助测试功能模块
  */
+
+const jumptest=()=>({
+    type: "jump"
+})
+
 //other:
 const increaseMDButton=()=>({
     type:"modelIncrease"
@@ -228,7 +255,6 @@ export const actions={
     isshowRegForm,
     isshowLoginForm,
     loaduserInfo,
-    loadRegisterInfo,
     jumptest,
     increaseMDButton,
     decreaseMDButton,

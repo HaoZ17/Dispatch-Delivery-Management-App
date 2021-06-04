@@ -5,157 +5,23 @@ const initState={
     jumpTest:false,
     //basic info
     name:"",
-    email:"required@gmail.com",
+    email:"test@gmail.com",
     // email:"",
     // password:"",
     displayModal:1,
 
     //profile*
     userInfo:{
-        "name": "team3",
-        "email": "test6@gmail.com",
-        "password" : "123456",
-        "address": "option",
-        "zipcode": "98007",
-        "mobile": "12345678",
-        "credit": 300
     },
-    updateInfo:{},
-
-    //signin/signup*
-
-    signUp:{
-        name: "team3",
-        email: "required@gmail.com",
-        password : "required",
-        address: "option",
-        zipcode: "98007",
-        mobile: "12345678"
-    },
-    signIn:{
-        'email':"123@gmail.com",
-        'password':"12345"
-        },
-
     registerStatus:false,
 
     //tracking visitor*
     trackingNumber:"a9b51c96-cb93-4",
     trackingInfo:{
-        "trackingNumber": "a9b51c96-cb93-4",
-        "orderStatus": "Delivered",
-        "createTime": "2020-05-30-15:21",
-        "updateTime": "2020-05-31-11:00",
-        "arriveTime": "2020-05-31-13:00",
-        "delivererPath": {
-            "Stage1": {
-                "address": "local",
-                "time": "2020-05-30-20:00"
-            },
-            "Stage4": {
-                "address": "future",
-                "time": "2020-05-31-11:00"
-            },
-            "Stage2": {
-                "address": "stationC",
-                "time": "2020-05-31-1:00"
-            },
-            "Stage3": {
-                "address": "stationC",
-                "time": "2020-05-31-6:00"
-            }
-        }
     },
 
     //member
     orderHistory:{
-        "pending": {
-            "pending": [
-                {
-                    "id": 13,
-                    "trackingNumber": "6bb545ce-ad6f-4",
-                    "senderAddress": "local",
-                    "senderMobile": null,
-                    "senderName": null,
-                    "senderZipCode": "95111",
-                    "receiverAddress": "future",
-                    "receiverMobile": null,
-                    "receiverName": null,
-                    "receiverZipCode": "95188",
-                    "status": "pending",
-                    "createTime": "2020-05-30-15:21",
-                    "updateTime": "2021-05-31T23:41:49.360+00:00",
-                    "arriveTime": "2021-05-31T23:41:49.360+00:00",
-                    "paymentAmount": 0.0,
-                    "paymentCard": null,
-                    "weight": "10kg",
-                    "size": "50m^3"
-                },
-                {
-                    "id": 17,
-                    "trackingNumber": "eacc8711-6f90-4",
-                    "senderAddress": "local",
-                    "senderMobile": null,
-                    "senderName": null,
-                    "senderZipCode": "95111",
-                    "receiverAddress": "future",
-                    "receiverMobile": null,
-                    "receiverName": null,
-                    "receiverZipCode": "95188",
-                    "status": "pending",
-                    "createTime": "2020-05-30-15:21",
-                    "updateTime": "2021-06-01T00:44:55.859+00:00",
-                    "arriveTime": "2021-06-01T00:44:55.859+00:00",
-                    "paymentAmount": 0.0,
-                    "paymentCard": null,
-                    "weight": "10kg",
-                    "size": "50m^3"
-                },
-                {
-                    "id": 21,
-                    "trackingNumber": "a9b51c96-cb93-4",
-                    "senderAddress": "local",
-                    "senderMobile": null,
-                    "senderName": null,
-                    "senderZipCode": "95111",
-                    "receiverAddress": "future",
-                    "receiverMobile": null,
-                    "receiverName": null,
-                    "receiverZipCode": "95188",
-                    "status": "pending",
-                    "createTime": "2020-05-30-15:21",
-                    "updateTime": "2021-06-01T01:34:41.402+00:00",
-                    "arriveTime": "2021-06-01T01:34:41.402+00:00",
-                    "paymentAmount": 0.0,
-                    "paymentCard": null,
-                    "weight": "10kg",
-                    "size": "50m^3"
-                },
-                {
-                    "id": 31,
-                    "trackingNumber": "0982dd92-2020-4",
-                    "senderAddress": "local",
-                    "senderMobile": null,
-                    "senderName": null,
-                    "senderZipCode": "95111",
-                    "receiverAddress": "future",
-                    "receiverMobile": null,
-                    "receiverName": null,
-                    "receiverZipCode": "95188",
-                    "status": "pending",
-                    "createTime": "2020-05-30-15:21",
-                    "updateTime": "2021-06-01T18:25:41.448+00:00",
-                    "arriveTime": "2021-06-01T18:25:41.448+00:00",
-                    "paymentAmount": 0.0,
-                    "paymentCard": null,
-                    "weight": "10kg",
-                    "size": "50m^3"
-                }
-            ]
-        },
-        "completed": {
-            "completed": []
-        }
     },
     //place order*
 
@@ -176,16 +42,6 @@ const initState={
 
     //options*
     options:{
-        "robot": {
-            "type": "robot",
-            "price": 10000.0,
-            "is_available": null
-        },
-        "drone": {
-            "type": "drone",
-            "price": 20000.0,
-            "is_available": null
-        }
     },
     optionsStatus:false,
 
@@ -257,7 +113,7 @@ const reducer=(state=initState,action={})=>{
             return{
                 ...state,
                 registerStatus: true,
-                signUp:{}
+                // signUp:{}
             }
         case Actions.LOADOPTIONS:
             return{
@@ -268,13 +124,12 @@ const reducer=(state=initState,action={})=>{
         case Actions.CHECKOUT:
             return{
                 ...state,
-                checkoutInfo:action.payload,
-                checkoutStatus:true
+                trackingNumber:action.payload
             }
         case Actions.LOADINGUSERORDER:
             return{
                 ...state,
-                orderHistoryAndProcess:action.payload
+                orderHistory:action.payload
             }
         case Actions.LOADINGVISITERORDER:
             return{

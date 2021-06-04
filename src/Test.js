@@ -43,9 +43,18 @@ class Test extends React.Component {
                 <Main></Main>
               </div>
                 <div>
-                  <button onClick={()=>{this.props.actionController.signInRequest("haha")}}>SignIn</button>
-                  <button onClick={()=>{this.props.actionController.placeOrder()}}>place order</button>
-                  <button onClick={()=>{this.props.actionController.confirmOption()}}>CheckOut</button>
+                  <button onClick={()=>{console.log(this.props.trackingNumber)}}>trackingNumber</button>
+                  <button onClick={()=>{console.log(this.props.email)}}>UserEmail</button>
+                  <button onClick={()=>{console.log(this.props.userInfo)}}>userInfo</button>
+                  <button onClick={()=>{console.log(this.props.registerStatus)}}>registerStatus</button>
+                  <button onClick={()=>{console.log(this.props.trackingInfo)}}>trackingInfo</button>
+                  <button onClick={()=>{console.log(this.props.orderInfo)}}>orderInfo</button>
+                  <button onClick={()=>{console.log(this.props.orderHistory)}}>orderHistory</button>
+                  <button onClick={()=>{console.log(this.props.options)}}>options</button>
+                  
+                  <button onClick={()=>{this.props.actionController.trackMemberOrder()}}>trackMemberOrder</button>
+                  <button onClick={()=>{this.props.actionController.placeOrder()}}>placeOrder</button>
+                  <button onClick={()=>{this.props.actionController.confirmOption()}}>trackingOrder</button>
                 </div>
                 <div>
                   <input type="text" onChange={(e)=>{this.onChangeEvent(e.target.value)}}/>
