@@ -11,8 +11,7 @@ const initState={
     displayModal:1,
 
     //profile*
-    userInfo:{
-    },
+    userInfo:null,
     registerStatus:false,
 
     //tracking visitor*
