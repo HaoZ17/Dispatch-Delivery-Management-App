@@ -60,7 +60,13 @@ class TopBar extends React.Component {
     return (
       <header className="Topbar">
         {
-          isTrackingDisplay ? <TrackingInput /> : null
+          isTrackingDisplay ? 
+          <div className="topbar-tracking">
+            <p>Tracking</p>
+            <TrackingInput />
+          </div>
+           : 
+          null
         }
 
         {   isLoggedIn ?
