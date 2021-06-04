@@ -36,7 +36,7 @@ class TrackingInput extends React.Component {
         }
 
         return (
-            <>
+
                 <div>
                     <Search
                         placeholder="Please enter your tracking number"

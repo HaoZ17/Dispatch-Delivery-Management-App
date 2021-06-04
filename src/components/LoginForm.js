@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
     render = () => {
         const { getFieldDecorator } = this.props.form;
         return (
-            <>
+
                 <div className='login-block'>
                     <Form onSubmit={this.submitLoginInfo} className="login-form">
                         <t style={{color:'#215899', marginLeft: '-478px', fontSize: '24px'}}>*</t>
@@ -90,7 +90,7 @@ class LoginForm extends React.Component {
                         </Form.Item>
                     </Form>
                 </div>
-            </>
+
 
 
         );
