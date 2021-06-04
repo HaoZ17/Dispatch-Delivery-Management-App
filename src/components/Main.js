@@ -9,6 +9,7 @@ import LoginContainer from '../containers/LoginContainer';
 import SignUpContainer from '../containers/SignUpContainer';
 import HomeContainer from "../containers/HomeContainer";
 import InputOrderForm from "../containers/InputOrderForm";
+import Credit from "./Credit.js";
 
 
 function Main(props) {
@@ -59,6 +60,12 @@ function Main(props) {
             )
         }
 
+        const showCredit=()=>{
+            return(
+                <Credit/>
+            )
+        }
+
     return (
         <div className="main">
             <Switch>
@@ -69,6 +76,7 @@ function Main(props) {
                 <Route exact path="/user/accountInfo/edit" render={showAccountInfoEdit}/>
                 <Route exact path="/user/accountInfo" render={showAccountInfo}/>
                 <Route exact path="/user/order" render={showOrder}/>
+                <Route exact path="/user/credit" render={showCredit}/>
                 <Route exact path="/packagetracking" render={showPackageTracking}/>
                 <Route exact path="/placeOrder" render={showPlaceOrder}/>
              </Switch>
