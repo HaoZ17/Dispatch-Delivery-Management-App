@@ -10,14 +10,17 @@ import reducer from "./reducers/reducer"
 import Test from "./Test";
 
 import { BrowserRouter } from "react-router-dom";
-
+import OrderF from './containers/InputOrderForm';
+import OrderForm from './components/InputOrderFormOri'
 
 const store= createStore(reducer,applyMiddleware(thunk));
 ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
         {/* <App /> */}
-        <Test/>
+        {/* <Test/> */}
+        {/* <InputOrderForm/> */}
+        <OrderF/>
       </BrowserRouter>
      
   </Provider>

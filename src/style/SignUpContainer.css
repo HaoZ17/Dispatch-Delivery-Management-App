@@ -1,3 +1,8 @@
+.signup-outer-box {
+    width: 1440px;
+    margin: auto;
+}
+
 .signUp-title {
     position: absolute;
     left: 10px;
@@ -11,6 +16,109 @@
 }
 
 .ant-form.ant-form-horizontal.signUp-form {
-    top: 150px;
-    padding: 100px;
+    margin-top: 223px;
+    padding: 0px;
+    margin-left: 50px;
+    width: 1170px;
 }
+
+input#normal_register_name{
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+
+input#normal_register_email{
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+
+input#normal_register_password{
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+
+input#normal_register_confirm{
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+
+input#normal_register_address1{
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+input#normal_register_address2{
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+
+input#normal_register_City {
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 8px;
+    background-color: transparent;
+    padding: 0px;
+}
+
+input#normal_register_State {
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 0px;
+    background-color: transparent;
+}
+
+input#normal_register_zipcode {
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 0px;
+    background-color: transparent;
+}
+
+input#normal_register_mobile {
+    height: 50px;
+    border: 2px solid #5E5E5E;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: 20px;
+    text-indent: 10px;
+    background-color: transparent;
+}
+

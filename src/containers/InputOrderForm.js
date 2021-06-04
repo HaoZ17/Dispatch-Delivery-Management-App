@@ -8,6 +8,8 @@ import OrderForm1 from "../components/OrderForm1";
 import OrderForm2 from "../components/OrderForm2";
 import OrderForm3 from "../components/OrderForm3";
 import OrderForm4 from "../components/OrderForm4";
+import OrderForm5 from "../components/OrderForm5";
+import OrderForm6 from "../components/OrderForm6";
 /*
 Order shipping info is Form1
 package info is Form2
@@ -29,6 +31,10 @@ class OrderF extends React.Component {
       case 3:
         return <OrderForm3 />
       case 4:
+        return <OrderForm6 />
+      case 5:
+        return <OrderForm5 />
+      case 6:
         return <OrderForm4/>
       default:
         // <Form0/>
