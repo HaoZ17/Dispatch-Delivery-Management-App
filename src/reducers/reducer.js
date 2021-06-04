@@ -8,7 +8,7 @@ const initState={
     email:"required@gmail.com",
     // email:"",
     // password:"",
-    displayModal:1,
+    displayModal:0,
 
     //profile*
     userInfo:{
