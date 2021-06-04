@@ -5,94 +5,72 @@ const initState={
     jumpTest:false,
     //basic info
     name:"",
-    email:"required@gmail.com",
+    email:"test@gmail.com",
     // email:"",
     // password:"",
     displayModal:0,
 
     //profile*
-    userInfo:{
-        name: "team3",
-        email: "required@gmail.com",
-        password : "required",
-        address: "Main Road,APT 10,San Francisco,CA,66666",
-        zipcode: "98007",
-        mobile: "12345678"
-    },
-    updateInfo:{},
-
-    //signin/signup*
-
-    signUp:{
-        name: "team3",
-        email: "required@gmail.com",
-        password : "required",
-        address: "option",
-        zipcode: "98007",
-        mobile: "12345678"
-    },
-    signIn:{
-        email:"123@gmail.com",
-        password:"12345"
-        },
+    userInfo:null,
 
     registerStatus:false,
 
-    //tracking visitor
-    trackingNumber:"1234567asdasdasd",
-    trackingInfo:{from: "local", to:"future",size: "50m^3m", orderWeight: "10 pounds", shipTime:"2021-05-21-12:21", deliverTime:"2021-05-27-12:21"},
+    //tracking visitor*
+    trackingNumber:"a9b51c96-cb93-4",
+    trackingInfo:{
+    },
 
     //member
-    processing: [{from: "local", to:"future",size: "50m^3m", orderWeight: "10 pounds", shipTime:"2021-05-21-12:21", deliverTime:"2021-05-27-12:21"},
-    {from: "company", to:"home",size: "100m^2m", orderWeight: "40 pounds", shipTime:"1999-05-21-12:21", deliverTime:"1999-05-23-12:21"},
-    {from: "china", to:"USA",size: "2000m^400m", orderWeight: "8 pounds", shipTime:"200-05-21-12:21", deliverTime:"1999-05-24-12:21"}],
-    delivered: [{from: "santa clara", to:"san cruz",size: "50inch^3inch", orderWeight: "10 kg", shipTime:"2000-05-21-12:21", deliverTime:"1999-05-22-12:21"},
-    {from: "east", to:"west",size: "110inch^8inch", orderWeight: "1600kg", shipTime:"2015-05-21-12:21", deliverTime:"1999-05-25-12:21"},
-    {from: "japan", to:"korea",size: "90inch^7inch", orderWeight: "9 kg", shipTime:"2019-05-21-12:21", deliverTime:"1999-05-27-12:21"}],
+    orderHistory:{
+    },
     //place order*
 
     orderInfo:{
-            from:"local",
-            to:"future",
-            size:"50m^3",
-            weight:"10kg",
-            time:"2021-05-21-12:21"
+        "senderAddress": "local",
+        "receiverAddress": "future",
+        "size": "50m^3",
+        "weight":"20kg",
+        "time":"2021-05-21-12:21"
     },
 
-    fromInfo:{
-
+    optionChoice:{
+        option:1,
+        price:200
     },
-    toInfo:{
 
-    },
     isLoading:false,
 
     //options*
-    options:[],
+    options:{
+    },
     optionsStatus:false,
 
     //checkout info *
 
     checkoutInfo:{
-        basicInfo:{
-            from:"local",
-            to:"future",
-            size:"50m^3",
-            weight:"10kg",
-            time:"2021-05-21-12:21"
+        "orderInfo" :{
+            "senderAddress": "local",
+            "receiverAddress": "future",
+            "size": "50m^3",
+            "weight":"10kg",
+            "senderZipCode": "95111",
+            "receiverZipCode": "95188",
+            "createTime": "2020-05-30-15:21"
         },
-        selected:{
-            option:"1",
-            price:"10USD"
+    
+        "selected" :{
+            "type": "robot",
+            "price": 10
         },
-        useInfo:{
-            name: "team3",
-            email: "required@gmail.com",
-            password : "required",
-            address: "Main Road,APT 10,San Francisco,CA,66666",
-            zipcode: "98007",
-            mobile: "12345678"
+
+        "user": {
+            "username": "username",
+            "email": "1234@gmail.com",
+            "credit": 100.0,
+            "address": "testAddress"
+
         }
+    
     },
     checkoutStatus:false,
     //button:
@@ -136,7 +114,7 @@ const reducer=(state=initState,action={})=>{
             return{
                 ...state,
                 registerStatus: true,
-                signUp:{}
+                // signUp:{}
             }
         case Actions.LOADOPTIONS:
             return{
@@ -147,13 +125,12 @@ const reducer=(state=initState,action={})=>{
         case Actions.CHECKOUT:
             return{
                 ...state,
-                checkoutInfo:action.payload,
-                checkoutStatus:true
+                trackingNumber:action.payload
             }
         case Actions.LOADINGUSERORDER:
             return{
                 ...state,
-                orderHistoryAndProcess:action.payload
+                orderHistory:action.payload
             }
         case Actions.LOADINGVISITERORDER:
             return{

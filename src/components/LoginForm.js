@@ -13,9 +13,10 @@ class LoginForm extends React.Component {
     submitLoginInfo = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
+            
             if (!err) {
-                //console.log(values);
-                this.props.actionController.loaduserInfo(values);
+                console.log(values);
+                this.props.actionController.signInRequest(values);
                 this.props.history.push("/user");
             }
         });

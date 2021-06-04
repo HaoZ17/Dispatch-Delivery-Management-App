@@ -32,7 +32,7 @@ class SignUpForm extends React.Component {
                     mobile: mobile,
                 }
                 //console.log(data)
-                this.props.actionController.loadRegisterInfo(data);
+                this.props.actionController.registUser(data);
 
             }
         });
