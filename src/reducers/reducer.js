@@ -8,10 +8,11 @@ const initState={
     email:"test@gmail.com",
     // email:"",
     // password:"",
-    displayModal:1,
+    displayModal:0,
 
     //profile*
     userInfo:null,
+
     registerStatus:false,
 
     //tracking visitor*
@@ -61,12 +62,13 @@ const initState={
             "type": "robot",
             "price": 10
         },
-    
+
         "user": {
             "username": "username",
             "email": "1234@gmail.com",
             "credit": 100.0,
             "address": "testAddress"
+
         }
     
     },

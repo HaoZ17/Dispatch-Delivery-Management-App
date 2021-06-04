@@ -4,18 +4,40 @@ import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
 import LoginButton from "../components/LoginButton";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import {Breadcrumb, Icon} from "antd";
 
 class SignUpContainer extends Component {
-    render() {
-        return (
-            <div>
-                <Link to="/login">
-                    <LoginButton />
-                </Link>
 
-                <b className='signUp-title'>Sign Up</b>
-                <SignUpForm />
+    handleBackHome = ()=>{
+        this.props.history.push("/")
+    }
+
+    render() {
+
+        const separator =
+            <Icon
+                type="caret-right"
+                style={{
+                    fontSize: '20px',
+                    color: '#215899'
+                }}
+            />
+
+        return (
+            <div className="signup-outer-box">
+                <div className="login-navigation">
+                    <Breadcrumb separator={separator} >
+                        <Breadcrumb.Item
+                            onClick={this.handleBackHome}
+                            className="login-breadcrumb-item"
+                        >Home</Breadcrumb.Item>
+                        <Breadcrumb.Item className="login-breadcrumb-item">Sign Up</Breadcrumb.Item>
+                    </Breadcrumb>
+
+                    <b className='login-title'>Sign Up</b>
+                    <SignUpForm />
+                </div>
 
             </div>
         );
@@ -33,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUpContainer));

@@ -1,9 +1,11 @@
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Checkbox,Typography } from 'antd';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+
+const { Text } = Typography;
 
 class LoginForm extends React.Component {
 
@@ -28,20 +30,29 @@ class LoginForm extends React.Component {
     render = () => {
         const { getFieldDecorator } = this.props.form;
         return (
-            <>
+
                 <div className='login-block'>
                     <Form onSubmit={this.submitLoginInfo} className="login-form">
-                        <Form.Item label="Email">
+                        <t style={{color:'#215899', marginLeft: '-478px', fontSize: '24px'}}>*</t>
+                        <b className='login-form-item-label'> Email</b>
+                        <Form.Item label="">
                             {getFieldDecorator('email', {
-                                rules: [{ required: true, message: 'Please input your email!' }],
+                                rules: [{ required: true, message: 'Please input your Email!' }],
                             })(
                                 <Input
                                     prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="email"
+                                    style={{
+                                        fontSize: '20px',
+                                    }}
                                 />,
                             )}
                         </Form.Item>
-                        <Form.Item label="Password">
+                        <t style={{color:'#215899', marginLeft: '-432px', fontSize: '24px'}}>*</t>
+                        <b className='login-form-item-label'> Password</b>
+                        <Form.Item label="" style={{
+                            fontSize: '24px',
+                        }}>
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: 'Please input your Password!' }],
                             })(
@@ -49,9 +60,13 @@ class LoginForm extends React.Component {
                                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
                                     placeholder="Password"
+                                    style={{
+                                        fontSize: '20px',
+                                    }}
                                 />,
                             )}
                         </Form.Item>
+
                         <Form.Item>
                             {/*{getFieldDecorator('remember', {*/}
                             {/*    valuePropName: 'checked',*/}
@@ -61,18 +76,22 @@ class LoginForm extends React.Component {
                             {/*    Forgot password*/}
                             {/*</a>*/}
 
-                            <Button type="primary" onClick={this.handleOnCancel} className="login-form-button">
-                                Cancel
+                            <div style={{marginTop: '50px' , marginLeft: '0px'}}>
+                                <Text style={{color:'#215899' , marginLeft: '-295px', fontSize: '24px'}}>*</Text>
+                                <Text className='login-form-indicates-required-field' > indicates required field</Text>
+                            </div>
+                            <Button  type="primary" htmlType="submit" className="login-form-button">
+                                Log In
                             </Button>
 
-                            <Button style={{ marginLeft: 8 }} type="primary" htmlType="submit" className="login-form-button">
-                                Log In
+                            <Button style={{ marginLeft: 16 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
+                                Cancel
                             </Button>
 
                         </Form.Item>
                     </Form>
                 </div>
-            </>
+
 
 
         );
