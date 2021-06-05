@@ -93,11 +93,9 @@ class Order extends React.Component {
                                             <p>Weight: {item.weight}</p>
                                             <p>Ship time: {item.shipTime}</p>
                                             <button className="order-list-item-button" onClick={
-                                                () => {
-                                                    // here we need to pass the tracking log data of this order to "/packagetracking" page
-                                                    // we can set a global variable(stored in reducer.js) with tracking log infor of this order at this moment
-                                                    // so that when jumping to "/packagetracking" page, that page can get data from this global variable
-                                                    // since the tracking log data structure has not determined by backend team, I did not implement this step here
+                                                async() => {
+                                                    console.log(item.trackingNumber);
+                                                    await this.props.actionController.trackOrder(item.trackingNumber)
                                                     this.props.history.push('/packagetracking')
                                                 }
                                             }>Track</button>

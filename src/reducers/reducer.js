@@ -17,7 +17,27 @@ const initState={
 
     //tracking visitor*
     trackingNumber:"a9b51c96-cb93-4",
-    trackingInfo:null,
+    trackingInfo:{
+        "trackingNumber": "a9b51c96-cb93-4",
+        "orderStatus": "Pending",
+        "createTime": "2020-05-30-15:21",
+        "updateTime": "2021-06-05-01:34",
+        "arriveTime": "2020-05-31-13:00",
+        "delivererPath": {
+            "Stage1": {
+                "address": "local",
+                "time": "2020-05-30-20:00"
+            },
+            "Stage2": {
+                "address": "stationC",
+                "time": "2020-05-31-1:00"
+            },
+            "Stage3": {
+                "address": "stationC",
+                "time": "2021-06-05-01:34"
+            }
+        }
+    },
 
     //member
     orderHistory:{
