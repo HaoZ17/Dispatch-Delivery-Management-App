@@ -20,10 +20,7 @@ import home_img from "../style/image/home_img.svg";
 
 import '../style/User.css';
 import TrackingOnHome from "../components/TrackingInputOnHome";
-import {
-    AimOutlined,
-    CarOutlined
-} from '@ant-design/icons';
+
 import { withRouter } from "react-router-dom";
 
 
@@ -52,10 +49,6 @@ class User extends Component {
     render() {
         return (
             <div>
-                <Layout>
-                    <Header>
-
-                    </Header>
                     <Content>
                         <div className="row-outer-box">
                             <div className="row">
@@ -67,7 +60,8 @@ class User extends Component {
 
                                 <p className="tracking-text"> Tracking</p>
 
-                                <TrackingOnHome className="tracking-input" onEmptyInput = {this.handleEmptyInput}/>
+                                {/* <TrackingOnHome className="tracking-input" onEmptyInput = {this.handleEmptyInput}/> */}
+                                <TrackingOnHome className="tracking-input"/>
 
 
                                 <Link to="/placeOrder">
@@ -126,7 +120,7 @@ class User extends Component {
                                 </div>)}
                         </div>
                     </Content>
-                </Layout>
+
             </div >
         );
     }
