@@ -63,7 +63,7 @@ const initState={
 
         "user": {
             "username": "username",
-            "email": "1234@gmail.com",
+            "email": "test@gmail.com",
             "credit": 100.0,
             "address": "testAddress"
 
