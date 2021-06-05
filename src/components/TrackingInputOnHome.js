@@ -27,7 +27,8 @@ class TrackingInputOnHome extends React.Component {
 
             let trackingNumString = trackingNum.toString();
             // console.log(trackingNumString)
-            this.props.actionController.inputTrackingNumber(trackingNumString)
+            // this.props.actionController.inputTrackingNumber(trackingNumString)
+            this.props.actionController.trackOrder(trackingNumString);
             this.props.history.push("/packagetracking")
         }
 

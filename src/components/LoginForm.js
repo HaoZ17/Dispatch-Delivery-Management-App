@@ -1,7 +1,7 @@
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import { Form, Icon, Input, Button, Checkbox,Typography } from 'antd';
+import { Form, Icon, Input, Button,Typography } from 'antd';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
 
                 <div className='login-block'>
                     <Form onSubmit={this.submitLoginInfo} className="login-form">
-                        <t style={{color:'#215899', marginLeft: '-478px', fontSize: '24px'}}>*</t>
+                        <Text style={{color:'#215899', marginLeft: '-478px', fontSize: '24px'}}>*</Text>
                         <b className='login-form-item-label'> Email</b>
                         <Form.Item label="">
                             {getFieldDecorator('email', {
@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
                                 />,
                             )}
                         </Form.Item>
-                        <t style={{color:'#215899', marginLeft: '-432px', fontSize: '24px'}}>*</t>
+                        <Text style={{color:'#215899', marginLeft: '-432px', fontSize: '24px'}}>*</Text>
                         <b className='login-form-item-label'> Password</b>
                         <Form.Item label="" style={{
                             fontSize: '24px',
