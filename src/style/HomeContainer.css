@@ -108,6 +108,31 @@
     color: #FFFFFF;
 }
 
+.orderlist {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.recentorder {
+    position: absolute;
+    width: 740px;
+    height: 300px;
+    left: 315px;
+    top: 6px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    background-color:rgba(255, 255, 255, 0.8);
+    
+
+    display:inline-block;
+    margin:20px;
+    text-decoration: none;
+}
+
 #tracking-input-home{
     font-size: 24px;
     width: 522px;
