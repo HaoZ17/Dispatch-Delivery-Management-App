@@ -23,26 +23,31 @@ class TopBar extends React.Component {
     this.props.history.push("/register");
   }
 
+
   render() {
     const isLoggedIn = this.props.userInfo === null ? false : true;
     const isTrackingDisplay = this.props.location.pathname === "/" || this.props.location.pathname === "/user" ? false : true;
     const menu = (
       <Menu>
         <Menu.Item>
-          <a rel="noopener noreferrer" href="/user/accountInfo">
+          <a onClick={()=>{
+            this.props.history.push("/user/accountInfo");
+          }}>
             Profile Overview
                 </a>
         </Menu.Item>
         <Menu.Item>
-          <a rel="noopener noreferrer" href="/user/order">
+          <a onClick={async()=>{
+            await this.props.actionController.trackMemberOrder();
+              if(this.props.orderHistory!==null){
+                this.props.history.push("/user/order");
+              }
+          }}>
             Order History
                 </a>
         </Menu.Item>
         <Menu.Item>
-          <a rel="noopener noreferrer" href="/user/credit">
-            Credit
-                </a>
-
+            Credit : {this.props.userInfo===null ? 0 : this.props.userInfo.credit}
               </Menu.Item>
         <Menu.Item>
           <a rel="noopener noreferrer"

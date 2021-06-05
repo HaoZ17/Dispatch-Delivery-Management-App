@@ -49,14 +49,25 @@ class PackageTracking extends Component {
                     <Breadcrumb.Item>Track Package</Breadcrumb.Item>
                 </Breadcrumb>
 
-                <h1 className ='estimate'>Arriving tommorow by 10 pm</h1>
+                <h1 className ='estimate'>
+                    {this.props.trackingInfo===null?
+                    <div></div> :
+                    this.props.trackingInfo.arriveTime
 
-                <Steps direction="vertical" current={1}>
-                    <Step title="Ordered" description="Monday, 05/13/2021 10:00 A.M." />
-                    <Step title="Departed from Station A" description="Monday, 05/13/2021 10:30 A.M." />
-                    <Step title="Picked Up Package" description="Monday, 05/13/2021 12:00 A.M." />
-                    <Step title="Arriving tomorrow" description="" />
-                </Steps>
+                }
+                </h1>
+
+                {
+                    this.props.trackingInfo === null ?
+                    <p>You don't have any package</p>
+                    :
+                    <Steps direction="vertical" current={1}>
+                        <Step title={this.props.trackingInfo.delivererPath.Stage1.address} description={this.props.trackingInfo.delivererPath.Stage1.time} />
+                        <Step title={this.props.trackingInfo.delivererPath.Stage2.address} description={this.props.trackingInfo.delivererPath.Stage2.time} />
+                        <Step title={this.props.trackingInfo.delivererPath.Stage3.address} description={this.props.trackingInfo.delivererPath.Stage3.time} />
+                        <Step title={this.props.trackingInfo.delivererPath.Stage4.address} description={this.props.trackingInfo.delivererPath.Stage4.time} />
+                    </Steps>
+                }
             </div>
         );
     }

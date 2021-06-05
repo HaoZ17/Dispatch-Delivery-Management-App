@@ -34,17 +34,17 @@ class Order extends React.Component {
         const menu = (
             <Menu>
                 <Menu.Item key="0">
-                    <a target="_blank" rel="noopener noreferrer" href="">
+                    <a target="_self" rel="noopener noreferrer" href="">
                         past 3 months
                 </a>
                 </Menu.Item>
                 <Menu.Item key="1">
-                    <a target="_blank" rel="noopener noreferrer" href="">
+                    <a target="_self" rel="noopener noreferrer" href="">
                         past 6 months
                 </a>
                 </Menu.Item>
                 <Menu.Item key="2">
-                    <a target="_blank" rel="noopener noreferrer" href="">
+                    <a target="_self" rel="noopener noreferrer" href="">
                         past 1 year
                 </a>
                 </Menu.Item>
@@ -60,7 +60,10 @@ class Order extends React.Component {
                 </Breadcrumb>
 
                 {/* two tabs: Processing and Delivered */}
-                <Tabs className="order-tab" defaultActiveKey="processing" onChange={this.callback}>
+
+                {this.props.orderHistory===null?
+                <p>You don't have any order</p>:
+                    <Tabs className="order-tab" defaultActiveKey="processing" onChange={this.callback}>
                     <TabPane tab="Processing" key="Processing" style={{ height: '680px', overflow: 'auto' }} forceRender={true}>
 
                         {/* advanced feature: dropdown menu for orders from recent 3/6 months or 1 year */}
@@ -72,11 +75,12 @@ class Order extends React.Component {
                         </Dropdown>
 
                         {/* order list */}
+                    
                         <List
                             className="order-list"
                             bordered="true"
                             itemLayout="horizontal"
-                            dataSource={this.props.processing} //replace data from store
+                            dataSource={this.props.orderHistory.pending.pending} //replace data from store
                             renderItem={item => (
                                 <List.Item className="order-list-item">
                                     <List.Item.Meta
@@ -102,7 +106,7 @@ class Order extends React.Component {
                                 </List.Item>
                             )}
                         />
-                </TabPane>
+                    </TabPane>
                     <TabPane tab="Delivered" key="Delivered" style={{ height: '680px', overflow: 'auto' }} forceRender={true}>
 
                         {/* advanced feature: dropdown menu for orders from recent 3/6 months or 1 year */}
@@ -118,7 +122,7 @@ class Order extends React.Component {
                             className="order-list"
                             bordered="true"
                             itemLayout="horizontal"
-                            dataSource={this.props.delivered} // replace of delivered time
+                            dataSource={this.props.orderHistory.completed.completed} // replace of delivered time
                             renderItem={item => (
                                 <List.Item className="order-list-item">
                                     <List.Item.Meta
@@ -140,8 +144,10 @@ class Order extends React.Component {
                                 </List.Item>
                             )}
                         />
-                </TabPane>
-                </Tabs>
+                    </TabPane>
+                    </Tabs>
+                }
+                
             </div>
         )
     }

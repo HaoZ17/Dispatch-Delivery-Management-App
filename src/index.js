@@ -18,9 +18,9 @@ ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
         {/* <App /> */}
-        {/* <Test/> */}
+        <Test/>
         {/* <InputOrderForm/> */}
-        <OrderF/>
+        {/* <OrderF/> */}
       </BrowserRouter>
      
   </Provider>

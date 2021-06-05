@@ -17,12 +17,10 @@ const initState={
 
     //tracking visitor*
     trackingNumber:"a9b51c96-cb93-4",
-    trackingInfo:{
-    },
+    trackingInfo:null,
 
     //member
-    orderHistory:{
-    },
+    orderHistory:null,
     //place order*
 
     orderInfo:{
