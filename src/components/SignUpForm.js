@@ -13,6 +13,12 @@ class SignUpForm extends React.Component {
     state = {
         confirmDirty: false,
     };
+    waitfunc=async(data)=>{
+        await this.props.actionController.registUser(data);
+        if(this.props.registerStatus){
+            this.props.history.push("/login");
+        }
+    }
 
     submitRegisterInfo = e => {
         e.preventDefault();
@@ -32,11 +38,12 @@ class SignUpForm extends React.Component {
                     mobile: mobile,
                 }
                 //console.log(data)
-                this.props.actionController.registUser(data);
-                //
-                if(this.props.registerStatus){
-                    this.props.history.push("/login");
-                }
+                // this.props.actionController.registUser(data);
+                // //
+                // if(this.props.registerStatus){
+                //     this.props.history.push("/login");
+                // }
+                this.waitfunc(data);
             }
         });
     }
