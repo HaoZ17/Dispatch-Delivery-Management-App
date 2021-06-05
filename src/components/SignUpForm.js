@@ -33,7 +33,10 @@ class SignUpForm extends React.Component {
                 }
                 //console.log(data)
                 this.props.actionController.registUser(data);
-
+                //
+                if(this.props.registerStatus){
+                    this.props.history.push("/login");
+                }
             }
         });
     }
@@ -45,6 +48,7 @@ class SignUpForm extends React.Component {
     handleConfirmBlur = e => {
         const { value } = e.target;
         this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+
     };
 
     compareToFirstPassword = (rule, value, callback) => {

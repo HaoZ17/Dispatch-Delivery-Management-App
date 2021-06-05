@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component,createRef } from 'react'
+import { bindActionCreators } from "redux";
+import { actions } from '../actionCreaters/actionCreater'
+import { connect } from "react-redux";
 import ReactDOM from 'react-dom';
 
 import { Steps, PageHeader } from "antd";
@@ -30,19 +33,34 @@ class Tracking extends Component {
                             subTitle=""
                         />,
                 <h1>Arriving tommorow by 10 pm</h1>
-
-                <Steps direction="vertical" current={1}>
-                    <Step title="Ordered" description="Monday, 05/13/2021 10:00 A.M." />
-                    <Step title="Departed from Station A" description="Monday, 05/13/2021 10:30 A.M." />
-                    <Step title="Picked Up Package" description="Monday, 05/13/2021 12:00 A.M." />
-                    <Step title="Arriving tomorrow" description="" />
-                </Steps>
+                {
+                    this.props.trackingInfo === null ?
+                    <p>You don't have any package</p>
+                    :
+                    <Steps direction="vertical" current={1}>
+                        <Step title={this.props.trackingInfo.delivererPath.Stage1.address} description={this.props.trackingInfo.delivererPath.Stage1.time} />
+                        <Step title={this.props.trackingInfo.delivererPath.Stage2.address} description={this.props.trackingInfo.delivererPath.Stage2.time} />
+                        <Step title={this.props.trackingInfo.delivererPath.Stage3.address} description={this.props.trackingInfo.delivererPath.Stage3.time} />
+                        <Step title={this.props.trackingInfo.delivererPath.Stage4.address} description={this.props.trackingInfo.delivererPath.Stage4.time} />
+                    </Steps>
+                }
+                
             </div>
         );
     }
 }
-
-export default Tracking;
+const mapStateToProps = (state) => {
+    return {
+      ...state
+    };
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      actionController: bindActionCreators({ ...actions }, dispatch)
+    };
+  };
+export default connect(mapStateToProps, mapDispatchToProps)(Tracking);
 // profile page
 
 /* Abstract
