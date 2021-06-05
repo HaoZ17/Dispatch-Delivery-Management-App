@@ -30,8 +30,9 @@ class TrackingInput extends React.Component {
             this.setState({
                 error: ""
             })
-            let trackingNumString = value.toString()
-            this.props.actionController.inputTrackingNumber(trackingNumString)
+            let trackingNumString = value;
+            this.props.actionController.trackOrder(trackingNumString);
+            //processing
             this.props.history.push("/packagetracking")
         }
 
