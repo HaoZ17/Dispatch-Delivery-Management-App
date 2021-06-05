@@ -187,6 +187,16 @@ const checkDataform=(payload)=>({
     payload
 })
 
+const checkDataformOrderInfo=(payload)=>({
+    type:"checkDataformOrderInfo",
+    payload
+})
+
+const checkDataformPackageInfo=(payload)=>({
+    type:"checkDataformPackageInfo",
+    payload
+})
+
 const reSubmitProfile=(payload)=>({
     type:"reSubmitProfile",
     payload
@@ -212,6 +222,8 @@ export const actions={
     decreaseMDButton,
     resetDisplayModal,
     checkDataform,
+    checkDataformOrderInfo,
+    checkDataformPackageInfo,
     signOut,
     reSubmitProfile
 }

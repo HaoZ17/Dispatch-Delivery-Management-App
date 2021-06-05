@@ -8,13 +8,14 @@ import { render } from '@testing-library/react';
 import {actions} from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
 import OrderForm0 from "./OrderForm0";
+import myurl from "../style/image/homepage.jpg";
 const { TextArea } = Input;
 
 class OrderForm6 extends React.Component {
     state = { 
-      iamgeUrl:"https://lh3.googleusercontent.com/deWOogd8V6YRFieK0ccV3yi-m20ER2kpydIvq6CVmxqTMrH1sV7R0EPt-1O0lYmSOjyukg=s113",
+      iamgeUrl:myurl,
       cardLastFour:"0000",
-      timer: {}
+      timer: ""
     }
   
     // constructor() {
@@ -23,9 +24,11 @@ class OrderForm6 extends React.Component {
   
       render() { 
       return ( 
-        <React.Fragment>
-          <Row>
+        <React.Fragment >
+          <Row  style={{textAlign:"left"}} >  
+          <Col span={10}>
           <img style={{border:"5px solid #215899" ,borderRadius:"10px", opacity:"0.8", position:"relative", marginLeft:"5em", marginTop:"5em"}} src={this.state.iamgeUrl} width="369px" height="276px" shape="round" alt="" />
+          </Col>
           <Col>
           <h3 style={{color:"gray", fontWeight:"normal", fontSize:"1.3em" , paddingLeft:"2em", position:"relative", marginLeft:"5em", marginTop:"5em"}}>My SmartExpress Card({this.state.cardLastFour})</h3>
           <Statistic value={100.00} precision={2} prefix="$" style={{ fontFamily:"Trebuchet MS", paddingLeft:"2em", position:"relative", fontWeight:"600", marginLeft:"7em", marginTop:"3em"}} />
@@ -43,23 +46,23 @@ class OrderForm6 extends React.Component {
           <Col span={16} style={{position:"relative", marginLeft:"5em"}} offset={10}>
           <section style={{display:"flex", alignItems: "baseline"}}>
           <h3 style={{fontSize:"1.5em"}}>Subtotal</h3>
-          <span style={{overflow:"hidden", flex:"1"}}>________________________________________________________________________________________________________________________________________________________________________________________________________________________________</span>
-          <h3 style={{fontSize:"1.5em"}}>$50</h3>
-          </section>
-          <section style={{display:"flex", alignItems: "baseline"}}>
-          <h3 style={{fontSize:"1.5em"}}>Tax</h3>
           <span style={{overflow:"hidden", flex:"1"}}>______________________________________________________________________________________________________________________________________________________________________________________________________________________________________</span>
           <h3 style={{fontSize:"1.5em"}}>$50</h3>
           </section>
           <section style={{display:"flex", alignItems: "baseline"}}>
+          <h3 style={{fontSize:"1.5em"}}>Tax</h3>
+          <span style={{overflow:"hidden", flex:"1"}}>____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________</span>
+          <h3 style={{fontSize:"1.5em"}}>$50</h3>
+          </section>
+          <section style={{display:"flex", alignItems: "baseline"}}>
           <h2 style={{fontSize:"2em"}}>Total</h2>
-          <span style={{overflow:"hidden", flex:"1"}}>__________________________________________________________________________________________________________________________________________________________________________________________________________________________________</span>
+          <span style={{overflow:"hidden", flex:"1"}}>_________________________________________________________________________________________________________________________________________________________________________________________________________________________________________</span>
           <h2 style={{fontSize:"2em"}}>$50</h2>
           </section>
           
           </Col>
-          </Row>
-          <Row style={{position:"relative", marginLeft:"5em", marginTop:"2em"}}>
+          </Row> 
+          <Row style={{position:"relative", marginLeft:"5em", marginTop:"2em", textAlign:"left"}}>
                <Button size={'large'} type="text" //htmlType="cancel"
                 shape="round" style={{borderColor: "#215899" }} onClick={this.props.actionController.decreaseMDButton}>
                &nbsp;  Back  &nbsp;

@@ -65,11 +65,21 @@ const initState={
     toInfo:{
 
     },
+    orderInfoAll:{
+
+    },
+    packageInfo:{
+
+    },
     isLoading:false,
 
     //options*
     options:[],
     optionsStatus:false,
+    dronePrice:"100",
+    robotPrice:"50",
+
+
 
     //checkout info *
 
@@ -201,7 +211,20 @@ const reducer=(state=initState,action={})=>{
         case "checkDataform":
             console.log(action.payload)
             return{
-                ...state
+                ...state,
+                fromInfo:action.payload,
+            }
+        case "checkDataformOrderInfo":
+            console.log(action.payload)
+            return{
+                ...state,
+                orderInfoAll:action.payload,
+            }
+        case "checkDataformPackageInfo":
+            console.log(action.payload)
+            return{
+                ...state,
+                packageInfo:action.payload,
             }
         case "signOut":
             console.log("logouy")
