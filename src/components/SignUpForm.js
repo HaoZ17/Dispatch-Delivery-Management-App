@@ -12,11 +12,17 @@ class SignUpForm extends React.Component {
 
     state = {
         confirmDirty: false,
+        loading: false,
     };
+
     waitfunc=async(data)=>{
+        this.setState({ loading: true });
         await this.props.actionController.registUser(data);
         if(this.props.registerStatus){
+            this.setState({ loading: false });
             this.props.history.push("/login");
+        } else {
+            this.setState({ loading: false });
         }
     }
 
@@ -265,10 +271,10 @@ class SignUpForm extends React.Component {
                                  <Text className='login-form-indicates-required-field' > indicates required field</Text>
                              </div>
 
-                             <Button  type="primary" htmlType="submit" className="login-form-button">
+                             <Button  type="primary" htmlType="submit" className="login-form-button" loading={this.state.loading}>
                                  Sign Up
                              </Button>
-                             <Button style={{ marginLeft: 16 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
+                             <Button style={{ marginLeft: 20 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
                                  Cancel
                              </Button>
                          </div>

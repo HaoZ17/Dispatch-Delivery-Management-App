@@ -24,6 +24,12 @@ class HomeContainer extends React.Component {
         })
     };
 
+    clearEmptyInput = () => {
+        this.setState({
+            error: ""
+        })
+    };
+
     render() {
         return (
             <div>
@@ -36,7 +42,11 @@ class HomeContainer extends React.Component {
 
                         <p className="tracking-text"> Tracking</p>
 
-                        <TrackingOnHome className="tracking-input" onEmptyInput = {this.handleEmptyInput}/>
+                        <TrackingOnHome
+                            className="tracking-input"
+                            onEmptyInput = {this.handleEmptyInput}
+                            clearEmptyInput = {this.clearEmptyInput}
+                        />
 
 
                         <Link to="/placeOrder">
