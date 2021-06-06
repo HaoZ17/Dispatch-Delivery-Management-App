@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
         }
     }
 
-    submitLoginInfo = e => {
+    submitLoginInfo = async(e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             
