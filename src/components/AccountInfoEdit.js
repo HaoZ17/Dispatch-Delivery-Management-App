@@ -234,7 +234,6 @@ class EditProfileForm extends React.Component {
                 }
 
                 console.log(data);
-                this.waitfunc(data);
                 this.props.actionController.profileUpdate(data);
             }
 
