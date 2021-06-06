@@ -61,7 +61,6 @@ class User extends Component {
                                 <p className="tracking-text"> Tracking</p>
 
                                 <TrackingOnHome className="tracking-input" onEmptyInput = {this.handleEmptyInput}/> 
-                                /*{<TrackingOnHome className="tracking-input"/>}*/
 
 
                                 <Link to="/placeOrder">
