@@ -72,7 +72,7 @@
     color: #5E5E5E;
 }
 button.ant-btn.login-form-button.ant-btn-primary.login-form-button{
-    width: 120px;
+    width: 140px;
     height: 50px;
     background: #215899;
     border-radius: 25px;
@@ -82,7 +82,7 @@ button.ant-btn.login-form-button.ant-btn-primary.login-form-button{
     font-size: 24px;
     line-height: 28px;
     color: #FFFFFF;
-    margin-left: -296px;
+    margin-left: -254px;
     margin-top: 10px;
     border-color: transparent;
 }

@@ -12,11 +12,17 @@ class SignUpForm extends React.Component {
 
     state = {
         confirmDirty: false,
+        loading: false,
     };
+
     waitfunc=async(data)=>{
+        this.setState({ loading: true });
         await this.props.actionController.registUser(data);
         if(this.props.registerStatus){
+            this.setState({ loading: false });
             this.props.history.push("/login");
+        } else {
+            this.setState({ loading: false });
         }
     }
 
@@ -70,27 +76,15 @@ class SignUpForm extends React.Component {
 
     render = () => {
         const { getFieldDecorator } = this.props.form;
-        const formItemLayout = {
-            labelRow: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperRow: {
-                xs: { span: 24 },
-                sm: { span: 16 },
-            },
-        };
-
-
 
         return (
 
 
             <div>
-                 <Form {...formItemLayout} onSubmit={this.submitRegisterInfo} className="signUp-form">
+                 <Form  onSubmit={this.submitRegisterInfo} className="signUp-form">
                     <Row>
                         <Col span={8} >
-                            <t style={{color:'#215899', marginLeft: '-310px', fontSize: '24px'}}>*</t>
+                            <Text style={{color:'#215899', marginLeft: '-310px', fontSize: '24px'}}>*</Text>
                             <b className='login-form-item-label'> Name</b>
                             <Form.Item label="">
                                 {getFieldDecorator('name', {
@@ -105,7 +99,7 @@ class SignUpForm extends React.Component {
                                     />,
                                 )}
                             </Form.Item>
-                            <t style={{color:'#215899', marginLeft: '-310px', fontSize: '24px'}}>*</t>
+                            <Text style={{color:'#215899', marginLeft: '-310px', fontSize: '24px'}}>*</Text>
                             <b className='login-form-item-label'> Email</b>
                             <Form.Item label="">
                                 {getFieldDecorator('email', {
@@ -120,7 +114,7 @@ class SignUpForm extends React.Component {
                                     />,
                                 )}
                             </Form.Item>
-                            <t style={{color:'#215899', marginLeft: '-266px', fontSize: '24px'}}>*</t>
+                            <Text style={{color:'#215899', marginLeft: '-266px', fontSize: '24px'}}>*</Text>
                             <b className='login-form-item-label'> Password</b>
                             <Form.Item label="">
                                 {getFieldDecorator('password', {
@@ -137,7 +131,7 @@ class SignUpForm extends React.Component {
                                 )}
                             </Form.Item>
 
-                            <t style={{color:'#215899', marginLeft: '-177px', fontSize: '24px'}}>*</t>
+                            <Text style={{color:'#215899', marginLeft: '-177px', fontSize: '24px'}}>*</Text>
                             <b className='login-form-item-label'> Confirm Password</b>
                             <Form.Item label="" hasFeedback>
                                 {getFieldDecorator('confirm', {
@@ -277,10 +271,10 @@ class SignUpForm extends React.Component {
                                  <Text className='login-form-indicates-required-field' > indicates required field</Text>
                              </div>
 
-                             <Button  type="primary" htmlType="submit" className="login-form-button">
+                             <Button  type="primary" htmlType="submit" className="login-form-button" loading={this.state.loading}>
                                  Sign Up
                              </Button>
-                             <Button style={{ marginLeft: 16 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
+                             <Button style={{ marginLeft: 20 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
                                  Cancel
                              </Button>
                          </div>
