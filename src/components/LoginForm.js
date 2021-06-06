@@ -18,7 +18,10 @@ class LoginForm extends React.Component {
         const isLoggedIn = this.props.userInfo === null ? false : true;
         if(isLoggedIn){
             this.setState({ loading: false });
-            this.props.history.push("/user");
+            await this.props.actionController.trackMemberOrder();
+              if(this.props.orderHistory!==null){
+                this.props.history.push("/user");
+              }
         }else {
             this.setState({ loading: false });
         }
@@ -30,8 +33,8 @@ class LoginForm extends React.Component {
             
             if (!err) {
                 console.log(values);
-                // this.props.actionController.signInRequest(values);
-                // this.props.history.push("/user");
+                //this.props.actionController.signInRequest(values);
+                //this.props.history.push("/user");  
                 this.waitfunc(values)
             }
         });
