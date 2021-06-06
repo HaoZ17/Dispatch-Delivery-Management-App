@@ -5,33 +5,51 @@ import React, {createRef} from 'react';
 import {withRouter} from "react-router-dom";
 import { Input, Icon } from 'antd';
 
-// const { Search } = Input;
-
 
 class TrackingInputOnHome extends React.Component {
 
     constructor(props) {
         super(props)
         this.trackingInputRef=new createRef();
+        this.state = {
+            loading: false
+        }
+    }
+
+    waitfunc=async(data) => {
+        this.props.clearEmptyInput();
+        this.setState({loading: true});
+        this.props.actionController.resetResult();
+        await this.props.actionController.trackOrder(data);
+        if(this.props.trackingResult){
+            this.setState({loading: false});
+            this.props.history.push("/packagetracking");
+        }else {
+            this.setState({loading: false});
+        }
     }
 
     render() {
 
+
         const onClickSearch = () => {
             let trackingNum = this.trackingInputRef.current.state.value;
 
-            if (trackingNum === undefined) {
+            if (trackingNum === undefined || trackingNum === "") {
                 this.props.onEmptyInput();
                 return;
+            } else {
+                let trackingNumString = trackingNum.toString();
+                this.waitfunc(trackingNumString);
             }
-
-            let trackingNumString = trackingNum.toString();
-            // console.log(trackingNumString)
-            this.props.actionController.inputTrackingNumber(trackingNumString)
-            this.props.history.push("/packagetracking")
         }
 
-        const suffix =
+        const suffix = this.state.loading ?
+            <Icon
+                type="loading"
+                style={{ fontSize: '30px' }}
+            />
+            :
             <Icon
                 type="search"
                 style={{ fontSize: '30px' }}
@@ -47,20 +65,6 @@ class TrackingInputOnHome extends React.Component {
                         suffix={suffix}
                         ref={this.trackingInputRef}
                     />
-
-
-                    {/*<input*/}
-                    {/*    type={"text"}*/}
-                    {/*    ref = {this.trackingRef}*/}
-                    {/*    placeholder={"Please enter your tracking number"}*/}
-                    {/*/>*/}
-
-                    {/*<Link to="/packagetracking">*/}
-                    {/*    <button*/}
-                    {/*        onClick={()=>{this.props.actionController.inputTrackingNumber(this.submitLogin())}}>*/}
-                    {/*        Track*/}
-                    {/*    </button>*/}
-                    {/*</Link>*/}
                 </div>
             </>
         );

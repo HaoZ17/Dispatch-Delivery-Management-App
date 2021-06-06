@@ -27,11 +27,6 @@ const registUser=(payload)=>{
     }
 }
 
-// register info
-// const loadRegisterInfo=(payload)=>({
-//     type:Actions.LOADREGISTERINFO,
-//     payload
-// })
 
 // sign in */
 const loaduserInfo=(payload)=>({
@@ -56,6 +51,7 @@ const signInRequest=(payload)=>{
         }).catch((err)=>{
             console.log(err);
             console.log("SignIn Error");
+            alert("please check your Email or Password");
         })
     }
 }
@@ -141,6 +137,14 @@ const trackOrder=(payload)=>{
         })
     }
 }
+
+const resetResult=()=>({
+    type:"resetResult"
+})
+
+const allsetResult=()=>({
+    type:"allsetResult"
+})
 
 
 //place order */
@@ -262,5 +266,7 @@ export const actions={
     checkDataform,
     signOut,
     reSubmitProfile,
-    profileUpdate
+    profileUpdate,
+    resetResult,
+    allsetResult
 }
