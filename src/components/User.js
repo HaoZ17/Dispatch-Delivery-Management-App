@@ -41,9 +41,9 @@ class User extends Component {
     };
 
     handleEmptyInput = () => {
-        // this.setState({
-        //     error: "Please input your tracking number!"
-        // })
+         this.setState({
+             error: "Please input your tracking number!"
+         })
     };
 
     render() {
@@ -60,8 +60,8 @@ class User extends Component {
 
                                 <p className="tracking-text"> Tracking</p>
 
-                                {/* <TrackingOnHome className="tracking-input" onEmptyInput = {this.handleEmptyInput}/> */}
-                                <TrackingOnHome className="tracking-input"/>
+                                <TrackingOnHome className="tracking-input" onEmptyInput = {this.handleEmptyInput}/> 
+                                /*{<TrackingOnHome className="tracking-input"/>}*/
 
 
                                 <Link to="/placeOrder">
