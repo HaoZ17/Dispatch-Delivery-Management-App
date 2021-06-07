@@ -80,10 +80,10 @@ class TopBar extends React.Component {
         <div className="topbar-login-group">
         {   isLoggedIn ?
           <div>
-            <UserOutlined style={{ color: "#215899" }} />
+            <UserOutlined style={{ color: "#215899",fontSize:"20px" }} />
             <Dropdown overlay={menu}>
-              <a className="topbar-dropdown-link" onClick={e => e.preventDefault()}>
-                User <CaretDownOutlined style={{ color: "#215899" }} />
+              <a className="topbar-dropdown-link" onClick={e => e.preventDefault()} style={{fontSize:"large",marginLeft:"10px",marginRight:"10px"}}>
+                User <CaretDownOutlined style={{ color: "#215899",fontSize:"20px" }} />
               </a>
             </Dropdown>
           </div>
