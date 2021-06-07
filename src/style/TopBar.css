@@ -15,3 +15,26 @@
     color: #ff4d4f;
     font-size: 14px;
 }
+.topbar-tracking{
+    display: flex;
+    position:absolute;
+    left: 30px;
+}
+
+.topbar-tracking p {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.topbar-login-group{
+    position:absolute;
+    right: 30px;
+}
+
+.login-btn{
+    margin-left: 10px;
+}
+.signup-btn{
+    margin-left: 10px;
+}
