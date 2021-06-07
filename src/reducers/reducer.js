@@ -51,6 +51,7 @@ const initState = {
             }
         }
     },
+    trackingResult:false,
 
     //member
     orderHistory: {
@@ -340,6 +341,7 @@ const reducer = (state = initState, action = {}) => {
                 name: action.payload.name,
                 email: action.payload.email,
             }
+
         // added by Xiao & Yun
         case Actions.LOADREGISTERINFO:
             console.log(action.payload)
@@ -350,6 +352,7 @@ const reducer = (state = initState, action = {}) => {
                 email: action.payload.email,
                 showRegForm: !state.showRegForm
             }
+
         case Actions.SIGNUPSTATUS:
             return {
                 ...state,
@@ -375,7 +378,9 @@ const reducer = (state = initState, action = {}) => {
         case Actions.LOADINGVISITERORDER:
             return {
                 ...state,
-                trackingInfo: action.payload
+
+                trackingInfo:action.payload,
+                trackingResult:true
             }
         case Actions.INPUTTRACKINGNUMBER:
             console.log("tracking Info is");
@@ -432,6 +437,16 @@ const reducer = (state = initState, action = {}) => {
             return {
                 ...state,
                 userInfo: action.payload
+            }
+        case "resetResult":
+            return{
+                ...state,
+                trackingResult:false
+            }
+        case "allsetResult":
+            return{
+                ...state,
+                trackingResult:true
             }
         default:
             return { ...state };

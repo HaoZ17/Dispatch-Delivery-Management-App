@@ -1,23 +1,41 @@
 import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
-import { Form, Icon, Input, Button, Checkbox,Typography } from 'antd';
+import { Form, Icon, Input, Button,Typography } from 'antd';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 const { Text } = Typography;
 
 class LoginForm extends React.Component {
+    state = {
+        loading: false,
+    };
 
+    waitfunc=async(data)=>{
+        this.setState({ loading: true });
+        await this.props.actionController.signInRequest(data);
+        const isLoggedIn = this.props.userInfo === null ? false : true;
+        if(isLoggedIn){
+            this.setState({ loading: false });
+            await this.props.actionController.trackMemberOrder();
+              if(this.props.orderHistory!==null){
+                this.props.history.push("/user");
+              }
+        }else {
+            this.setState({ loading: false });
+        }
+    }
 
-    submitLoginInfo = e => {
+    submitLoginInfo = async(e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             
             if (!err) {
                 console.log(values);
-                this.props.actionController.signInRequest(values);
-                this.props.history.push("/user");
+                //this.props.actionController.signInRequest(values);
+                //this.props.history.push("/user");  
+                this.waitfunc(values)
             }
         });
     }
@@ -33,7 +51,7 @@ class LoginForm extends React.Component {
 
                 <div className='login-block'>
                     <Form onSubmit={this.submitLoginInfo} className="login-form">
-                        <t style={{color:'#215899', marginLeft: '-478px', fontSize: '24px'}}>*</t>
+                        <Text style={{color:'#215899', marginLeft: '-478px', fontSize: '24px'}}>*</Text>
                         <b className='login-form-item-label'> Email</b>
                         <Form.Item label="">
                             {getFieldDecorator('email', {
@@ -48,7 +66,7 @@ class LoginForm extends React.Component {
                                 />,
                             )}
                         </Form.Item>
-                        <t style={{color:'#215899', marginLeft: '-432px', fontSize: '24px'}}>*</t>
+                        <Text style={{color:'#215899', marginLeft: '-432px', fontSize: '24px'}}>*</Text>
                         <b className='login-form-item-label'> Password</b>
                         <Form.Item label="" style={{
                             fontSize: '24px',
@@ -80,11 +98,11 @@ class LoginForm extends React.Component {
                                 <Text style={{color:'#215899' , marginLeft: '-295px', fontSize: '24px'}}>*</Text>
                                 <Text className='login-form-indicates-required-field' > indicates required field</Text>
                             </div>
-                            <Button  type="primary" htmlType="submit" className="login-form-button">
+                            <Button  type="primary" htmlType="submit" className="login-form-button" loading={this.state.loading}>
                                 Log In
                             </Button>
 
-                            <Button style={{ marginLeft: 16 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
+                            <Button style={{ marginLeft: 20 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
                                 Cancel
                             </Button>
 

@@ -38,7 +38,7 @@ class TopBar extends React.Component {
         </Menu.Item>
         <Menu.Item>
           <a onClick={async()=>{
-            await this.props.actionController.trackMemberOrder();
+           // await this.props.actionController.trackMemberOrder();
               if(this.props.orderHistory!==null){
                 this.props.history.push("/user/order");
               }

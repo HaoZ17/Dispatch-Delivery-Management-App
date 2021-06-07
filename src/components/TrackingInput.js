@@ -3,57 +3,75 @@ import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
 import React, {createRef} from 'react';
 import {withRouter} from "react-router-dom";
-import { Input } from 'antd';
-
-const { Search } = Input;
+import {Icon, Input} from 'antd';
 
 
 class TrackingInput extends React.Component {
 
     constructor(props) {
         super(props)
+        this.trackingInputRef=new createRef();
         this.state = {
-            error: ""
+            error: "",
+            loading: false
+        }
+    }
+
+    waitfunc=async(data) => {
+        this.setState({error: ""});
+        this.setState({loading: true});
+        this.props.actionController.resetResult();
+        await this.props.actionController.trackOrder(data);
+        if(this.props.trackingResult){
+            this.setState({loading: false});
+            this.props.history.push("/packagetracking");
+        }else {
+            this.setState({loading: false});
         }
     }
 
 
     render() {
 
-        const onClickSearch = (value) => {
-            if (value === "") {
+        const onClickSearch = () => {
+            let trackingNum = this.trackingInputRef.current.state.value;
+            if (trackingNum === undefined || trackingNum === "") {
                 this.setState({
                     error: "Please input your tracking number!"
                 })
                 return;
+            } else {
+                this.setState({
+                    error: ""
+                })
+                // console.log(trackingNum);
+                this.waitfunc(trackingNum);
             }
-            this.setState({
-                error: ""
-            })
-            let trackingNumString = value;
-            this.props.actionController.trackOrder(trackingNumString);
-            //processing
-            this.props.history.push("/packagetracking")
+
         }
+
+        const suffix = this.state.loading ?
+            <Icon
+                type="loading"
+                style={{ fontSize: '14px' }}
+            />
+            :
+            <Icon
+                type="search"
+                style={{ fontSize: '14px' }}
+                onClick={onClickSearch}
+            />
 
         return (
 
-                <div>
-                    <Search
-                        placeholder="Please enter your tracking number"
-                        onSearch={onClickSearch}
-                        // style={{
-                        //     fontSize: '30px',
-                        //     width: '522px',
-                        //     height: '60px',
-                        //     border: '2px solid #5E5E5E',
-                        //     borderRadius: '12px',
-                        //     boxSizing: 'border-box',
-                        //     marginLeft: '14px',
-                        //     fontSizeAdjust:'24px',
-                        // }}
-                    />
+            <div>
+                <Input
+                    placeholder="Please enter your tracking number"
+                    suffix={suffix}
+                    ref={this.trackingInputRef}
+                />
 
+                <div className="error-msg-top-bar">{this.state.error}</div>
 
             </div>
         );
