@@ -42,7 +42,7 @@ class Test extends React.Component {
                 <TopBar></TopBar>
                 <Main></Main>
               </div>
-                <div>
+                {/* <div>
                   <button onClick={()=>{console.log(this.props.trackingNumber)}}>trackingNumber</button>
                   <button onClick={()=>{console.log(this.props.email)}}>UserEmail</button>
                   <button onClick={()=>{console.log(this.props.userInfo)}}>userInfo</button>
@@ -59,7 +59,7 @@ class Test extends React.Component {
                 <div>
                   <input type="text" onChange={(e)=>{this.onChangeEvent(e.target.value)}}/>
                   <button onClick={()=>{this.props.actionController.trackOrder(this.state.input)}}>search</button>
-                </div>
+                </div> */}
                 {/* <input type="text" ref={this.emailRef} placeholder="email" />
                 <input type="password" ref={this.passCodeRef} placeholder="Password"/>
                 <button onClick={()=>{this.props.actionController.loginInfo(this.submitLogin())}}>submit</button>

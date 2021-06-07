@@ -311,5 +311,6 @@ export const actions={
     saveOptionInfo,
     saveUserInfo,
     redeem,
-    checkOutUpdate
+    checkOutUpdate,
+    resetResult
 }

@@ -39,7 +39,7 @@ const isLoggedIn=false;
             </Row>
             <br/> 
             <Col span={14}>
-            <Input placeholder={this.props.trackingNumber}></Input>
+            <Input value={this.props.trackingNumber}></Input>
             </Col>
             <br/>
             &nbsp;
