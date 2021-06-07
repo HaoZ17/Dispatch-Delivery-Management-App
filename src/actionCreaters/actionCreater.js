@@ -225,6 +225,9 @@ const checkOutUpdate=()=>({
     type:"checkOutUpdate"
 })
 
+const checkoutReset=()=>({
+    type:"checkoutReset"
+})
 /**
  * 辅助测试功能模块
  */
@@ -312,5 +315,6 @@ export const actions={
     saveUserInfo,
     redeem,
     checkOutUpdate,
-    resetResult
+    resetResult,
+    checkoutReset
 }
