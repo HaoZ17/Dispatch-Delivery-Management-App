@@ -15,7 +15,7 @@ class OrderForm6 extends React.Component {
     state = { 
       iamgeUrl:myurl,
       cardLastFour:"0000",
-      timer: ""
+      timer: "10"
     }
   
     // constructor() {
