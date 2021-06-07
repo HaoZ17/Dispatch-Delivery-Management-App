@@ -17,7 +17,7 @@ class TrackingInputOnHome extends React.Component {
     }
 
     waitfunc=async(data) => {
-        this.props.clearEmptyInput();
+        // this.props.clearEmptyInput();
         this.setState({loading: true});
         this.props.actionController.resetResult();
         await this.props.actionController.trackOrder(data);
