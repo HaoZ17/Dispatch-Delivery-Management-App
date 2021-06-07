@@ -12,7 +12,7 @@ import { Layout } from 'antd';
 import { List, Card, PageHeader, Breadcrumb } from 'antd';
 import {
     HomeOutlined,
-    SmileOutlined,
+    UserOutlined
 } from '@ant-design/icons';
 import '../style/AccountInfo.css';
 import { withRouter } from "react-router-dom";
@@ -44,7 +44,7 @@ class AccountInfo extends React.Component {
         return (
             <div>
                 <Layout>
-                    <Header><h1>Account Information</h1></Header>
+                    <Header><h0>Account Information</h0></Header>
                     <Content>
                         {/* <PageHeader
                             className="site-page-header"
@@ -58,7 +58,7 @@ class AccountInfo extends React.Component {
                         </Breadcrumb>
                         <Row className='index' gutter={24}>
                             <Col span={11} className="left-side">
-                                <Card className="infocard" title={<span><SmileOutlined /> Personal Info </span>} bordered={true}>
+                                <Card className="infocard1" title={<span> <h1><UserOutlined /> Personal Info</h1> </span>} bordered={true}>
                                     <List class='personalinfo' bordered='false'>
                                         <List.Item>{'Name    : ' + this.props.userInfo.name}</List.Item>
                                         <List.Item>{'Email address : ' + this.props.userInfo.email}</List.Item>
@@ -70,9 +70,9 @@ class AccountInfo extends React.Component {
                                 </Card>
                             </Col>
                             <Col span={11} className="right-side">
-                                <Card className="infocard" title={<span> <HomeOutlined /> Address </span>} bordered={true}>
-                                    <List class='address' bordered='false'>
-                                        <List.Item>{this.props.userInfo.shippingAddress}</List.Item>
+                                <Card className="infocard2" title={<span> <h1><HomeOutlined /> Address </h1></span>} bordered={true}>
+                                    <List class='personalinfo' bordered='false'>
+                                        <List.Item>{'Address : ' + this.props.userInfo.address}</List.Item>
                                     </List>
                                 </Card>
                             </Col>
@@ -84,7 +84,7 @@ class AccountInfo extends React.Component {
                             <Col span={8}>col-4</Col>
                             <Col span={5}>col-4</Col>
                             <Col span={1}>
-                                <Button type="primary" onClick={() => (this.props.history.push('/user/accountInfo/edit'))}>Edit</Button>
+                                <Button type="primary" size = {"large"} onClick={() => (this.props.history.push('/user/accountInfo/edit'))}>Edit</Button>
                             </Col>
                         </Row>
 

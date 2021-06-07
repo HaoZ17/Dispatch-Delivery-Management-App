@@ -27,11 +27,6 @@ const registUser=(payload)=>{
     }
 }
 
-// register info
-// const loadRegisterInfo=(payload)=>({
-//     type:Actions.LOADREGISTERINFO,
-//     payload
-// })
 
 // sign in */
 const loaduserInfo=(payload)=>({
@@ -46,6 +41,7 @@ const signInRequest=(payload)=>{
             payload
         )
         .then((res)=>{
+            console.log(res);
             if(res.statusText==="OK"){
                 console.log("successful SignIn");
                 console.log(res);
@@ -56,6 +52,7 @@ const signInRequest=(payload)=>{
         }).catch((err)=>{
             console.log(err);
             console.log("SignIn Error");
+            alert("please check your Email or Password");
         })
     }
 }
@@ -65,19 +62,19 @@ const signOut=()=>({
     type:"signOut"
 })
 
-//update info & redeem*/ 取userInfo发送
-const profileUpdate=()=>{
+//update info & redeem*/ 
+const profileUpdate=(payload)=>{
     return (dispatch,getState)=>{
-        const storeData={...getState()};
-        const data=storeData.userInfo;
-        console.log("update:",data)
-        return axios.post(Actions.UPDATEURL,data
+        // const storeData={...getState()};
+        // const data=storeData.userInfo;
+        console.log("update:",payload)
+        return axios.post(Actions.UPDATEURL,payload
         )
         .then((res)=>{
             if(res.statusText==="OK"){
                 console.log("successful update");
                 console.log(res);
-                dispatch(loaduserInfo(res.data))
+                dispatch(loaduserInfo(payload))
             }else{
                 alert("Cannot process your request,Please try later");
             }
@@ -141,6 +138,14 @@ const trackOrder=(payload)=>{
         })
     }
 }
+
+const resetResult=()=>({
+    type:"resetResult"
+})
+
+const allsetResult=()=>({
+    type:"allsetResult"
+})
 
 
 

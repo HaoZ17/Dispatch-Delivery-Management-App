@@ -7,5 +7,152 @@
 
 .ant-list {
     text-align: left;
-    padding: 20px;
+    padding: 10px;
 }
+
+.home-background {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1440px;
+  margin-top: 0px;
+}
+
+.error-msg {
+  height: 28px;
+  color: #ff4d4f;
+  margin: auto;
+  width: 1440px;
+  font-size: 20px;
+}
+
+.row-outer-box {
+  width: 1440px;
+  margin: auto;
+}
+
+.row {
+  display:flex;
+  margin-top: 28px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  width: 1030px;
+}
+
+.tracking-icon {
+
+}
+
+.tracking-text {
+  margin-left: 17.13px;
+  margin-bottom: 0px;
+  font-size: 36px;
+  font-family: 'Roboto';
+  line-height: 42.19px;
+  /*font-weight: 700;*/
+  font-weight: bold;
+  color: #5E5E5E;
+}
+
+.shipping-icon {
+  margin-left: 46.25px;
+}
+
+.shipping-text {
+  margin-left: 17.13px;
+  margin-bottom: 0px;
+  font-size: 36px;
+  font-family: 'Roboto';
+  line-height: 42.19px;
+  /*font-weight: 700;*/
+  font-weight: bold;
+  color: #5E5E5E;
+}
+
+.SMA{
+  position: absolute;
+  width: 264px;
+  height: 94px;
+  left: -1px;
+  top: 670px;
+
+  margin-right: 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  color: #000000;
+}
+
+.RT {
+  position: absolute;
+  width: 264px;
+  height: 94px;
+  left: 115px;
+  top: 670px;
+
+  margin-left: 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  color: #FFFFFF;
+}
+
+.EXPRESS {
+  position: absolute;
+  width: 264px;
+  height: 94px;
+  left: 330px;
+  top: 670px;
+
+  margin-left: 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  color: #FFFFFF;
+}
+
+#tracking-input-home{
+  font-size: 24px;
+  width: 522px;
+  height: 60px;
+  border: 2px solid #5E5E5E;
+  border-radius: 12px;
+  box-sizing: border-box;
+  margin-left: 14px;
+  font-size-adjust: 24
+}
+
+p {
+  font-size: large;
+}
+/* .href{
+  display:inline-block;
+  width:250px;
+  height:400px;
+  margin:20px;
+  text-decoration: none;
+  color:#000;
+} */
+
+/*.anticon.anticon-search.ant-input-search-icon{*/
+/*    font-size: 35px;*/
+/*}*/
+
+/*.tracking-input {*/
+/*    margin-left: 14px;*/
+/*    width: 522px;*/
+/*    height: 60px;*/
+/*    border: 2px solid #5E5E5E;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 12px;*/
+/*}*/
+

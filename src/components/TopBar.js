@@ -9,6 +9,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TrackingInput from "./TrackingInput";
 
+import tracking_icon from "../style/image/tracking_icon.svg";
+
 class TopBar extends React.Component {
   //isLoggedIn = false;
 
@@ -38,7 +40,7 @@ class TopBar extends React.Component {
         </Menu.Item>
         <Menu.Item>
           <a onClick={async()=>{
-            await this.props.actionController.trackMemberOrder();
+           // await this.props.actionController.trackMemberOrder();
               if(this.props.orderHistory!==null){
                 this.props.history.push("/user/order");
               }
@@ -74,22 +76,28 @@ class TopBar extends React.Component {
           null
         }
 
+        
+        <div className="topbar-login-group">
         {   isLoggedIn ?
           <div>
-            <UserOutlined style={{ color: "#215899" }} />
+            <UserOutlined style={{ color: "#215899",fontSize:"20px" }} />
             <Dropdown overlay={menu}>
-              <a className="topbar-dropdown-link" onClick={e => e.preventDefault()}>
-                User <CaretDownOutlined style={{ color: "#215899" }} />
+              <a className="topbar-dropdown-link" onClick={e => e.preventDefault()} style={{fontSize:"large",marginLeft:"10px",marginRight:"10px"}}>
+                User <CaretDownOutlined style={{ color: "#215899",fontSize:"20px" }} />
               </a>
             </Dropdown>
           </div>
           :
           <div>
-            <Button className="login-btn" onClick={this.handleClickLogin}>Login</Button>
-            <Button className="signup-btn" onClick={this.handleClickSignup}>Sign up</Button>
+             <UserOutlined style={{ color: "#215899",fontSize:"20px" }} />
+            <Button className="login-btn" onClick={this.handleClickLogin} size="large">Login</Button>
+            <Button className="signup-btn" onClick={this.handleClickSignup} size="large">Sign up</Button>
           </div>
-
         }
+        </div>
+          
+
+        
       </header>
     );
   }

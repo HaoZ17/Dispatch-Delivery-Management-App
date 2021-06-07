@@ -10,10 +10,6 @@ import polygon from '../style/image/polygon.svg';
 const isLoggedIn=false;
 class Order extends React.Component {
 
-    // test data, should get data from store latter
-    // since delivered/estimate deliver time and other basic info are not stored together,
-    // my current data structure is not accurate, we can change this part of code latter after discussion with backend
-
 
     // callback function when changing tabs(Processing or Delivered)
     // can be removed if we do not need this function
@@ -84,20 +80,18 @@ class Order extends React.Component {
                             renderItem={item => (
                                 <List.Item className="order-list-item">
                                     <List.Item.Meta
-                                        title={<p className="order-list-item-title">Estimated {item.deliverTime} </p>} // replace of delivered time
+                                        title={<p className="order-list-item-title">Estimated {item.arriveTime} </p>} // replace of delivered time
                                         description=
                                         {<div className="order-list-item-description">
-                                            <p>From: {item.from} </p> 
-                                            <p>To: {item.to} </p>
+                                            <p>From: {item.senderAddress} </p> 
+                                            <p>To: {item.receiverAddress} </p>
                                             <p>Size: {item.size} </p>
                                             <p>Weight: {item.weight}</p>
-                                            <p>Ship time: {item.shipTime}</p>
+                                            <p>Ship time: {item.createTime}</p>
                                             <button className="order-list-item-button" onClick={
-                                                () => {
-                                                    // here we need to pass the tracking log data of this order to "/packagetracking" page
-                                                    // we can set a global variable(stored in reducer.js) with tracking log infor of this order at this moment
-                                                    // so that when jumping to "/packagetracking" page, that page can get data from this global variable
-                                                    // since the tracking log data structure has not determined by backend team, I did not implement this step here
+                                                async() => {
+                                                    console.log(item.trackingNumber);
+                                                    await this.props.actionController.trackOrder(item.trackingNumber)
                                                     this.props.history.push('/packagetracking')
                                                 }
                                             }>Track</button>
@@ -126,16 +120,18 @@ class Order extends React.Component {
                             renderItem={item => (
                                 <List.Item className="order-list-item">
                                     <List.Item.Meta
-                                        title={<p className="order-list-item-title">Delivered at {item.deliverTime} </p>} // replace of delivered time
+                                        title={<p className="order-list-item-title">Delivered at {item.arriveTime} </p>} // replace of delivered time
                                         description=
                                         {<div className="order-list-item-description">
-                                            <p>From: {item.from} </p>
-                                            <p>To: {item.to} </p>
+                                            <p>From: {item.senderAddress} </p>
+                                            <p>To: {item.receiverAddress} </p>
                                             <p>Size: {item.size} </p>
                                             <p>Weight: {item.weight}</p>
-                                            <p>Ship time: {item.shipTime}</p>
+                                            <p>Ship time: {item.createTime}</p>
                                             <button className="order-list-item-button" onClick={
-                                                () => {
+                                                async() => {
+                                                    console.log(item.trackingNumber);
+                                                    await this.props.actionController.trackOrder(item.trackingNumber)
                                                     this.props.history.push('/packagetracking')
                                                 }
                                             }>Track</button>

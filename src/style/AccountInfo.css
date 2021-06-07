@@ -40,13 +40,33 @@
     margin-top: 48px;
   }
 
-  .infocard {
+  .index {
+    min-width: 120em;
+  }
+  .infocard1 {
     border-radius: 10px;
     border-width: 0.2em;
     border-color: #215899;
-    height: 30em;
+    height: 35em;
+    min-width: 50em;
+  }
+
+  .infocard2 {
+    border-radius: 10px;
+    border-width: 0.2em;
+    border-color: #215899;
+    height: 35em;
+    min-width: 50em;
   }
 
   .index {
     padding: 40px;
+  }
+
+  .personalinfo {
+    text-align: start;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
   }

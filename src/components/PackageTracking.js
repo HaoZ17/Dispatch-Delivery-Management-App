@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import '../style/PackageTracking.css';
 import ReactDOM from 'react-dom';
 
-import { Steps, PageHeader, Breadcrumb } from "antd";
+import { Steps, PageHeader, Breadcrumb, Row, Col } from "antd";
 import { withRouter } from "react-router-dom";
 
 
@@ -28,46 +28,52 @@ const { Step } = Steps;
 //         breadcrumbName: 'Track Package',
 //     },
 // ];
-const isLoggedIn=false;
+const isLoggedIn = false;
 class PackageTracking extends Component {
-    handleBackHome = ()=>{
-        this.isLoggedIn? 
-        this.props.history.push("/user") :
-        this.props.history.push("/")
-      }
+    handleBackHome = () => {
+        this.isLoggedIn ?
+            this.props.history.push("/user") :
+            this.props.history.push("/")
+    }
     render() {
-        this.isLoggedIn = this.props.userInfo===null ? false:true;
+        this.isLoggedIn = this.props.userInfo === null ? false : true;
         return (
             <div>
-                <Breadcrumb separator=">" className ='breadcrum'>
+                <Breadcrumb separator=">" className='breadcrum'>
                     <Breadcrumb.Item onClick={this.handleBackHome} className="breadcrumb">Home</Breadcrumb.Item>
-                    {this.isLoggedIn?
-                      <Breadcrumb.Item onClick={() => { this.props.history.push('/user/order') }}>Order History</Breadcrumb.Item>
-                        :null
+                    {this.isLoggedIn ?
+                        <Breadcrumb.Item onClick={() => { this.props.history.push('/user/order') }}>Order History</Breadcrumb.Item>
+                        : null
                     }
-                  
+
                     <Breadcrumb.Item>Track Package</Breadcrumb.Item>
                 </Breadcrumb>
+                <Row className = 'content'>
+                    <Col span={8}></Col>
+                    <Col span={8}><div>
+                        <h1 className='estimate'>
+                            {this.props.trackingInfo === null ?
+                                <div></div> :
+                                this.props.trackingInfo.arriveTime
 
-                <h1 className ='estimate'>
-                    {this.props.trackingInfo===null?
-                    <div></div> :
-                    this.props.trackingInfo.arriveTime
+                            }
+                        </h1>
 
-                }
-                </h1>
+                        {
+                            this.props.trackingInfo === null ?
+                                <p>You don't have any package</p>
+                                :
+                                <Steps direction="vertical" current={1}>
+                                    <Step title={this.props.trackingInfo.delivererPath.Stage1.address} description={this.props.trackingInfo.delivererPath.Stage1.time} />
+                                    <Step title={this.props.trackingInfo.delivererPath.Stage2.address} description={this.props.trackingInfo.delivererPath.Stage2.time} />
+                                    <Step title={this.props.trackingInfo.delivererPath.Stage3.address} description={this.props.trackingInfo.delivererPath.Stage3.time} />
+                                    {/* <Step title={this.props.trackingInfo.delivererPath.Stage4.address} description={this.props.trackingInfo.delivererPath.Stage4.time} /> */}
+                                </Steps>
+                        }
+                    </div></Col>
+                    <Col span={8}></Col>
+                </Row>
 
-                {
-                    this.props.trackingInfo === null ?
-                    <p>You don't have any package</p>
-                    :
-                    <Steps direction="vertical" current={1}>
-                        <Step title={this.props.trackingInfo.delivererPath.Stage1.address} description={this.props.trackingInfo.delivererPath.Stage1.time} />
-                        <Step title={this.props.trackingInfo.delivererPath.Stage2.address} description={this.props.trackingInfo.delivererPath.Stage2.time} />
-                        <Step title={this.props.trackingInfo.delivererPath.Stage3.address} description={this.props.trackingInfo.delivererPath.Stage3.time} />
-                        {/* <Step title={this.props.trackingInfo.delivererPath.Stage4.address} description={this.props.trackingInfo.delivererPath.Stage4.time} /> */}
-                    </Steps>
-                }
             </div>
         );
     }
