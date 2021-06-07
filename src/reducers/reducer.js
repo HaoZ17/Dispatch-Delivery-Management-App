@@ -175,6 +175,7 @@ const reducer = (state = initState, action = {}) => {
             return{
                 ...state,
                 trackingNumber:action.payload,
+                checkoutStatus:true
                 // userInfo:Object.assign(state.userInfo,{credit:currentCredit})
             }
         case "checkOutUpdate":
@@ -270,10 +271,10 @@ const reducer = (state = initState, action = {}) => {
                 ...state,
                 trackingResult:false
             }
-        case "allsetResult":
+        case "checkoutReset":
             return{
                 ...state,
-                trackingResult:true
+                checkoutStatus:false
             }
         case "redeem":
             return{

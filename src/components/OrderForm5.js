@@ -31,12 +31,16 @@ class OrderForm5 extends React.Component {
 
       }
       asyncfunc=async()=>{
+        this.props.actionController.checkoutReset();
         await this.props.actionController.confirmOption();
         if(this.props.userInfo!==null){
           this.props.actionController.checkOutUpdate();
           this.props.actionController.reSubmitProfile(this.props.userInfo);
         }
-        this.props.actionController.increaseMDButton();
+        if(this.props.checkoutStatus){
+          this.props.actionController.increaseMDButton();
+        }
+        
       }
       submitOrderForm5 = () => {
         this.props.actionController.saveUserInfo();

@@ -52,7 +52,7 @@ class OrderForm6 extends React.Component {
           </Row>
           <Row style={{position:"relative", marginLeft:"5em", marginTop:"4em"}}>
           <Col span={5}>
-          <Alert style={{border:"2px solid black" ,borderRadius:"18px", opacity:"0.8", textAlign:"center", height:"4em", marginTop:"2em"}}  message={this.props.userInfo.credit<this.props.checkoutInfo.selected.price*0.11?"Your balance is too low for this order":"Please checkout with credit"} type="info" />
+          <Alert style={{border:"2px solid black" ,borderRadius:"18px", opacity:"0.8", textAlign:"center", height:"4em", marginTop:"2em"}}  message={this.props.userInfo===null? "Please pay in cash":this.props.userInfo.credit<this.props.checkoutInfo.selected.price*0.11?"Your balance is too low for this order":"Please checkout with credit"} type="info" />
           </Col>
           <Col span={16} style={{position:"relative", marginLeft:"5em"}} offset={10}>
           <section style={{display:"flex", alignItems: "baseline"}}>

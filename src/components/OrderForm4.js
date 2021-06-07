@@ -48,7 +48,11 @@ const isLoggedIn=false;
                   Shipping again
             </Button>
             &nbsp; &nbsp; &nbsp;
-            <Button type="text" htmlType="submit" shape="round" onClick={()=>{this.props.history.push("/packagetracking")}}
+            <Button type="text" htmlType="submit" shape="round" 
+            onClick={async()=>{
+              await this.props.actionController.trackOrder(this.props.trackingNumber);
+              this.props.history.push("/packagetracking")
+            }}
             >
                   Tracking
             </Button>
