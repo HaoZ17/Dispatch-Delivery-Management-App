@@ -25,7 +25,8 @@ const isLoggedIn=false;
         render() { 
           this.isLoggedIn = this.props.userInfo===null ? false:true;
           return ( 
-            <React.Fragment>
+            <React.Fragment >
+              <div style={{textAlign:"left"}}>
             <h2> Thank you! Your order has been palced. </h2>
             <br/>
             <br/>
@@ -37,8 +38,11 @@ const isLoggedIn=false;
             <h3 style={{color:'#100B0B'}}>Your tracking number is</h3>
             </Row>
             <br/> 
-            <Input placeholder="Tracking Number"></Input>
+            <Col span={14}>
+            <Input value={this.props.trackingNumber}></Input>
+            </Col>
             <br/>
+            &nbsp;
             <br/>
             <Button type="text" htmlType="submit" shape="round" onClick={this.props.actionController.resetDisplayModal}>
                   Shpping again
@@ -54,6 +58,7 @@ const isLoggedIn=false;
                   Back to home
             </Button>
             </Col>
+            </div>
             </React.Fragment>
            );
         }

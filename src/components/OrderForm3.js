@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Checkbox, message, Modal, InputNumber, Col, Row, Card } from 'antd';
+import { Form, Input, Button, Checkbox, message, Modal, InputNumber, Col, Row, Card, Radio } from 'antd';
 import { bindActionCreators } from "redux";
 import {actions} from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
+import robot from "../style/image/robot.jpg";
+import drone from "../style/image/drone.jpg";
+import myurl from "../style/image/homepage.jpg";
+
+
 const { Meta } = Card;
 const layout = {
     labelCol: {
@@ -12,21 +17,75 @@ const layout = {
       span: 100,
     },
   };
+
     class OrderForm3 extends React.Component {
+
+      state={
+        cardNow:0,
+        image1:drone,
+        image2:robot
+
+      }
+  
+      clickChange1 = () => {
+        console.log("change to Drone");
+        this.setState({
+          cardNow:1
+        });
+        this.props.actionController.saveOptionInfo(this.props.options.drone);
+      }
+  
+      clickChange2 = () => {
+        console.log("change to Robot");
+        this.setState({
+          cardNow:2
+        });
+        this.props.actionController.saveOptionInfo(this.props.options.robot);
+      }
+
+    
+
+      // submitOrderForm2 = () =>{
+      //   const data = this.props.selected;
+      //   // this.props.actionController.loadSelectedInfo(data);
+      //   this.props.actionController.increaseMDButton();
+      // }
+
+      changeNum = () => {
+        var num = Math.sqrt(Number(this.props.options.drone.price));
+        console.log(num)
+      }
+
         render() { 
           return ( 
-            <React.Fragment>
+            <React.Fragment style={{textAlign:"left"}}>
+
+              <Row style={{textAlign:"left"}} type="flex" gutter={16}>
+              &nbsp; &nbsp;             &nbsp; &nbsp;            &nbsp; &nbsp;
+              <Radio.Group //onChange={onChange} 
+              value={this.state.cardNow} 
+              >
+                <Col span={15} style={{paddingLeft:'10px'}}>
+                <Radio value={1} onClick={this.clickChange1}>Drone From Station A</Radio>
+                </Col>
+                <Col span={5} style={{paddingLeft:'10px'}}>  
+                <Radio value={2} onClick={this.clickChange2}>Robot From Station B</Radio>
+                </Col>
+              </Radio.Group>
+              </Row>
+
               <Row type="flex" gutter={16}>
-              <Col span={4} style={{paddingLeft:'10px'}}>
+              <Col span={5} style={{paddingLeft:'10px'}}>
               <Card
                 hoverable
                 style={{ width: 240, textAlign:"center", margin:'20px'  }}
                 title="Fastest"
-                cover={<img style={{paddingLeft:"10%", paddingTop:"7.5%", width:"90%", height:"90%"}} alt="example" src="https://lh3.googleusercontent.com/dSpbyX5r8iSOXzk5IW0fm8HBaYgCKj7BUwI_X7WHp91saHifVPsYGjFja0Ek-w70dKAaoQ=s85" />}
+                cover={<img style={{paddingLeft:"10%", paddingTop:"7.5%", width:"90%", height:"90%"}} alt="drone" src={this.state.image1} />}
+                onClick={this.clickChange1}
               >
                 <br/>
                 <text> Drone From Station A</text>
-              <Meta style={{textAlign:"center"}} title="$50" description="Same Day Shipping"  />
+              <Meta style={{textAlign:"center"}} title={this.props.options.drone.price/10} description="Same Day Shipping"  />
             </Card>
               </Col>
               <Col span={3} style={{paddingLeft:'10px'}}>
@@ -34,12 +93,14 @@ const layout = {
                 hoverable
                 style={{ width: 240, textAlign:"center", margin:'20px' }}
                 title="Lowest Cost"
-                cover={<img style={{paddingLeft:"10%", paddingTop:"7.5%", width:"90%", height:"90%"}} alt="example" src="https://lh3.googleusercontent.com/-AS-HjbqhzSgltvc8uWkJVRmVMZm1ayCn78do3UVYJI0Ckp2zoSEc-AM9BzvotATvhgNHg=s85" />}
+                cover={<img style={{paddingLeft:"10%", paddingTop:"7.5%", width:"90%", height:"90%"}} alt="robot" src={this.state.image2} />}
+                onClick={this.clickChange2}
               >
-      
-              <Meta style={{textAlign:"center"}} title="$25" description="Next Day Shipping"  />
+                <br/>
+                <text> Robot From Station B</text>
+              <Meta style={{textAlign:"center"}} title={this.props.options.robot.price/10} description="Next Day Shipping"  />
             </Card>
-             </Col>
+            </Col>
             </Row>
             &nbsp; &nbsp;
             <Row>

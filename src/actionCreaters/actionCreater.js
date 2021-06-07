@@ -148,28 +148,52 @@ const allsetResult=()=>({
 })
 
 
+
 //place order */
 const loadOptions=payload=>({
     type:Actions.LOADOPTIONS,
     payload
 })
-const placeOrder=()=>{
+const placeOrder=(payload)=>{
     return (dispatch,getState)=>{
-        const storeData={...getState()};
-        const data=storeData.orderInfo;
-        console.log("Request....")
-        console.log(data);
-        return axios.post(Actions.ORDERREQUESTURL,{"orderInfo":data})
+        // const storeData={...getState()};
+        // const data=storeData.orderInfo;
+        console.log("PlaceOrder:")
+        console.log(payload);
+        return axios.post(Actions.ORDERREQUESTURL,{"orderInfo":payload})
         .then((res)=>{
-            console.log("successful placeOrder");
-            console.log(res);
-            dispatch(loadOptions(res.data)) //具体传入内容待改
+            // console.log("successful placeOrder");
+            // console.log(res);
+            // dispatch(loadOptions(res.data)) //具体传入内容待改
+            if(res.statusText==='OK'){
+                dispatch(loadOptions(res.data));
+                console.log("Options:",res.data);
+            }
         }).catch((err)=>{
             console.log(err);
             console.log("PlaceOrder Error");
         })
     }
 }
+//save orderInfo
+const saveOrderInfo=(payload)=>({
+    type: "saveOrder",
+    payload
+})
+//save optionInfo
+const saveOptionInfo=(payload)=>({
+    type: "saveOption",
+    payload
+})
+
+//save userInfo
+const saveUserInfo=()=>({
+    type: "saveUser",
+})
+//redeem
+const redeem=()=>({
+    type:"redeem"
+})
 
 //Checkout select:*/
 const checkout=(payload)=>({
@@ -197,6 +221,9 @@ const confirmOption=()=>{
         })
     }
 }
+const checkOutUpdate=()=>({
+    type:"checkOutUpdate"
+})
 
 /**
  * 辅助测试功能模块
@@ -241,6 +268,16 @@ const checkDataform=(payload)=>({
     payload
 })
 
+const checkDataformOrderInfo=(payload)=>({
+    type:"checkDataformOrderInfo",
+    payload
+})
+
+const checkDataformPackageInfo=(payload)=>({
+    type:"checkDataformPackageInfo",
+    payload
+})
+
 const reSubmitProfile=(payload)=>({
     type:"reSubmitProfile",
     payload
@@ -265,9 +302,15 @@ export const actions={
     decreaseMDButton,
     resetDisplayModal,
     checkDataform,
+    checkDataformOrderInfo,
+    checkDataformPackageInfo,
     signOut,
     reSubmitProfile,
     profileUpdate,
-    resetResult,
-    allsetResult
+    saveOrderInfo,
+    saveOptionInfo,
+    saveUserInfo,
+    redeem,
+    checkOutUpdate,
+    resetResult
 }
