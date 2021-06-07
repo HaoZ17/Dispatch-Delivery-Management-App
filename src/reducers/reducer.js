@@ -27,7 +27,6 @@ const initState = {
     },
 
     registerStatus: false,
-    updateProfileStatus: false, // added by Dan Li
 
     //tracking visitor*
     trackingNumber: "a9b51c96-cb93-4",
