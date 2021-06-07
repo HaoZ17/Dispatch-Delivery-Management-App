@@ -64,7 +64,7 @@ class TrackingInput extends React.Component {
 
         return (
 
-            <div>
+            <div className="tracking-input">
                 <Input
                     placeholder="Please enter your tracking number"
                     suffix={suffix}
