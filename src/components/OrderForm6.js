@@ -39,7 +39,7 @@ class OrderForm6 extends React.Component {
           <Col>
           <h3 style={{color:"gray", fontWeight:"normal", fontSize:"1.3em" , paddingLeft:"2em", position:"relative", marginLeft:"5em", marginTop:"5em"}}>My SmartExpress Card({this.state.cardLastFour})</h3>
           <Statistic value={this.props.userInfo===null? "Please pay in cash":this.props.userInfo.credit} precision={2} prefix="$" style={{ fontFamily:"Trebuchet MS", paddingLeft:"2em", position:"relative", fontWeight:"600", marginLeft:"7em", marginTop:"3em"}} />
-          <h3 style={{color:"gray", fontWeight:"normal", fontSize:"1.3em" , paddingLeft:"2em", position:"relative", marginLeft:"5em"}}>as of {this.state.timer}m ago</h3>
+          {/* <h3 style={{color:"gray", fontWeight:"normal", fontSize:"1.3em" , paddingLeft:"2em", position:"relative", marginLeft:"5em"}}>as of {this.state.timer}s ago</h3> */}
           </Col>
           </Row>
           <Row style={{position:"relative", marginLeft:"5em", marginTop:"5em"}}>
