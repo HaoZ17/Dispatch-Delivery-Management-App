@@ -49,10 +49,10 @@ class OrderF extends React.Component {
     }
 
   }
-  data1=()=>({
-    1:"@",
-    2:"#"
-})
+//   data1=()=>({
+//     1:"@",
+//     2:"#"
+// })
 
   renderText() {
     switch(this.props.displayModal){
@@ -78,7 +78,7 @@ class OrderF extends React.Component {
             {/* <button onClick={this.props.actionController.jumptest}>JUMP</button>
             {this.props.jumpTest===true ? <Delivered /> : <Tracking /> } */}
             <div style={{verticalAlign:"middle"}}> 
-            <button onClick={()=>{this.props.actionController.checkDataform(this.data1())}}>CheckData</button>
+            {/* <button onClick={()=>{this.props.actionController.checkDataform(this.data1())}}>CheckData</button> */}
             <Row style={{textAlign:"left"}} >
             <ShippingBreadcrumb/>
             </Row>

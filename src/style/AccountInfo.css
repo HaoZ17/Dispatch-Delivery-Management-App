@@ -42,7 +42,11 @@
 
   .infocard {
     border-radius: 10px;
-    border-width: 0.1em;
-    border-color: rgb(17, 0, 255);
+    border-width: 0.2em;
+    border-color: #215899;
     height: 30em;
+  }
+
+  .index {
+    padding: 40px;
   }

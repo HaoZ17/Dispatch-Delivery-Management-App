@@ -1,6 +1,7 @@
 /*
 Author: Zhao Tang & Dan Li
-Version: 05/25/2021
+Version: 1 - basic function 05/25/2021
+         2 - css adjustment 05/29/2021
 */
 import { bindActionCreators } from "redux";
 import React from 'react'
@@ -30,11 +31,12 @@ const { Header, Footer, Sider, Content } = Layout;
 // ];
 
 class AccountInfo extends React.Component {
-    state = {
-        accountInfo: this.props.userInfo,
 
-        orderData: null
-    };
+    constructor(props){
+        super(props);
+
+    }
+    
 
 
 
@@ -50,7 +52,7 @@ class AccountInfo extends React.Component {
                             breadcrumb={{ routes }}
                             subTitle=""
                         /> */}
-                        <Breadcrumb separator=">">
+                        <Breadcrumb separator=">" className ='breadcrum'>
                             <Breadcrumb.Item onClick={() => { this.props.history.push('/user') }}>Home</Breadcrumb.Item>
                             <Breadcrumb.Item>Profile Overview</Breadcrumb.Item>
                         </Breadcrumb>
@@ -58,19 +60,19 @@ class AccountInfo extends React.Component {
                             <Col span={11} className="left-side">
                                 <Card className="infocard" title={<span><SmileOutlined /> Personal Info </span>} bordered={true}>
                                     <List class='personalinfo' bordered='false'>
-                                        <List.Item>{'Name    : ' + this.state.accountInfo.name}</List.Item>
-                                        <List.Item>{'Email address : ' + this.state.accountInfo.email}</List.Item>
-                                        <List.Item>{'Password   : ' + this.state.accountInfo.password}</List.Item>
-                                        <List.Item>{'Address : ' + this.state.accountInfo.address}</List.Item>
-                                        <List.Item>{'Zipcode : ' + this.state.accountInfo.zipcode}</List.Item>
-                                        <List.Item>{'Mobile : ' + this.state.accountInfo.mobile}</List.Item>
+                                        <List.Item>{'Name    : ' + this.props.userInfo.name}</List.Item>
+                                        <List.Item>{'Email address : ' + this.props.userInfo.email}</List.Item>
+                                        <List.Item>{'Password   : ' + this.props.userInfo.password}</List.Item>
+                                        <List.Item>{'Address : ' + this.props.userInfo.address}</List.Item>
+                                        <List.Item>{'Zipcode : ' + this.props.userInfo.zipcode}</List.Item>
+                                        <List.Item>{'Mobile : ' + this.props.userInfo.mobile}</List.Item>
                                     </List>
                                 </Card>
                             </Col>
                             <Col span={11} className="right-side">
                                 <Card className="infocard" title={<span> <HomeOutlined /> Address </span>} bordered={true}>
                                     <List class='address' bordered='false'>
-                                        <List.Item>{this.state.accountInfo.shippingAddress}</List.Item>
+                                        <List.Item>{this.props.userInfo.shippingAddress}</List.Item>
                                     </List>
                                 </Card>
                             </Col>
@@ -93,15 +95,18 @@ class AccountInfo extends React.Component {
         );
     }
 }
+
 const mapStateToProps = (state) => {
     return {
-        ...state
+      ...state
     };
-};
-
-const mapDispatchToProps = (dispatch) => {
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
     return {
-        actionController: bindActionCreators({ ...actions }, dispatch)
+      actionController: bindActionCreators({ ...actions }, dispatch)
     };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AccountInfo));
+  };
+  
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AccountInfo));

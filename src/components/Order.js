@@ -5,6 +5,7 @@ import { actions } from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
 import { Tabs, List, Breadcrumb, Menu, Dropdown, Icon } from 'antd';
 import { withRouter } from "react-router-dom";
+import polygon from '../style/image/polygon.svg';
 
 const isLoggedIn=false;
 class Order extends React.Component {
@@ -33,17 +34,17 @@ class Order extends React.Component {
         const menu = (
             <Menu>
                 <Menu.Item key="0">
-                    <a target="_blank" rel="noopener noreferrer" href="">
+                    <a target="_self" rel="noopener noreferrer" href="">
                         past 3 months
                 </a>
                 </Menu.Item>
                 <Menu.Item key="1">
-                    <a target="_blank" rel="noopener noreferrer" href="">
+                    <a target="_self" rel="noopener noreferrer" href="">
                         past 6 months
                 </a>
                 </Menu.Item>
                 <Menu.Item key="2">
-                    <a target="_blank" rel="noopener noreferrer" href="">
+                    <a target="_self" rel="noopener noreferrer" href="">
                         past 1 year
                 </a>
                 </Menu.Item>
@@ -53,41 +54,45 @@ class Order extends React.Component {
         return (
             <div>
                 {/* Home > MyProfile*/}
-                <Breadcrumb separator=">">
+                <Breadcrumb separator={<img className="order-polygon" src={polygon} ></img>} className="order-breadcrumb">
                     <Breadcrumb.Item onClick={this.handleBackHome}>Home</Breadcrumb.Item>
                     <Breadcrumb.Item>Order History</Breadcrumb.Item>
                 </Breadcrumb>
 
                 {/* two tabs: Processing and Delivered */}
-                <Tabs defaultActiveKey="processing" onChange={this.callback}>
+
+                {this.props.orderHistory===null?
+                <p>You don't have any order</p>:
+                    <Tabs className="order-tab" defaultActiveKey="processing" onChange={this.callback}>
                     <TabPane tab="Processing" key="Processing" style={{ height: '680px', overflow: 'auto' }} forceRender={true}>
 
                         {/* advanced feature: dropdown menu for orders from recent 3/6 months or 1 year */}
-                        <p>Orders placed in </p>
-                        <Dropdown overlay={menu}>
+                        <p className="order-text">Orders placed in </p>
+                        <Dropdown className="order-dropdown" overlay={menu}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                                 past 3 months <Icon type="down" />
                             </a>
                         </Dropdown>
-                        <br />
 
                         {/* order list */}
+                    
                         <List
+                            className="order-list"
                             bordered="true"
                             itemLayout="horizontal"
-                            dataSource={this.props.processing} //replace data from store
+                            dataSource={this.props.orderHistory.pending.pending} //replace data from store
                             renderItem={item => (
-                                <List.Item>
+                                <List.Item className="order-list-item">
                                     <List.Item.Meta
-                                        title={<p>Estimated {item.deliverTime} </p>} // replace of delivered time
+                                        title={<p className="order-list-item-title">Estimated {item.deliverTime} </p>} // replace of delivered time
                                         description=
-                                        {<div>
+                                        {<div className="order-list-item-description">
                                             <p>From: {item.from} </p> 
                                             <p>To: {item.to} </p>
                                             <p>Size: {item.size} </p>
                                             <p>Weight: {item.weight}</p>
                                             <p>Ship time: {item.shipTime}</p>
-                                            <button onClick={
+                                            <button className="order-list-item-button" onClick={
                                                 () => {
                                                     // here we need to pass the tracking log data of this order to "/packagetracking" page
                                                     // we can set a global variable(stored in reducer.js) with tracking log infor of this order at this moment
@@ -101,12 +106,12 @@ class Order extends React.Component {
                                 </List.Item>
                             )}
                         />
-                </TabPane>
+                    </TabPane>
                     <TabPane tab="Delivered" key="Delivered" style={{ height: '680px', overflow: 'auto' }} forceRender={true}>
 
                         {/* advanced feature: dropdown menu for orders from recent 3/6 months or 1 year */}
-                        <p>Orders placed in </p>
-                        <Dropdown overlay={menu}>
+                        <p className="order-text">Orders placed in </p>
+                        <Dropdown className="order-dropdown" overlay={menu}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                                 past 3 months <Icon type="down" />
                             </a>
@@ -114,20 +119,22 @@ class Order extends React.Component {
 
                         {/* order list */}
                         <List
+                            className="order-list"
+                            bordered="true"
                             itemLayout="horizontal"
-                            dataSource={this.props.delivered} // replace of delivered time
+                            dataSource={this.props.orderHistory.completed.completed} // replace of delivered time
                             renderItem={item => (
-                                <List.Item>
+                                <List.Item className="order-list-item">
                                     <List.Item.Meta
-                                        title={<p>Delivered at {item.deliverTime} </p>} // replace of delivered time
+                                        title={<p className="order-list-item-title">Delivered at {item.deliverTime} </p>} // replace of delivered time
                                         description=
-                                        {<div>
+                                        {<div className="order-list-item-description">
                                             <p>From: {item.from} </p>
                                             <p>To: {item.to} </p>
                                             <p>Size: {item.size} </p>
                                             <p>Weight: {item.weight}</p>
                                             <p>Ship time: {item.shipTime}</p>
-                                            <button onClick={
+                                            <button className="order-list-item-button" onClick={
                                                 () => {
                                                     this.props.history.push('/packagetracking')
                                                 }
@@ -137,8 +144,10 @@ class Order extends React.Component {
                                 </List.Item>
                             )}
                         />
-                </TabPane>
-                </Tabs>
+                    </TabPane>
+                    </Tabs>
+                }
+                
             </div>
         )
     }
@@ -156,3 +165,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Order));
+

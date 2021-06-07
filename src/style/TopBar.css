@@ -10,3 +10,8 @@
 .topbar-dropdown-link{
     color:#5E5E5E
 }
+
+.error-msg-top-bar {
+    color: #ff4d4f;
+    font-size: 14px;
+}

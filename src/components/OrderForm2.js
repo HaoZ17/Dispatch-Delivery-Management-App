@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import {actions} from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
 import boxes from "../style/image/box.png";
+import { render } from 'react-dom';
 const layout = {
   labelCol: {
     span: 18,
@@ -17,33 +18,55 @@ const layout = {
         boxurl: boxes,
         confirmDirty: false,
       }
+      asyncfunc=async(data)=>{
+        await this.props.actionController.placeOrder(data);
+        this.props.actionController.increaseMDButton();
+      }
       submitOrderForm2 = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 const{length, width, height, declaredValue, weight} = values
 
-                const size = length * width * height
+                let size = length * width * height
+
+                var today = new Date(),
+
+                date = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate() + '-' + today.getHours() + ':' + today.getMinutes();
     
                 const data = {
-                  senderName: this.props.fromInfo.senderName,
-                  fromAddress: this.props.fromInfo.fromAddress,
-                  from: this.props.fromInfo.from,                
-                  senderMobile: this.props.fromInfo.senderMobile,
-                  senderEmail: this.props.fromInfo.senderEmail,
-                  receiverName: this.props.orderInfoAll.receiverName,
-                  toAddress: this.props.orderInfoAll.toAddress,
-                  to: this.props.orderInfoAll.to,                
-                  receiverMobile: this.props.orderInfoAll.receiverMobile, 
-                  receiverEmail: this.props.orderInfoAll.receiverEmail, 
-                  size: size,
-                  declaredValue: declaredValue,
-                  weight: weight,
+                  // senderName: this.props.fromInfo.senderName,
+                  // senderAddress: this.props.fromInfo.fromAddress,
+                  // senderZipCode: this.props.fromInfo.from,                
+                  // senderMobile: this.props.fromInfo.senderMobile,
+                  // senderEmail: this.props.fromInfo.senderEmail,
+                  // receiverName: this.props.orderInfoAll.receiverName,
+                  // toAddress: this.props.orderInfoAll.toAddress,
+                  // receiverZipCode: this.props.orderInfoAll.to,                
+                  // receiverMobile: this.props.orderInfoAll.receiverMobile, 
+                  // receiverEmail: this.props.orderInfoAll.receiverEmail, 
+                  // size: size,
+                  // declaredValue: declaredValue,
+                  // weight: weight,
+
+                  "senderAddress": this.props.fromInfo.from,
+                  "receiverAddress": this.props.orderInfoAll.to,
+                  "size": length.toString()+"m^3",
+                  "weight": weight.toString()+"kg",
+                  "time":date
+                  // "senderAddress": "local",
+                  // "receiverAddress": "future",
+                  // "size": "50m^3",
+                  // "weight":"20kg",
+                  // "time":"2021-05-21-12:21"
                 }
                 //console.log(data)
                 
-                this.props.actionController.checkDataformPackageInfo(data);
-                this.props.actionController.increaseMDButton();
+                // this.props.actionController.checkDataformPackageInfo(data);
+                // this.props.actionController.increaseMDButton();
+
+                this.props.actionController.saveOrderInfo(data);
+                this.asyncfunc(data);
     
             }
         });

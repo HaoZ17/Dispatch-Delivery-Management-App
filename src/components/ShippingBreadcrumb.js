@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import {actions} from "../actionCreaters/actionCreater";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-
+import polygon from '../style/image/polygon.svg';
 class ShippingBreadcrumb extends Component {
 
 
@@ -20,7 +20,7 @@ class ShippingBreadcrumb extends Component {
     render() {
         return (
             <div>
-                <Breadcrumb separator=">">
+                <Breadcrumb separator={<img className="order-polygon" src={polygon} ></img>} className="order-breadcrumb">
                     <Breadcrumb.Item onClick={this.handleBackHome} >Home</Breadcrumb.Item>
                     <Breadcrumb.Item>Shipping</Breadcrumb.Item>
                 </Breadcrumb>

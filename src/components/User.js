@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { actions } from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
-import { Row, Col, Button } from "antd";
+import { List, Row, Col, Button } from "antd";
 import { Layout } from 'antd';
 
 
@@ -43,39 +43,46 @@ class User extends Component {
                     <Content>
                         <Row justify="end">
                             <Col span={4}></Col>
-                            <Col span={4}></Col>
-                            <Col span={4}>
-                                <Button class="center"
-                                    onClick={()=>{
-                                        this.props.history.push("/packagetracking");
-                                    }}
-                                ><AimOutlined /> Tracking</Button></Col>
-                            <Col span={4}></Col>
-                            <Col span={4}>
-                                <Button class="center"
-                                onClick={()=>{
-                                    
-                                    this.props.actionController.resetDisplayModal();
-                                    this.props.history.push("/placeOrder");
+                            <Col span={4}><Button class="center"
+                                onClick={() => {
+                                    this.props.history.push("/packagetracking");
                                 }}
+                            ><AimOutlined /> Tracking</Button></Col>
+                            <Col span={4}></Col>
+                            <Col span={4}></Col>
+                            <Col span={4}>
+                                <Button class="center"
+                                    onClick={() => {
+
+                                        this.props.actionController.resetDisplayModal();
+                                        this.props.history.push("/placeOrder");
+                                    }}
                                 ><CarOutlined /> Shipping</Button>
                             </Col>
                             <Col span={4}></Col>
                         </Row>
                         <div>
                             {this.state.processing === null ? (
-                            <div >
-                                <img src={homeimage} class="center"></img>
-                            </div>
+                                <div >
+                                    <img src={homeimage} class="center"></img>
+                                </div>
                             ) : (
-                            <div>
-                                <p>Estimated {this.state.processing[0].deliverTime} </p>
+                                <div>
+                                    <List>
+                                        <p>Estimated {this.state.processing[0].deliverTime} </p>
+                                        <p>From: {this.state.processing[0].from} </p>
+                                        <p>To: {this.state.processing[0].to} </p>
+                                        <p>Size: {this.state.processing[0].size} </p>
+                                        <p>Weight: {this.state.processing[0].weight}</p>
+                                        <p>Ship time: {this.state.processing[0].shipTime}</p>
+                                    </List>
+                                    {/* <p>Estimated {this.state.processing[0].deliverTime} </p>
                                 <p>From: {this.state.processing[0].from} </p>
                                 <p>To: {this.state.processing[0].to} </p>
                                 <p>Size: {this.state.processing[0].size} </p>
                                 <p>Weight: {this.state.processing[0].weight}</p>
-                                <p>Ship time: {this.state.processing[0].shipTime}</p>
-                            </div>)}
+                                <p>Ship time: {this.state.processing[0].shipTime}</p> */}
+                                </div>)}
                         </div>
                     </Content>
                 </Layout>

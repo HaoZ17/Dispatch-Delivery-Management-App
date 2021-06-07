@@ -1,0 +1,68 @@
+.container {
+    position: relative;
+}
+
+.edit-polygon {
+    height: 15px;
+    width: 15px;
+}
+
+.edit-breadcrumb {
+    position: relative;
+    left: 10px;
+    top: 10px;
+    text-align: start;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    color: #215899;
+}
+
+.edit-title {
+    position: relative;
+    text-align: left;
+    left: 60px;
+    top: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 84px;
+    color: #5E5E5E;
+}
+
+.edit-profile {
+    margin-left: 60px;
+    text-align: left;
+}
+
+.edit-profile-save {
+    background-color: #215899;
+    border:#215899;
+    width: 80px;
+    margin-right: 40px;
+}
+
+.edit-profile-cancel {
+    background-color: #215899;
+    border:#215899;
+    width: 80px;
+}
+
+.edit-tip {
+    display: inline-block;
+}
+.edit-asterisk {
+    float:left;
+    color: red;
+    margin-right: 3px;
+    padding-bottom: 20px;
+}
+
+.edit-tip-content {
+    float:right;
+    /* padding-bottom: 20px; */
+    color: #36383a;
+}

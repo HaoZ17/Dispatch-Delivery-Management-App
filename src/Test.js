@@ -26,18 +26,14 @@ class Test extends React.Component {
         this.emailRef=new createRef();
         this.passCodeRef= new createRef();
         this.trackingNumber=new createRef();
+        this.state={
+          input:""
+        }
+    }
+    onChangeEvent=(value)=>{
+      this.setState({input:value})
     }
 
-    // constructor(props){
-    //     super(props)
-    //     this.emailRef=new createRef();
-    //     this.passCodeRef= new createRef();
-    // }
-    //
-    // submitLogin=()=>({
-    //     email: this.emailRef.current.value,
-    //     password: this.passCodeRef.current.value
-    // })
 
     render() {
         return (
@@ -46,7 +42,24 @@ class Test extends React.Component {
                 <TopBar></TopBar>
                 <Main></Main>
               </div>
-
+                <div>
+                  <button onClick={()=>{console.log(this.props.trackingNumber)}}>trackingNumber</button>
+                  <button onClick={()=>{console.log(this.props.email)}}>UserEmail</button>
+                  <button onClick={()=>{console.log(this.props.userInfo)}}>userInfo</button>
+                  <button onClick={()=>{console.log(this.props.registerStatus)}}>registerStatus</button>
+                  <button onClick={()=>{console.log(this.props.trackingInfo)}}>trackingInfo</button>
+                  <button onClick={()=>{console.log(this.props.orderInfo)}}>orderInfo</button>
+                  <button onClick={()=>{console.log(this.props.checkoutInfo)}}>checkoutInfo</button>
+                  <button onClick={()=>{console.log(this.props.options)}}>options</button>
+                  
+                  <button onClick={()=>{this.props.actionController.trackMemberOrder()}}>trackMemberOrder</button>
+                  <button onClick={()=>{this.props.actionController.placeOrder()}}>placeOrder</button>
+                  <button onClick={()=>{this.props.actionController.confirmOption()}}>trackingOrder</button>
+                </div>
+                <div>
+                  <input type="text" onChange={(e)=>{this.onChangeEvent(e.target.value)}}/>
+                  <button onClick={()=>{this.props.actionController.trackOrder(this.state.input)}}>search</button>
+                </div>
                 {/* <input type="text" ref={this.emailRef} placeholder="email" />
                 <input type="password" ref={this.passCodeRef} placeholder="Password"/>
                 <button onClick={()=>{this.props.actionController.loginInfo(this.submitLogin())}}>submit</button>

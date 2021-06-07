@@ -1,11 +1,13 @@
-const LOGINURL="http://localhost:8080/user/login";
-const SIGNUPURL="http://localhost:8080/user/register";
-const LOGOUTURL="http://localhost:8080/user/logout";
-const USERTRACKINGURL="http://localhost:8080/user/tracking";
-const TRACKINGURL="http://localhost:8080/tracking";
-const ORDERREQUESTURL="http://localhost:8080/order/placeorder";
-//const ORDERCONFIRMURL="http://localhost:8080/order/confirm";
-const CHECKOUTURL="http://localhost:8080/order/checkout";
+const LOGINURL="http://ai-deliver.wl.r.appspot.com/user/login";
+const SIGNUPURL="http://ai-deliver.wl.r.appspot.com/user/register";
+const UPDATEURL="http://ai-deliver.wl.r.appspot.com/user/update";
+const LOGOUTURL="http://ai-deliver.wl.r.appspot.com/user/logout";
+// const USERTRACKINGURL="http://localhost:8080/order/user/tracking";
+const TRACKINGURL="http://ai-deliver.wl.r.appspot.com/order/tracking";
+const ORDERREQUESTURL="http://ai-deliver.wl.r.appspot.com/order/placeOrderQuote";
+const ORDERCONFIRMURL="http://ai-deliver.wl.r.appspot.com/order/placeOrderConfirm";
+const HISTORYORDER="http://ai-deliver.wl.r.appspot.com/order/historyOrder";
+const REDEEMURL="http://ai-deliver.wl.r.appspot.com/user/redeem"
 const LOADUSERINFO="userInfo";
 const LOADREGISTERINFO="registerInfo"; // added by Xiao & Yun
 const SIGNUPSTATUS="loginstatus";
@@ -22,12 +24,14 @@ const SHOWLOGIN="showLogIn"
 export default{
     LOGINURL,
     SIGNUPURL,
+    UPDATEURL,
     LOGOUTURL,
-    USERTRACKINGURL,
+    // USERTRACKINGURL,
     TRACKINGURL,
     ORDERREQUESTURL,
-    // ORDERCONFIRMURL,
-    CHECKOUTURL,
+    ORDERCONFIRMURL,
+    HISTORYORDER,
+    REDEEMURL,
     LOADUSERINFO,
     SIGNUPSTATUS,
     LOADOPTIONS,

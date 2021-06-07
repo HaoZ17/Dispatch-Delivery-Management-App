@@ -32,8 +32,11 @@ class SignUpForm extends React.Component {
                     mobile: mobile,
                 }
                 //console.log(data)
-                this.props.actionController.loadRegisterInfo(data);
-
+                this.props.actionController.registUser(data);
+                //
+                if(this.props.registerStatus){
+                    this.props.history.push("/login");
+                }
             }
         });
     }
@@ -45,6 +48,7 @@ class SignUpForm extends React.Component {
     handleConfirmBlur = e => {
         const { value } = e.target;
         this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+
     };
 
     compareToFirstPassword = (rule, value, callback) => {
@@ -79,27 +83,39 @@ class SignUpForm extends React.Component {
                  <Form {...formItemLayout} onSubmit={this.submitRegisterInfo} className="signUp-form">
                     <Row>
                         <Col span={8} >
-                            <Form.Item label="Name">
+                            <t style={{color:'#215899', marginLeft: '-310px', fontSize: '24px'}}>*</t>
+                            <b className='login-form-item-label'> Name</b>
+                            <Form.Item label="">
                                 {getFieldDecorator('name', {
                                     rules: [{ required: true, message: 'Please input your name!' }],
                                 })(
                                     <Input
                                         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         placeholder="Name"
+                                        style={{
+                                            fontSize: '20px',
+                                        }}
                                     />,
                                 )}
                             </Form.Item>
-                            <Form.Item label="Email">
+                            <t style={{color:'#215899', marginLeft: '-310px', fontSize: '24px'}}>*</t>
+                            <b className='login-form-item-label'> Email</b>
+                            <Form.Item label="">
                                 {getFieldDecorator('email', {
                                     rules: [{ required: true, message: 'Please input your email!' }],
                                 })(
                                     <Input
                                         prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         placeholder="Email"
+                                        style={{
+                                            fontSize: '20px',
+                                        }}
                                     />,
                                 )}
                             </Form.Item>
-                            <Form.Item label="Password">
+                            <t style={{color:'#215899', marginLeft: '-266px', fontSize: '24px'}}>*</t>
+                            <b className='login-form-item-label'> Password</b>
+                            <Form.Item label="">
                                 {getFieldDecorator('password', {
                                     rules: [{ required: true, message: 'Please input your Password!' }],
                                 })(
@@ -107,11 +123,16 @@ class SignUpForm extends React.Component {
                                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         type="password"
                                         placeholder="Password"
+                                        style={{
+                                            fontSize: '20px',
+                                        }}
                                     />,
                                 )}
                             </Form.Item>
 
-                            <Form.Item label="Confirm Password" hasFeedback>
+                            <t style={{color:'#215899', marginLeft: '-177px', fontSize: '24px'}}>*</t>
+                            <b className='login-form-item-label'> Confirm Password</b>
+                            <Form.Item label="" hasFeedback>
                                 {getFieldDecorator('confirm', {
                                     rules: [
                                         {
@@ -122,51 +143,68 @@ class SignUpForm extends React.Component {
                                             validator: this.compareToFirstPassword,
                                         },
                                     ],
-                                })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+                                })(<Input.Password
+                                    onBlur={this.handleConfirmBlur}
+                                    style={{
+                                        fontSize: '20px',
+                                    }}
+                                />)}
                             </Form.Item>
 
 
 
                         </Col>
                         <Col span={8} offset={1}>
-                            <Form.Item label="Address line 1">
+                            <b style={{color:'#5E5E5E', marginLeft: '-221px', fontSize: '24px'}}> Address line 1</b>
+                            <Form.Item label="">
                                 {getFieldDecorator('address1', {
                                     // rules: [{ required: true, message: 'Please input your mobile number!' }],
                                 })(
                                     <Input
                                         prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         placeholder="Street address"
+                                        style={{
+                                            fontSize: '20px',
+                                        }}
                                     />,
                                 )}
                             </Form.Item>
-
-                            <Form.Item label="Address line 2">
+                            <b style={{color:'#5E5E5E', marginLeft: '-221px', fontSize: '24px'}}> Address line 2</b>
+                            <Form.Item label="">
                                 {getFieldDecorator('address2', {
                                     // rules: [{ required: true, message: 'Please input your mobile number!' }],
                                 })(
                                     <Input
                                         prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         placeholder="Apt, suite, unit, building, floor, etc."
+                                        style={{
+                                            fontSize: '20px',
+                                        }}
                                     />,
                                 )}
                             </Form.Item>
 
                             <Row>
                                 <Col span={9} >
-                                    <Form.Item label="City" >
+                                    <b style={{color:'#5E5E5E', marginLeft: '-100px', fontSize: '24px'}}> City</b>
+                                    <Form.Item label="" >
                                         {getFieldDecorator('City', {
                                             initialValue: "San Francisco"
                                         })(
                                             <Input
                                                 placeholder="San Francisco"
                                                 disabled={true}
+                                                style={{
+                                                    fontSize: '20px',
+                                                }}
                                             />,
                                         )}
                                     </Form.Item>
                                 </Col>
 
                                 <Col span={6} offset={1}>
-                                    <Form.Item label="State">
+                                    <b style={{color:'#5E5E5E', marginLeft: '-38px', fontSize: '24px'}}> State</b>
+                                    <Form.Item label="">
                                         {getFieldDecorator('State', {
                                             initialValue: "CA"
 
@@ -174,17 +212,24 @@ class SignUpForm extends React.Component {
                                             <Input
                                                 placeholder="CA"
                                                 disabled={true}
+                                                style={{
+                                                    fontSize: '20px',
+                                                }}
                                             />,
                                         )}
                                     </Form.Item>
                                 </Col>
 
                                 <Col span={7} offset={1}>
-                                    <Form.Item label="ZIP Code">
+                                    <b style={{color:'#5E5E5E', marginLeft: '-8px', fontSize: '24px'}}> ZIP Code</b>
+                                    <Form.Item label="">
                                         {getFieldDecorator('zipcode', {
                                         })(
                                             <Input
                                                 placeholder=""
+                                                style={{
+                                                    fontSize: '20px',
+                                                }}
                                             />,
                                         )}
                                     </Form.Item>
@@ -192,20 +237,24 @@ class SignUpForm extends React.Component {
 
 
                             </Row>
-                            <Form.Item label="Mobile">
+                            <b style={{color:'#5E5E5E', marginLeft: '-312px', fontSize: '24px'}}> Mobile</b>
+                            <Form.Item label="">
                                 {getFieldDecorator('mobile', {
                                     // rules: [{ required: true, message: 'Please input your mobile number!' }],
                                 })(
                                     <Input
                                         prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         placeholder="Mobile number"
+                                        style={{
+                                            fontSize: '20px',
+                                        }}
                                     />,
                                 )}
                             </Form.Item>
 
                         </Col>
                     </Row>
-                     <Text> * indicates required field</Text>
+                     {/*<Text> * indicates required field</Text>*/}
                      <Form.Item>
                          {/*{getFieldDecorator('remember', {*/}
                          {/*    valuePropName: 'checked',*/}
@@ -214,13 +263,20 @@ class SignUpForm extends React.Component {
                          {/*<a className="login-form-forgot" href="">*/}
                          {/*    Forgot password*/}
                          {/*</a>*/}
-                         <Button type="primary" onClick={this.handleOnCancel} className="login-form-button">
-                             Cancel
-                         </Button>
-                         <Button style={{ marginLeft: 8 }} type="primary" htmlType="submit" className="login-form-button">
-                             Sign Up
-                         </Button>
+                         <div style={{marginLeft: '-618px'}}>
 
+                             <div style={{marginTop: '50px' , marginLeft: '0px'}}>
+                                 <Text style={{color:'#215899' , marginLeft: '-295px', fontSize: '24px'}}>*</Text>
+                                 <Text className='login-form-indicates-required-field' > indicates required field</Text>
+                             </div>
+
+                             <Button  type="primary" htmlType="submit" className="login-form-button">
+                                 Sign Up
+                             </Button>
+                             <Button style={{ marginLeft: 16 }} type="primary" onClick={this.handleOnCancel} className="login-form-button">
+                                 Cancel
+                             </Button>
+                         </div>
                      </Form.Item>
                 </Form>
             </div>

@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import robot from "../style/image/robot.jpg";
 import drone from "../style/image/drone.jpg";
 import myurl from "../style/image/homepage.jpg";
+
+
 const { Meta } = Card;
 const layout = {
     labelCol: {
@@ -29,14 +31,29 @@ const layout = {
         console.log("change to Drone");
         this.setState({
           cardNow:1
-        })
+        });
+        this.props.actionController.saveOptionInfo(this.props.options.drone);
       }
   
       clickChange2 = () => {
         console.log("change to Robot");
         this.setState({
           cardNow:2
-        })
+        });
+        this.props.actionController.saveOptionInfo(this.props.options.robot);
+      }
+
+    
+
+      // submitOrderForm2 = () =>{
+      //   const data = this.props.selected;
+      //   // this.props.actionController.loadSelectedInfo(data);
+      //   this.props.actionController.increaseMDButton();
+      // }
+
+      changeNum = () => {
+        var num = Math.sqrt(Number(this.props.options.drone.price));
+        console.log(num)
       }
 
         render() { 
@@ -48,7 +65,7 @@ const layout = {
               <Radio.Group //onChange={onChange} 
               value={this.state.cardNow} 
               >
-                <Col span={19} style={{paddingLeft:'10px'}}>
+                <Col span={15} style={{paddingLeft:'10px'}}>
                 <Radio value={1} onClick={this.clickChange1}>Drone From Station A</Radio>
                 </Col>
                 <Col span={5} style={{paddingLeft:'10px'}}>  
@@ -68,7 +85,7 @@ const layout = {
               >
                 <br/>
                 <text> Drone From Station A</text>
-              <Meta style={{textAlign:"center"}} title={this.props.dronePrice} description="Same Day Shipping"  />
+              <Meta style={{textAlign:"center"}} title={this.props.options.drone.price/10} description="Same Day Shipping"  />
             </Card>
               </Col>
               <Col span={3} style={{paddingLeft:'10px'}}>
@@ -81,7 +98,7 @@ const layout = {
               >
                 <br/>
                 <text> Robot From Station B</text>
-              <Meta style={{textAlign:"center"}} title={this.props.robotPrice} description="Next Day Shipping"  />
+              <Meta style={{textAlign:"center"}} title={this.props.options.robot.price/10} description="Next Day Shipping"  />
             </Card>
             </Col>
             </Row>

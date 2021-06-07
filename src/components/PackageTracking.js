@@ -1,8 +1,11 @@
-// Author: Zhao Tang & Dan Li
+/* Author: Zhao Tang & Dan Li
+v2 - update css 05/29/2021
+*/
 import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { actions } from '../actionCreaters/actionCreater'
 import { connect } from "react-redux";
+import '../style/PackageTracking.css';
 import ReactDOM from 'react-dom';
 
 import { Steps, PageHeader, Breadcrumb } from "antd";
@@ -36,8 +39,8 @@ class PackageTracking extends Component {
         this.isLoggedIn = this.props.userInfo===null ? false:true;
         return (
             <div>
-                <Breadcrumb separator=">">
-                    <Breadcrumb.Item onClick={this.handleBackHome}>Home</Breadcrumb.Item>
+                <Breadcrumb separator=">" className ='breadcrum'>
+                    <Breadcrumb.Item onClick={this.handleBackHome} className="breadcrumb">Home</Breadcrumb.Item>
                     {this.isLoggedIn?
                       <Breadcrumb.Item onClick={() => { this.props.history.push('/user/order') }}>Order History</Breadcrumb.Item>
                         :null
@@ -46,14 +49,25 @@ class PackageTracking extends Component {
                     <Breadcrumb.Item>Track Package</Breadcrumb.Item>
                 </Breadcrumb>
 
-                <h1>Arriving tommorow by 10 pm</h1>
+                <h1 className ='estimate'>
+                    {this.props.trackingInfo===null?
+                    <div></div> :
+                    this.props.trackingInfo.arriveTime
 
-                <Steps direction="vertical" current={1}>
-                    <Step title="Ordered" description="Monday, 05/13/2021 10:00 A.M." />
-                    <Step title="Departed from Station A" description="Monday, 05/13/2021 10:30 A.M." />
-                    <Step title="Picked Up Package" description="Monday, 05/13/2021 12:00 A.M." />
-                    <Step title="Arriving tomorrow" description="" />
-                </Steps>
+                }
+                </h1>
+
+                {
+                    this.props.trackingInfo === null ?
+                    <p>You don't have any package</p>
+                    :
+                    <Steps direction="vertical" current={1}>
+                        <Step title={this.props.trackingInfo.delivererPath.Stage1.address} description={this.props.trackingInfo.delivererPath.Stage1.time} />
+                        <Step title={this.props.trackingInfo.delivererPath.Stage2.address} description={this.props.trackingInfo.delivererPath.Stage2.time} />
+                        <Step title={this.props.trackingInfo.delivererPath.Stage3.address} description={this.props.trackingInfo.delivererPath.Stage3.time} />
+                        {/* <Step title={this.props.trackingInfo.delivererPath.Stage4.address} description={this.props.trackingInfo.delivererPath.Stage4.time} /> */}
+                    </Steps>
+                }
             </div>
         );
     }

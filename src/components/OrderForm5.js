@@ -28,7 +28,49 @@ class OrderForm5 extends React.Component {
         image1:drone,
         image2:robot
         }
+
       }
+      asyncfunc=async()=>{
+        await this.props.actionController.confirmOption();
+        if(this.props.userInfo!==null){
+          this.props.actionController.checkOutUpdate();
+          this.props.actionController.reSubmitProfile(this.props.userInfo);
+        }
+        this.props.actionController.increaseMDButton();
+      }
+      submitOrderForm5 = () => {
+        this.props.actionController.saveUserInfo();
+        this.asyncfunc();
+      }
+
+      changeCard = () => {
+        if(this.props.selected.type === "robot"){
+          return <Card
+          hoverable
+          style={{ width: 240, textAlign:"center", margin:'20px'  }}
+          title="Lowest Cost"
+          cover={<img style={{paddingLeft:"10%", paddingTop:"7.5%", width:"90%", height:"90%"}} alt="robot" src={this.state.image2} />}
+        >
+          <br/>
+          <text> Robot From Station B</text>
+        <Meta style={{textAlign:"center"}} title={this.props.options.robot.price*0.1} description="Next Day Shipping"  />
+        </Card>;
+        }
+
+      else{
+        return <Card
+        hoverable
+        style={{ width: 240, textAlign:"center", margin:'20px'  }}
+        title="Fastest"
+        cover={<img style={{paddingLeft:"10%", paddingTop:"7.5%", width:"90%", height:"90%"}} alt="drone" src={this.state.image1} />}
+      >
+        <br/>
+        <text> Drone From Station A</text>
+      <Meta style={{textAlign:"center"}} title={this.props.options.drone.price*0.1} description="Same Day Shipping"  />
+      </Card>;
+      } 
+      }
+
 
       mycard = () => {
         if(this.state.CardNow == 1 ) return this.state.image1;
@@ -51,7 +93,7 @@ class OrderForm5 extends React.Component {
             </Button>
             </Col>
           </Row>
-          <TextArea allowClear rows={4} defaultValue={"发送地的信息"}
+          <TextArea allowClear rows={4} defaultValue={this.props.fromInfo.senderName + ", " + this.props.fromInfo.senderEmail + ", " + this.props.fromInfo.senderMobile + ", " + this.props.fromInfo.fromAddress + ", " + this.props.fromInfo.from}
           />
           <br/>
           <br/>
@@ -69,7 +111,7 @@ class OrderForm5 extends React.Component {
             </Button>
             </Col>
           </Row>
-          <TextArea allowClear rows={4} defaultValue={this.state.theAddress + ", " + this.state.theEmail + ", " + this.state.thePhone + " (客户地址)"}
+          <TextArea allowClear rows={4} defaultValue={this.props.orderInfoAll.receiverName + ", " + this.props.orderInfoAll.receiverEmail + ", " + this.props.orderInfoAll.receiverMobile + ", " + this.props.orderInfoAll.toAddress + ", " + this.props.orderInfoAll.to}
           />
           <br/>
           <br/>
@@ -86,14 +128,14 @@ class OrderForm5 extends React.Component {
             </Button>
             </Col>
           </Row>
-          <TextArea allowClear rows={1} defaultValue={this.state.length + "' x " + this.state.width + "' x " + this.state.height + ", " + this.state.Declared + ", " + this.state.Weight + " lbs" + " (package大小)"}
+          <TextArea allowClear rows={1} defaultValue={this.props.orderInfo.size + ", " + this.props.orderInfo.weight}
           />
           <br/>
           <br/>
           <Row justify="space-between">
           <Col span={22}
           >
-            <h3>Pick up</h3>
+            <h3>Order Time</h3>
             </Col>
             <Col span={2}
             >
@@ -104,7 +146,7 @@ class OrderForm5 extends React.Component {
             </Button>
             </Col>
           </Row>
-          <TextArea allowClear rows={2} defaultValue={"还没有信息"}
+          <TextArea allowClear rows={2} defaultValue={this.props.orderInfo.time}
           />
           <br/>
           <br/>
@@ -120,16 +162,7 @@ class OrderForm5 extends React.Component {
               </Button>
               </Col>
               </Row>
-          <Card
-            hoverable
-            style={{ width: 240, textAlign:"center", margin:'20px'  }}
-            title="Fastest"
-            cover={<img style={{paddingLeft:"10%", paddingTop:"7.5%", width:"90%", height:"90%"}} alt="drone" src={this.mycard()} />}
-          >
-            <br/>
-            <text> Drone From Station A</text>
-          <Meta style={{textAlign:"center"}} title={this.props.dronePrice} description="Same Day Shipping"  />
-          </Card>
+          {this.changeCard()}
           </Col>
   
           </Row>
@@ -139,7 +172,7 @@ class OrderForm5 extends React.Component {
           &nbsp;  Back &nbsp;
           </Button>
           &nbsp; &nbsp; &nbsp;
-          <Button type="primary" htmlType="submit" shape="round" style={{ background: "#215899", borderColor: "black" }} onClick={this.props.actionController.increaseMDButton}>
+          <Button type="primary" htmlType="submit" shape="round" style={{ background: "#215899", borderColor: "black" }} onClick={this.submitOrderForm5}>
                 Place Order
           </Button>
           </Row>
