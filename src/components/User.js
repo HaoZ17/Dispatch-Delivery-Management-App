@@ -3,7 +3,6 @@ Author: Bochao, Zhao Tang, Dan Li, Xiao Zhang, Yun Chang
 Version 
     1.0 - 
     2.0 - 06/05/2021 - add features from non-login
-
 */
 import React, { Component } from 'react';
 import { bindActionCreators } from "redux";

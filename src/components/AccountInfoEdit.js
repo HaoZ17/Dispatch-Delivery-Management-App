@@ -20,7 +20,7 @@ class EditProfileForm extends React.Component {
     };
 
     render() {
-        const addressArray = this.state.accountInfo.address.split(',');
+        const addressArray = this.state.accountInfo.address===null? ["address1","address2"]:this.state.accountInfo.address.split(',');
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
             labelRow: {
@@ -234,7 +234,7 @@ class EditProfileForm extends React.Component {
                 }
 
                 console.log(data);
-                this.props.actionController.reSubmitProfile(data);
+                this.props.actionController.profileUpdate(data);
             }
 
         });

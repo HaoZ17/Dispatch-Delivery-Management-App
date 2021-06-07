@@ -1,23 +1,36 @@
 import Actions from "../constants";
 import { actions } from "../actionCreaters/actionCreater";
 
-const initState={
-    jumpTest:false,
+const initState = {
+    jumpTest: false,
     //basic info
-    name:"",
-    email:"test@gmail.com",
+    name: "",
+    email: "test@gmail.com",
     // email:"",
     // password:"",
-    displayModal:0,
+    displayModal: 0,
 
     //profile*
-    userInfo:null,
+    userInfo: {
+        address: null,
+        birthday: null,
+        createdAt: "2021-05-31T10:31:02.091+00:00",
+        credit: 100,
+        email: "test@gmail.com",
+        id: 1,
+        isVisitor: null,
+        mobile: null,
+        name: "testUpdate",
+        password: "123",
+        updatedAt: "2021-05-31T10:31:02.091+00:00",
+        zipCode: null
+    },
 
-    registerStatus:false,
+    registerStatus: false,
 
     //tracking visitor*
-    trackingNumber:"a9b51c96-cb93-4",
-    trackingInfo:{
+    trackingNumber: "a9b51c96-cb93-4",
+    trackingInfo: {
         "trackingNumber": "a9b51c96-cb93-4",
         "orderStatus": "Pending",
         "createTime": "2020-05-30-15:21",
@@ -41,7 +54,7 @@ const initState={
     trackingResult:false,
 
     //member
-    orderHistory:{
+    orderHistory: {
         "pending": {
             "pending": [
                 {
@@ -252,40 +265,40 @@ const initState={
     },
     //place order*
 
-    orderInfo:{
+    orderInfo: {
         "senderAddress": "local",
         "receiverAddress": "future",
         "size": "50m^3",
-        "weight":"20kg",
-        "time":"2021-05-21-12:21"
+        "weight": "20kg",
+        "time": "2021-05-21-12:21"
     },
 
-    optionChoice:{
-        option:1,
-        price:200
+    optionChoice: {
+        option: 1,
+        price: 200
     },
 
-    isLoading:false,
+    isLoading: false,
 
     //options*
-    options:{
+    options: {
     },
-    optionsStatus:false,
+    optionsStatus: false,
 
     //checkout info *
 
-    checkoutInfo:{
-        "orderInfo" :{
+    checkoutInfo: {
+        "orderInfo": {
             "senderAddress": "local",
             "receiverAddress": "future",
             "size": "50m^3",
-            "weight":"10kg",
+            "weight": "10kg",
             "senderZipCode": "95111",
             "receiverZipCode": "95188",
             "createTime": "2020-05-30-15:21"
         },
-    
-        "selected" :{
+
+        "selected": {
             "type": "robot",
             "price": 10
         },
@@ -297,119 +310,133 @@ const initState={
             "address": "testAddress"
 
         }
-    
+
     },
-    checkoutStatus:false,
+    checkoutStatus: false,
     //button:
-    showRegForm:false,
-    showLoginForm:false
+    showRegForm: false,
+    showLoginForm: false
 
 }
 
-const reducer=(state=initState,action={})=>{
-    switch(action.type){
+const reducer = (state = initState, action = {}) => {
+    switch (action.type) {
 
         case Actions.SHOWREGISTER:
             return {
                 ...state,
-                showRegForm:!state.showRegForm
+                showRegForm: !state.showRegForm
             }
         case Actions.SHOWLOGIN:
-            return{
+            return {
                 ...state,
-                showLoginForm:!state.showLoginForm
+                showLoginForm: !state.showLoginForm
             }
         case Actions.LOADUSERINFO:
             console.log(action.payload)
+            const newInfo = state.userInfo === null ? action.payload : Object.assign(state.userInfo, action.payload);
             return {
                 ...state,
-                userInfo:action.payload,
-                name:action.payload.name,
-                email:action.payload.email,
+                userInfo: newInfo,
+                name: action.payload.name,
+                email: action.payload.email,
             }
+
+        // added by Xiao & Yun
+        case Actions.LOADREGISTERINFO:
+            console.log(action.payload)
+            return {
+                ...state,
+                signUp: action.payload,
+                name: action.payload.name,
+                email: action.payload.email,
+                showRegForm: !state.showRegForm
+            }
+
         case Actions.SIGNUPSTATUS:
-            return{
+            return {
                 ...state,
                 registerStatus: true,
                 // signUp:{}
             }
         case Actions.LOADOPTIONS:
-            return{
+            return {
                 ...state,
-                options:action.payload,
-                optionsStatus:true
+                options: action.payload,
+                optionsStatus: true
             }
         case Actions.CHECKOUT:
-            return{
+            return {
                 ...state,
-                trackingNumber:action.payload
+                trackingNumber: action.payload
             }
         case Actions.LOADINGUSERORDER:
-            return{
+            return {
                 ...state,
-                orderHistory:action.payload
+                orderHistory: action.payload
             }
         case Actions.LOADINGVISITERORDER:
-            return{
+            return {
                 ...state,
+
                 trackingInfo:action.payload,
                 trackingResult:true
             }
         case Actions.INPUTTRACKINGNUMBER:
             console.log("tracking Info is");
             console.log(action.payload);//PRINT NUMBER
-            return{
+            return {
                 ...state,
                 trackingNumber: action.payload
             }
         case Actions.LOGININFO:
             console.log("login Info :")
             console.log(action.payload);
-            return{
+            return {
                 ...state,
-                signIn:action.payload
+                signIn: action.payload
             }
         case "jump":
             console.log(state.jumpTest)
-            return{
+            return {
                 ...state,
-                jumpTest:!state.jumpTest
+                jumpTest: !state.jumpTest
             }
         case "modelIncrease":
             console.log(state.displayModal)
-            return{
+            return {
                 ...state,
-                displayModal:state.displayModal+1
+                displayModal: state.displayModal + 1
             }
         case "modelDecrease":
             console.log(state.displayModal)
-            return{
+            return {
                 ...state,
-                displayModal:state.displayModal-1
+                displayModal: state.displayModal - 1
             }
         case "resetDisplayModal":
             console.log(state.displayModal)
-            return{
+            return {
                 ...state,
-                displayModal:0
+                displayModal: 0
             }
         case "checkDataform":
             console.log(action.payload)
-            return{
+            return {
                 ...state
             }
         case "signOut":
             console.log("logouy")
             console.log(state.userInfo)
-            return{
+            return {
                 ...state,
-                userInfo:null
+                userInfo: null
             }
         case "reSubmitProfile":
             console.log(state.userInfo);
-            return{
+            return {
                 ...state,
-                userInfo:action.payload
+                userInfo: action.payload
             }
         case "resetResult":
             return{
