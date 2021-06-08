@@ -62,7 +62,7 @@ class AccountInfo extends React.Component {
                                     <List class='personalinfo' bordered='false'>
                                         <List.Item>{'Name    : ' + this.props.userInfo.name}</List.Item>
                                         <List.Item>{'Email address : ' + this.props.userInfo.email}</List.Item>
-                                        <List.Item>{'Password   : ' + this.props.userInfo.password}</List.Item>
+                                        {/* <List.Item>{'Password   : ' + this.props.userInfo.password}</List.Item> */}
                                         <List.Item>{'Address : ' + this.props.userInfo.address}</List.Item>
                                         <List.Item>{'Zipcode : ' + this.props.userInfo.zipcode}</List.Item>
                                         <List.Item>{'Mobile : ' + this.props.userInfo.mobile}</List.Item>

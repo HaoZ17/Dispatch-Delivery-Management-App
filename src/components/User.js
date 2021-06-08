@@ -101,12 +101,13 @@ class User extends Component {
                                         <div className='recentorder'>
                                             
                                             <List className='orderlist' size="small">
+                                                <p>Most recent order information </p>
                                                 <p>Estimated: {lastPending.arriveTime} </p>
                                                 <p>From: {lastPending.senderAddress} </p>
                                                 <p>To: {lastPending.receiverAddress} </p>
-                                                <p>Size: {lastPending.size} </p>
+                                                {/* <p>Size: {lastPending.size} </p>
                                                 <p>Weight: {lastPending.weight}</p>
-                                                <p>Ship time: {lastPending.createTime}</p>
+                                                <p>Ship time: {lastPending.createTime}</p> */}
                                             </List>
                                         </div>
                                     </a>
@@ -135,3 +136,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(User));
+
