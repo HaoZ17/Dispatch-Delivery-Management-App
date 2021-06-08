@@ -85,7 +85,7 @@ const layout = {
               >
                 <br/>
                 <text> Drone From Station A</text>
-              <Meta style={{textAlign:"center"}} title={this.props.options.drone.price/10} description="Same Day Shipping"  />
+              <Meta style={{textAlign:"center"}} title={this.props.options.drone.price/10 + "$"} description="Same Day Shipping"  />
             </Card>
               </Col>
               <Col span={3} style={{paddingLeft:'10px'}}>
@@ -98,7 +98,7 @@ const layout = {
               >
                 <br/>
                 <text> Robot From Station B</text>
-              <Meta style={{textAlign:"center"}} title={this.props.options.robot.price/10} description="Next Day Shipping"  />
+              <Meta style={{textAlign:"center"}} title={this.props.options.robot.price/10 + "$"} description="Next Day Shipping"  />
             </Card>
             </Col>
             </Row>
