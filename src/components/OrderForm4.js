@@ -27,7 +27,7 @@ const isLoggedIn=false;
           return ( 
             <React.Fragment >
               <div style={{textAlign:"left"}}>
-            <h2> Thank you! Your order has been palced. </h2>
+            <h2> Thank you! Your order has been placed. </h2>
             <br/>
             <br/>
             <Col span={20} offset={3}>
@@ -45,7 +45,7 @@ const isLoggedIn=false;
             &nbsp;
             <br/>
             <Button type="text" htmlType="submit" shape="round" onClick={this.props.actionController.resetDisplayModal}>
-                  Shpping again
+                  Shipping again
             </Button>
             &nbsp; &nbsp; &nbsp;
             <Button type="text" htmlType="submit" shape="round" 
