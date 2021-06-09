@@ -54,8 +54,7 @@ class PackageTracking extends Component {
                         <h1 className='estimate'>
                             {this.props.trackingInfo === null ?
                                 <div></div> :
-                                // this.props.trackingInfo.arriveTime
-                                "Arriving time: 2021-06-08"
+                                this.props.trackingInfo.arriveTime
 
                             }
                         </h1>
@@ -65,14 +64,10 @@ class PackageTracking extends Component {
                                 <p>You don't have any package</p>
                                 :
                                 <Steps direction="vertical" current={1}>
-                                    {/* <Step title={this.props.trackingInfo.delivererPath.Stage1.address} description={this.props.trackingInfo.delivererPath.Stage1.time} />
+                                    <Step title={this.props.trackingInfo.delivererPath.Stage1.address} description={this.props.trackingInfo.delivererPath.Stage1.time} />
                                     <Step title={this.props.trackingInfo.delivererPath.Stage2.address} description={this.props.trackingInfo.delivererPath.Stage2.time} />
-                                    <Step title={this.props.trackingInfo.delivererPath.Stage3.address} description={this.props.trackingInfo.delivererPath.Stage3.time} /> */}
+                                    <Step title={this.props.trackingInfo.delivererPath.Stage3.address} description={this.props.trackingInfo.delivererPath.Stage3.time} />
                                     {/* <Step title={this.props.trackingInfo.delivererPath.Stage4.address} description={this.props.trackingInfo.delivererPath.Stage4.time} /> */}
-
-                                    <Step title={"3995 Alemnay Blvd"} description={"2021-06-08-09:17"} />
-                                    <Step title={"stationC"} description={"2021-06-08-11:00"} />
-                                    <Step title={"451 S Airport Blvd"} description={"2021-06-08-13:18"} />
                                 </Steps>
                         }
                     </div></Col>
